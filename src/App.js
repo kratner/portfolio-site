@@ -2,13 +2,12 @@
 import "./styles/main.scss";
 
 import React from "react";
+import Header from "./components/Header";
 
 const App = () => {
   return (
     <div>
-      <header>
-        <div className="logo">logo (in header)</div>
-      </header>
+      <Header />
       <main>
         <div className="content">variable content</div>
       </main>
