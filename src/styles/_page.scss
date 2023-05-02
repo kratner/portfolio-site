@@ -1,0 +1,59 @@
+// Set body background to black
+body {
+    background-color: #000;
+    color: #fff;
+  }
+  
+  // Set header and footer to transparent
+  header,
+  footer {
+    background-color: transparent;
+  }
+  
+  // Set header and footer to semi-transparent with a black background
+  header,
+  footer {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  // Position the header at the top of the screen with a height of 60px
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    z-index: 1000; // ensure the header is on top of the slideshow
+  }
+  
+  // Position the footer at the bottom of the screen with a height of 40px
+  footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    z-index: 1000; // ensure the footer is on top of the slideshow
+  }
+  
+  // Set the slideshow container to take up the full screen
+  .slideshow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0; // set the slideshow behind the header and footer
+  }
+  
+  // Set the slide images to take up the full screen and be centered
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+  }
+  
