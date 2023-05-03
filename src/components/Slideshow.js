@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Images from "./Images";
 
 class Slideshow extends Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class Slideshow extends Component {
       currentAltText: 0,
       previousImage: null,
       previousAltText: null,
+      fadingOut: false,
     };
   }
 
@@ -16,16 +18,20 @@ class Slideshow extends Component {
     this.interval = setInterval(() => {
       const { currentImage } = this.state;
       const { currentAltText } = this.state;
-      const images = ["image1.jpg", "image2.jpg", "image3.jpg"];
-      const nextImage = (currentImage + 1) % images.length;
-      const nextAltText = (currentAltText + 1) % images.length;
+      const { imageUrls, altText } = Images();
+      const nextImage = (currentImage + 1) % imageUrls.length;
+      const nextAltText = (currentAltText + 1) % altText.length;
       this.setState({
         previousImage: currentImage,
         currentImage: nextImage,
         previousAltText: currentAltText,
         currentAltText: nextAltText,
+        fadingOut: true,
       });
-    }, 3000);
+      setTimeout(() => {
+        this.setState({ fadingOut: false });
+      }, 1000);
+    }, 1500);
   }
 
   componentWillUnmount() {
@@ -33,10 +39,14 @@ class Slideshow extends Component {
   }
 
   render() {
-    const { currentImage, previousImage, currentAltText, previousAltText } =
-      this.state;
-    const images = ["image1.jpg", "image2.jpg", "image3.jpg"];
-    const altText = ["image 1", "image 2", "image 3"];
+    const {
+      currentImage,
+      previousImage,
+      currentAltText,
+      previousAltText,
+      fadingOut,
+    } = this.state;
+    const { imageUrls, altText } = Images();
 
     return (
       <div
@@ -55,23 +65,23 @@ class Slideshow extends Component {
         {previousImage !== null && (
           <img
             alt={altText[previousAltText]}
-            src={images[previousImage]}
+            src={imageUrls[previousImage]}
             style={{
               position: "absolute",
               maxWidth: "100%",
               maxHeight: "100%",
-              opacity: 1,
+              opacity: fadingOut ? 0 : 1,
               transition: "opacity 1s ease-out",
             }}
           />
         )}
         <img
           alt={altText[currentAltText]}
-          src={images[currentImage]}
+          src={imageUrls[currentImage]}
           style={{
             maxWidth: "100%",
             maxHeight: "100%",
-            opacity: previousImage !== null ? 0 : 1,
+            opacity: fadingOut ? 1 : 0,
             transition: "opacity 1s ease-out",
           }}
         />
