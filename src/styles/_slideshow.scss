@@ -1,0 +1,48 @@
+.slideshow {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #000;
+  }
+  
+  .slideshow__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    background-position: center;
+    background-size: cover;
+  }
+  
+  .slideshow__image.active {
+    opacity: 1;
+    z-index: 1;
+  }
+  
+  .slideshow__image--next {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    animation: crossfade 1s ease-in-out infinite;
+    background-position: center;
+    background-size: cover;
+  }
+  
+  @keyframes crossfade {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  

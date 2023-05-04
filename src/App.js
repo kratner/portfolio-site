@@ -4,6 +4,7 @@ import "./styles/main.scss";
 import React from "react";
 import Header from "./components/Header";
 import Slideshow from "./components/Slideshow";
+import Images from "./components/Images";
 
 const App = () => {
   return (
@@ -11,7 +12,7 @@ const App = () => {
       <Header />
       <main>
         {/* <div className="content">variable content</div> */}
-        <Slideshow />
+        <Slideshow images={Images.imageUrls} />
       </main>
       <footer>footer</footer>
     </div>
