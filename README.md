@@ -1,6 +1,6 @@
 # Keith Ratner Portfolio
 
-## View live at https://kratner.github.io/portfolio-site
+## View live <a href="https://kratner.github.io/portfolio-site" target="_blank">HERE</a>
 
 
 
