@@ -14,7 +14,10 @@ const App = () => {
       <main>
         {/* <div className="content">variable content</div> */}
         {/* <Slideshow images={Images.imageUrls} /> */}
-        <FullScreenImage imageUrl="https://keithratner.live/wp-content/uploads/2023/05/moeba-lr-wide-1600x764-1.jpg" />
+        <FullScreenImage
+          altText="Moeba by Keith Ratner"
+          imageUrl="https://keithratner.live/wp-content/uploads/2023/05/moeba-lr-wide-1600x764-1.jpg"
+        />
       </main>
       <footer></footer>
     </div>

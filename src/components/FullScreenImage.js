@@ -1,8 +1,9 @@
 import React from "react";
 
-const FullScreenImage = ({ imageUrl }) => {
+const FullScreenImage = ({ imageUrl, altText }) => {
   return (
     <div
+      className="fullscreen-image-container"
       style={{
         display: "flex",
         justifyContent: "center",
@@ -10,7 +11,12 @@ const FullScreenImage = ({ imageUrl }) => {
         height: "100vh",
       }}
     >
-      <img src={imageUrl} style={{ maxWidth: "100%", maxHeight: "100%" }} />
+      <img
+        alt={altText}
+        className="fullscreen-image"
+        src={imageUrl}
+        style={{ maxWidth: "100%", maxHeight: "100%" }}
+      />
     </div>
   );
 };
