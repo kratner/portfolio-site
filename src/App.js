@@ -5,6 +5,7 @@ import React from "react";
 import Header from "./components/Header";
 import Slideshow from "./components/Slideshow";
 import Images from "./components/Images";
+import FullScreenImage from "./components/FullScreenImage";
 
 const App = () => {
   return (
@@ -12,9 +13,10 @@ const App = () => {
       <Header />
       <main>
         {/* <div className="content">variable content</div> */}
-        <Slideshow images={Images.imageUrls} />
+        {/* <Slideshow images={Images.imageUrls} /> */}
+        <FullScreenImage imageUrl="https://keithratner.live/wp-content/uploads/2023/05/moeba-lr-wide-1600x764-1.jpg" />
       </main>
-      <footer>footer</footer>
+      <footer></footer>
     </div>
   );
 };

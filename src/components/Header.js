@@ -1,14 +1,16 @@
 import React from "react";
+import GlowingText from "./GlowingText";
 // import { Link } from "react-router-dom";
 function Header() {
   return (
     <header>
-      <div className="kr">Keith Ratner</div>
+      <GlowingText />
+      {/* <div className="kr">Keith Ratner</div> */}
       <nav>
         <ul className="nav">
-          <li>Home</li>
+          {/* <li>Home</li>
           <li>About</li>
-          <li>Contact</li>
+          <li>Contact</li> */}
         </ul>
       </nav>
     </header>
