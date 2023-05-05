@@ -3,8 +3,7 @@ import "./styles/main.scss";
 
 import React from "react";
 import Header from "./components/Header";
-import Slideshow from "./components/Slideshow";
-import Images from "./components/Images";
+import Footer from "./components/Footer";
 import FullScreenImage from "./components/FullScreenImage";
 
 const App = () => {
@@ -19,7 +18,7 @@ const App = () => {
           imageUrl="https://keithratner.live/wp-content/uploads/2023/05/moeba-lr-wide-1600x764-1.jpg"
         />
       </main>
-      <footer></footer>
+      <Footer />
     </div>
   );
 };

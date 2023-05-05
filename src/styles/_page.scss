@@ -12,10 +12,10 @@ body {
   }
   
   // Set header and footer to semi-transparent with a black background
-  header,
-  footer {
-    background-color: rgba(0, 0, 0, 0.5);
-  }
+  // header,
+  // footer {
+  //   background-color: rgba(0, 0, 0, 0.5);
+  // }
   
   // Position the header at the top of the screen with a height of 60px
   header {
@@ -35,21 +35,8 @@ body {
     right: 0;
     height: 40px;
     z-index: 1000; // ensure the footer is on top of the slideshow
-  }
-  
-  .glowing-text {
-    background: linear-gradient(to right, #ADD8E6, #F5DEB3);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    font-size: 3rem;
-    text-align: left;
-    animation: glowing-text-animation 4s ease-in-out infinite;
-  }
-
-  .logo-text {
-    font-size: 2em;
-    font-weight: 800;
+    text-align: right;
+    padding: .75em 0;
   }
 
   .fullscreen-image-container {

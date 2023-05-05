@@ -1,0 +1,15 @@
+.glowing-text {
+    background: linear-gradient(to right, #ADD8E6, #F5DEB3);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 3rem;
+    text-align: left;
+    animation: glowing-text-animation 4s ease-in-out infinite;
+    padding: 0 .1em;
+}
+
+.logo-text {
+    font-size: 2em;
+    font-weight: 800;
+}

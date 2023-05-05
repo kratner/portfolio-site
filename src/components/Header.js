@@ -4,7 +4,7 @@ import GlowingText from "./GlowingText";
 function Header() {
   return (
     <header>
-      <GlowingText />
+      <GlowingText textContent="Keith Ratner" />
       {/* <div className="kr">Keith Ratner</div> */}
       <nav>
         <ul className="nav">

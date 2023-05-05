@@ -1,0 +1,58 @@
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFacebook,
+  faTwitter,
+  faInstagram,
+  faLinkedin,
+} from "@fortawesome/free-brands-svg-icons";
+
+const socialMediaLinks = [
+  //   {
+  //     name: "Facebook",
+  //     icon: faFacebook,
+  //     url: "https://www.facebook.com/",
+  //   },
+  {
+    name: "Twitter",
+    icon: faTwitter,
+    url: "https://twitter.com/keithratner",
+  },
+  {
+    name: "Instagram",
+    icon: faInstagram,
+    url: "https://www.instagram.com/keithratner",
+  },
+  {
+    name: "LinkedIn",
+    icon: faLinkedin,
+    url: "https://www.linkedin.com/in/keithratner",
+  },
+  // Add more social media links here
+];
+
+const SocialMediaIcons = ({ size, color }) => {
+  return (
+    <div className="social-media-icons">
+      {socialMediaLinks.map((link) => (
+        <a
+          href={link.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          key={link.name}
+          title={link.name}
+        >
+          <FontAwesomeIcon
+            icon={link.icon}
+            size={size}
+            style={{ color: color }}
+            aria-label={link.name}
+            className="socialMediaIcon"
+          />
+        </a>
+      ))}
+    </div>
+  );
+};
+
+export default SocialMediaIcons;
