@@ -3,11 +3,20 @@
 ## View live at https://kratner.github.io/portfolio-site
 
 
+
 *This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).*
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm run build`
+
+then
+
+### `npm run deploy`
+
+to deploy to `gh-pages`
 
 ### `yarn start`
 
