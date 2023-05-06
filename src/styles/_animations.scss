@@ -11,3 +11,41 @@
     background-position: 100% 0;
   }
 }
+
+.vibrant-glow {
+  position: relative;
+}
+
+.vibrant-glow::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background-color: #ff00ff;
+  opacity: 0;
+  border-radius: 50%;
+  animation: vibrant-glow-animation 1s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes vibrant-glow-animation {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+/* Apply the animation on hover */
+.vibrant-glow:hover::before {
+  animation-play-state: running;
+}
