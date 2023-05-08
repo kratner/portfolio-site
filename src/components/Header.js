@@ -42,7 +42,7 @@ function Header() {
           </li>
           <li>
             <PopupWindow
-              linkText="Watch My Music Videos!"
+              linkText="Music!"
               popupContent={() => (
                 <YouTubePlaylist
                   playlistID="PLvqe7VuhXJoScsg_frwUsvMwQ6J_9hKOS"
