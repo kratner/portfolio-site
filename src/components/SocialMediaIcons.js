@@ -2,6 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
+  faYoutube,
   faTwitter,
   faInstagram,
   faLinkedin,
@@ -22,6 +23,11 @@ const socialMediaLinks = [
     name: "Instagram",
     icon: faInstagram,
     url: "https://www.instagram.com/keithratner",
+  },
+  {
+    name: "YouTube",
+    icon: faYoutube,
+    url: "https://youtube.com/playlist?list=PLvqe7VuhXJoScsg_frwUsvMwQ6J_9hKOS",
   },
   {
     name: "LinkedIn",

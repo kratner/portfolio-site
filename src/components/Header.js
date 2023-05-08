@@ -1,5 +1,7 @@
 import React from "react";
 import GlowingText from "./GlowingText";
+import PopupWindow from "./PopupWindow";
+import YouTubePlaylist from "./YouTubePlaylist";
 // import { Link } from "react-router-dom";
 function Header() {
   return (
@@ -37,6 +39,18 @@ function Header() {
             >
               Contact
             </a>
+          </li>
+          <li>
+            <PopupWindow
+              linkText="Watch My Music Videos!"
+              popupContent={() => (
+                <YouTubePlaylist
+                  playlistID="PLvqe7VuhXJoScsg_frwUsvMwQ6J_9hKOS"
+                  width="100vw"
+                  height="100vh"
+                />
+              )}
+            />
           </li>
         </ul>
       </nav>

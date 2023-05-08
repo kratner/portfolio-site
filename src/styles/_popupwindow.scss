@@ -1,0 +1,46 @@
+/* CSS */
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: white;
+    transition: color 0.3s;
+  }
+  
+  .close-button::before,
+  .close-button::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 18px;
+    height: 2px;
+    background-color: currentColor;
+    transform: translate(-50%, -50%);
+    transition: background-color 0.3s;
+  }
+  
+  .close-button::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  
+  .close-button::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+  
+  .close-button:hover {
+    color: yellow;
+  }
+  
+  .close-button:hover::before,
+  .close-button:hover::after {
+    background-color: yellow;
+  }
+  
