@@ -63,6 +63,7 @@ const PopupWindow = ({
               className="close-button"
               style={closeButtonStyle}
               onClick={closePopup}
+              title="Close"
             />
           </div>
         </div>
