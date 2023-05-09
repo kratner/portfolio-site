@@ -27,7 +27,7 @@ function Header() {
               href="https://optionexplicit.live"
               title="Visit My VBA Code Library"
             >
-              About
+              VBA?!
             </a>
           </li>
           <li>
@@ -43,13 +43,17 @@ function Header() {
           <li>
             <PopupWindow
               linkText="Music!"
+              linkTitle="My Music Videos"
               popupContent={() => (
                 <YouTubePlaylist
                   playlistID="PLvqe7VuhXJoScsg_frwUsvMwQ6J_9hKOS"
-                  width="100vw"
-                  height="100vh"
+                  width="80vw"
+                  height="80vh"
                 />
               )}
+              width="80vw"
+              height="80vh"
+              border="#fff .1em solid"
             />
           </li>
         </ul>

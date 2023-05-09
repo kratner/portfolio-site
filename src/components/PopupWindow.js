@@ -2,9 +2,11 @@ import React, { useState } from "react";
 
 const PopupWindow = ({
   linkText,
+  linkTitle,
   popupContent: PopupContent,
   width,
   height,
+  border,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -29,14 +31,15 @@ const PopupWindow = ({
   const contentStyle = {
     width: width || "auto",
     height: height || "auto",
-    position: "absolute",
-    top: 0,
-    left: 0,
-    // transform: "translate(-50%, -50%)",
+    position: "fixed",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
     // backgroundColor: "#fff",
     // borderRadius: "8px",
     // padding: "20px",
     zIndex: 10000,
+    border: border || "none",
   };
 
   const closeButtonStyle = {
@@ -47,7 +50,7 @@ const PopupWindow = ({
 
   return (
     <div>
-      <a href="#" onClick={openPopup}>
+      <a href="#" title={linkTitle} onClick={openPopup}>
         {linkText}
       </a>
 

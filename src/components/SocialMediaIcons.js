@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faFacebook,
+  //   faFacebook,
   faYoutube,
   faTwitter,
   faInstagram,
@@ -15,22 +15,22 @@ const socialMediaLinks = [
   //     url: "https://www.facebook.com/",
   //   },
   {
-    name: "Twitter",
+    name: "Follow me on Twitter",
     icon: faTwitter,
     url: "https://twitter.com/keithratner",
   },
   {
-    name: "Instagram",
+    name: "View my Instagram",
     icon: faInstagram,
     url: "https://www.instagram.com/keithratner",
   },
   {
-    name: "YouTube",
+    name: "Watch my Music Videos",
     icon: faYoutube,
     url: "https://youtube.com/playlist?list=PLvqe7VuhXJoScsg_frwUsvMwQ6J_9hKOS",
   },
   {
-    name: "LinkedIn",
+    name: "View my LinkedIn Profile",
     icon: faLinkedin,
     url: "https://www.linkedin.com/in/keithratner",
   },
