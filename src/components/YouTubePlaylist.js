@@ -1,8 +1,5 @@
 import React from "react";
 
-// YouTube API Key:
-// AIzaSyBP91njRFNfXTpx5aymmfqc1SjeviO2o2s
-
 const YouTubePlaylist = ({
   playlistID,
   width,
