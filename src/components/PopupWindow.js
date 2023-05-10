@@ -7,6 +7,7 @@ const PopupWindow = ({
   width,
   height,
   border,
+  background,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -44,8 +45,8 @@ const PopupWindow = ({
 
   const closeButtonStyle = {
     position: "fixed",
-    right: "5%",
-    top: "5%",
+    right: "2%",
+    top: "2%",
   };
 
   return (

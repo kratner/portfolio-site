@@ -47,13 +47,17 @@ function Header() {
               popupContent={() => (
                 <YouTubePlaylist
                   playlistID="PLvqe7VuhXJoScsg_frwUsvMwQ6J_9hKOS"
-                  width="80vw"
-                  height="80vh"
+                  width="82"
+                  height="82"
+                  iframeHeight="82%"
+                  iframeWidth="82%"
+                  iframeBorder="#59594b solid .01em"
+                  background="dfdfd01c"
                 />
               )}
               width="80vw"
               height="80vh"
-              border="#fff .1em solid"
+              border="0.1em solid rgba(147, 77, 77, 0.53)"
             />
           </li>
         </ul>
