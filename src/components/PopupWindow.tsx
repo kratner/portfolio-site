@@ -1,6 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, ReactNode, CSSProperties } from "react";
 
-const PopupWindow = ({
+interface PopupWindowProps {
+  linkText: string;
+  linkTitle: string;
+  popupContent: React.ComponentType;
+  width?: string;
+  height?: string;
+  border?: string;
+  background?: string;
+}
+
+const PopupWindow: React.FC<PopupWindowProps> = ({
   linkText,
   linkTitle,
   popupContent: PopupContent,
@@ -19,7 +29,7 @@ const PopupWindow = ({
     setIsOpen(false);
   };
 
-  const overlayStyle = {
+  const overlayStyle: CSSProperties = {
     width: "100vw",
     height: "100vh",
     position: "fixed",
@@ -29,21 +39,18 @@ const PopupWindow = ({
     zIndex: 9999,
   };
 
-  const contentStyle = {
+  const contentStyle: CSSProperties = {
     width: width || "auto",
     height: height || "auto",
     position: "fixed",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    // backgroundColor: "#fff",
-    // borderRadius: "8px",
-    // padding: "20px",
     zIndex: 10000,
     border: border || "none",
   };
 
-  const closeButtonStyle = {
+  const closeButtonStyle: CSSProperties = {
     position: "fixed",
     right: "2%",
     top: "2%",

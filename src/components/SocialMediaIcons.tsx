@@ -1,19 +1,19 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  //   faFacebook,
   faYoutube,
   faTwitter,
   faInstagram,
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 
-const socialMediaLinks = [
-  //   {
-  //     name: "Facebook",
-  //     icon: faFacebook,
-  //     url: "https://www.facebook.com/",
-  //   },
+interface SocialMediaLink {
+  name: string;
+  icon: any;
+  url: string;
+}
+
+const socialMediaLinks: SocialMediaLink[] = [
   {
     name: "Follow me on Twitter",
     icon: faTwitter,
@@ -37,7 +37,12 @@ const socialMediaLinks = [
   // Add more social media links here
 ];
 
-const SocialMediaIcons = ({ size, color }) => {
+interface SocialMediaIconsProps {
+  size: string;
+  color: string;
+}
+
+const SocialMediaIcons: React.FC<SocialMediaIconsProps> = ({ size, color }) => {
   return (
     <div className="social-media-icons">
       {socialMediaLinks.map((link) => (
@@ -50,8 +55,8 @@ const SocialMediaIcons = ({ size, color }) => {
         >
           <FontAwesomeIcon
             icon={link.icon}
-            size={size}
-            style={{ color: color }}
+            size={size as any}
+            style={{ color }}
             aria-label={link.name}
             className="socialMediaIcon"
           />
