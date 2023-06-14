@@ -15,11 +15,11 @@ const SVGContainer: React.FC<SVGContainerProps> = ({ src, className, alt }) => {
     );
   }
 
-  const SvgComponent = src;
+  const SVGComponent = src;
 
   return (
     <div className={className}>
-      <SvgComponent role="img" aria-label={alt} />
+      <SVGComponent role="img" aria-label={alt} />
     </div>
   );
 };
