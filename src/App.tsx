@@ -5,25 +5,27 @@ import React from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 // import FullScreenImage from "./components/FullScreenImage";
-import SVGContainer from "./components/SVGContainer";
-import externalSVG from "./assets/moeba-white.svg";
+import ImageCrossFader from "./components/ImageCrossFader";
+// import { ReactComponent as ExternalSVG } from "./assets/moeba-white.svg";
+// import { ReactComponent as ExternalSVG2 } from "./assets/zipper.svg";
+// import { ReactComponent as ExternalSVG3 } from "./assets/horn.svg";
 
 const App = () => {
+
+  const images = [
+    { src: "moeba-white.svg", alt: "Moeba" },
+    { src: "zipper.svg", alt: "Zipper" },
+    { src: "horn.svg", alt: "Horn" },
+    { src: "portal.svg", alt: "Portal"},
+    { src: "vampyre.svg", alt: "Vampyre"},
+    { src: "shaman.svg", alt: "Shaman"}
+  ]
+  
   return (
     <div>
       <Header />
       <main>
-        {/* <div className="content">variable content</div> */}
-        {/* <Slideshow images={Images.imageUrls} /> */}
-        {/* <FullScreenImage
-          altText="Moeba by Keith Ratner"
-          imageUrl="https://keithratner.live/wp-content/uploads/2023/05/moeba-lr-wide-1600x764-1.jpg"
-        /> */}
-        <SVGContainer
-          src={externalSVG}
-          className="fullscreen-svg"
-          alt="Moeba by Keith Ratner"
-        />
+        <ImageCrossFader images={images} transitionDuration={2000} />
       </main>
       <Footer />
     </div>
