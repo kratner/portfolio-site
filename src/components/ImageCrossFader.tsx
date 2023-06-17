@@ -13,15 +13,14 @@ const ImageCrossFader: React.FC<ImageCrossFaderProps> = ({ images, transitionDur
   const nextImageIndex = (currentImageIndex + 1) % images.length;
   const currentImage = images[currentImageIndex];
   const nextImage = images[nextImageIndex];
-  const fadeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const fadeTimeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
     const preloadImages = async () => {
       const imagePromises = images.map((image) => {
-        return new Promise<void>((resolve: () => void, reject) => {
+        return new Promise<void>((resolve) => {
           const img = new Image();
           img.onload = () => resolve();
-          img.onerror = () => reject();
           img.src = process.env.PUBLIC_URL + "/images/" + image.src;
         });
       });
@@ -43,9 +42,9 @@ const ImageCrossFader: React.FC<ImageCrossFaderProps> = ({ images, transitionDur
       return;
     }
 
-    const fadeTimeout = setTimeout(() => {
+    const fadeTimeout = window.setTimeout(() => {
       setIsFading(true);
-      fadeTimeoutRef.current = setTimeout(() => {
+      fadeTimeoutRef.current = window.setTimeout(() => {
         setCurrentImageIndex(nextImageIndex);
         setIsFading(false);
       }, transitionDuration);
