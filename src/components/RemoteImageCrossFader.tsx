@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 
-interface ImageCrossFaderProps {
+interface RemoteImageCrossFaderProps {
   images: { src: string; alt: string }[];
   transitionDuration: number;
 }
 
-const ImageCrossFader: React.FC<ImageCrossFaderProps> = ({ images, transitionDuration }) => {
+const RemoteImageCrossFader: React.FC<RemoteImageCrossFaderProps> = ({ images, transitionDuration }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [loadedImages, setLoadedImages] = useState<string[]>([]);
   const [isFading, setIsFading] = useState(false);
@@ -19,7 +19,7 @@ const ImageCrossFader: React.FC<ImageCrossFaderProps> = ({ images, transitionDur
         return new Promise<void>((resolve) => {
           const img = new Image();
           img.onload = () => resolve();
-          img.src = process.env.PUBLIC_URL + "/images/" + image.src;
+          img.src = image.src;
         });
       });
 
@@ -71,7 +71,7 @@ const ImageCrossFader: React.FC<ImageCrossFaderProps> = ({ images, transitionDur
       {loadedImages.map((image, index) => (
         <img
           key={index}
-          src={process.env.PUBLIC_URL + "/images/" + image}
+          src={image}
           alt={images[index].alt}
           style={{
             maxWidth: "100%",
@@ -97,4 +97,4 @@ const ImageCrossFader: React.FC<ImageCrossFaderProps> = ({ images, transitionDur
   );
 };
 
-export default ImageCrossFader;
+export default RemoteImageCrossFader;
