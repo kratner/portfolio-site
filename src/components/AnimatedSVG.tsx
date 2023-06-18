@@ -2,50 +2,112 @@ import React, { useEffect, useRef } from 'react';
 
 interface AnimatedSVGProps {
   svgPath: string;
-  targetElement: string;
+  targetElements: string[];
   fadeInDuration?: string;
   fadeOutDuration?: string;
 }
 
 const AnimatedSVG: React.FC<AnimatedSVGProps> = ({
   svgPath,
-  targetElement,
-  fadeInDuration = '0.5s',
-  fadeOutDuration = '0.5s',
+  targetElements,
+  fadeInDuration = '.1s',
+  fadeOutDuration = '.1s',
 }) => {
-  const svgRef = useRef<SVGSVGElement | null>(null);
+  const svgRef = useRef<HTMLDivElement | null>(null);
+  const logRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const svgElement = svgRef.current;
+    const fetchSvg = async () => {
+      try {
+        const response = await fetch(svgPath);
+        if (!response.ok) {
+          console.error('Failed to fetch SVG:', response.statusText);
+          return;
+        }
 
-    if (!svgElement) return;
+        const svgText = await response.text();
+        svgRef.current!.innerHTML = svgText;
 
-    const targetElements = svgElement.querySelectorAll<HTMLElement>(targetElement);
+        const elements = targetElements.map((selector) => svgRef.current!.querySelectorAll(selector));
 
-    // Initial fade in
-    Array.from(targetElements).forEach((element, index) => {
-      element.style.opacity = '0';
+        const fadeElementsIn = () => {
+          elements.forEach((elementList, elementListIndex) => {
+            elementList.forEach((element, elementIndex) => {
+              const fadeInDelay = parseFloat(fadeInDuration) * elementIndex;
+              (element as HTMLElement).style.opacity = '0';
+              (element as HTMLElement).style.transition = `opacity ${fadeInDuration} ease ${fadeInDelay}s`;
+              setTimeout(() => {
+                (element as HTMLElement).style.opacity = '1';
+              }, fadeInDelay * 1000);
+            });
+          });
+        };
 
-      setTimeout(() => {
-        element.style.transition = `opacity ${fadeInDuration}`;
-        element.style.opacity = '1';
-      }, index * 100); // Adjust the delay as needed
-    });
+        const fadeElementsOut = () => {
+          elements.forEach((elementList, elementListIndex) => {
+            elementList.forEach((element, elementIndex) => {
+              const fadeOutDelay = parseFloat(fadeOutDuration) * elementIndex;
+              (element as HTMLElement).style.opacity = '0';
+              (element as HTMLElement).style.transition = `opacity ${fadeOutDuration} ease ${fadeOutDelay}s`;
+            });
+          });
+        };
 
-    // Reverse fade out
-    setTimeout(() => {
-      Array.from(targetElements).forEach((element, index) => {
-        setTimeout(() => {
-          element.style.opacity = '0';
-        }, (targetElements.length - index) * 100); // Adjust the delay as needed
-      });
-    }, targetElements.length * 100); // Adjust the delay as needed
-  }, []);
+        const startFadeLoop = () => {
+          fadeElementsOut();
+          setTimeout(() => {
+            fadeElementsIn();
+            setTimeout(startFadeLoop, (fadeInDuration ? parseFloat(fadeInDuration) : 0) * elements.length * 1000);
+          }, (fadeOutDuration ? parseFloat(fadeOutDuration) : 0) * elements.length * 1000);
+        };
+
+        const svgImage = new Image();
+        svgImage.onload = () => {
+          startFadeLoop();
+        };
+        svgImage.src = svgPath;
+      } catch (error) {
+        console.error('Error fetching SVG:', error);
+      }
+    };
+
+    if (svgPath) {
+      fetchSvg();
+    } else {
+      console.warn('No SVG path provided.');
+    }
+  }, [svgPath, targetElements, fadeInDuration, fadeOutDuration]);
 
   return (
-    <svg ref={svgRef} viewBox="0 0 100 100">
-      <use xlinkHref={svgPath} />
-    </svg>
+    <>
+      <div
+        ref={svgRef}
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      />
+
+      <div
+        ref={logRef}
+        style={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          padding: '10px',
+          background: 'rgba(0, 0, 0, 0.5)',
+          color: 'white',
+          fontSize: '14px',
+          lineHeight: '1.5',
+        }}
+      />
+    </>
   );
 };
 

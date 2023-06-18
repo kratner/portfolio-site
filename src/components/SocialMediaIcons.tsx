@@ -39,7 +39,7 @@ const socialMediaLinks: SocialMediaLink[] = [
 
 interface SocialMediaIconsProps {
   size: string;
-  color: string;
+  color?: string;
 }
 
 const SocialMediaIcons: React.FC<SocialMediaIconsProps> = ({ size, color }) => {

@@ -61,6 +61,12 @@ body {
   
   .glowing-text.logo-text {
     float: left;
+    margin-left: .75em;
+    margin-top: .25em;
+    animation: pulse-blue-red 2s ease-in-out infinite;
+    &:hover {
+        animation: glow 2s ease-in-out infinite alternate;
+    }
   }
   
   nav {

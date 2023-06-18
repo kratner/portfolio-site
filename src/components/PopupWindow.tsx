@@ -1,7 +1,8 @@
 import React, { useState, ReactNode, CSSProperties } from "react";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface PopupWindowProps {
-  linkText: string;
+  linkText: string | ReactNode;
   linkTitle: string;
   popupContent: React.ComponentType;
   width?: string;
@@ -59,7 +60,11 @@ const PopupWindow: React.FC<PopupWindowProps> = ({
   return (
     <div>
       <a href="#" title={linkTitle} onClick={openPopup}>
-        {linkText}
+        {typeof linkText === "string" ? (
+          linkText
+        ) : (
+          <span>{linkText}</span>
+        )}
       </a>
 
       {isOpen && (
