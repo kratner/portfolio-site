@@ -82,6 +82,21 @@
   }
 }
 
+@keyframes pulse-blue-purple {
+  0% {
+    color: #1da1f2;
+    transform: scale(1);
+  }
+  50% {
+    color: #af1aff;
+    transform: scale(1.2);
+  }
+  100% {
+    color: #1da1f2;
+    transform: scale(1);
+  }
+}
+
 @keyframes pulse-red {
   0% {
     color: #c13584;
