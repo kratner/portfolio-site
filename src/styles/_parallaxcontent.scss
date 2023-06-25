@@ -1,0 +1,17 @@
+.parallax-content {
+    height: 100vh; /* Set the container height to occupy the full viewport height */
+    position: relative;
+    overflow: hidden; /* Hide any content overflow */
+  }
+  
+  .parallax-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    pointer-events: none;
+    transition: transform 0.3s ease-out;
+  }
+  
