@@ -1,114 +1,50 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { CSSProperties } from 'react';
+// SVGEffect.tsx
+import React, { useEffect, useRef } from 'react';
 
-type Position =
-  | 'absolute'
-  | 'relative'
-  | 'static'
-  | 'fixed'
-  | 'sticky'
-  | 'inherit'
-  | 'initial'
-  | 'revert'
-  | 'unset';
-
-type SvgEffectProps = {
-  imagePath: string;
+interface SVGEffectProps {
+  svgFile: React.ComponentType<React.SVGProps<SVGSVGElement>>; // Use React.ComponentType
   targetElement: string;
   effectType: string;
-  delay: number;
+  delay?: number;
   loop?: boolean;
-  loopCount?: number;
   transitionDuration?: number;
-};
+}
 
-const SvgEffect: React.FC<SvgEffectProps> = ({
-  imagePath,
+const SVGEffect: React.FC<SVGEffectProps> = ({
+  svgFile: SVGComponent, // Rename svgFile to SVGComponent
   targetElement,
   effectType,
-  delay,
+  delay = 0,
   loop = false,
-  loopCount,
   transitionDuration = 1000,
 }) => {
-  const svgRef = useRef<SVGSVGElement>(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [isSvgReady, setIsSvgReady] = useState(false);
-
-  const handleImageLoad = () => {
-    setIsLoaded(true);
-  };
-
-  const handleSvgReady = () => {
-    setIsSvgReady(true);
-  };
-
-  const svgStyle: CSSProperties = {
-    width: '100vh',
-    height: '100vh',
-    position: 'absolute',
-    left: '50%',
-    top: '50%',
-    transform: 'translate(-50%, -50%)',
-  };
+  const svgRef = useRef<SVGSVGElement | null>(null);
 
   useEffect(() => {
-    const applyEffect = (element: SVGElement, index: number) => {
-      // Apply the specified effect to the target element
-      // Modify the element's style accordingly based on the effectType
+    if (svgRef.current) {
+      // Apply fade-in effect
       if (effectType === 'fade-in') {
-        element.style.opacity = '1';
-      }
-      // Add other effect types here
+        svgRef.current.style.opacity = '0';
+        svgRef.current.style.transition = `opacity ${transitionDuration}ms ease-in-out ${delay}ms`;
 
-      // Check if the loop condition is satisfied
-      const loopCondition = loop && (!loopCount || index + 1 < loopCount);
-      if (loopCondition) {
-        // If looping, recursively apply the effect to the next target element after the delay
-        const elements = Array.from(svgRef.current!.querySelectorAll(targetElement)) as SVGElement[];
-        const nextIndex = (index + 1) % elements.length;
-        setTimeout(() => {
-          applyEffect(elements[nextIndex], nextIndex);
-        }, delay);
-      }
-    };
-
-    const initializeElements = () => {
-      if (svgRef.current) {
-        const elements = Array.from(svgRef.current.querySelectorAll(targetElement)) as SVGElement[];
-
-        // Set initial attributes for target elements
-        elements.forEach((element) => {
-          element.style.opacity = '0';
-          // Add other initial attributes based on the effectType if needed
-        });
-
-        // Apply the effect to the first target element after the specified delay
-        if (elements.length > 0) {
-          setTimeout(() => {
-            applyEffect(elements[0], 0);
-          }, delay);
+        if (loop) {
+          svgRef.current.style.animationIterationCount = 'infinite';
         }
+
+        setTimeout(() => {
+          svgRef.current?.style.setProperty('opacity', '1');
+        }, 0);
       }
-    };
 
-    if (imagePath) {
-      const image = new Image();
-      image.src = imagePath;
-      image.onload = handleImageLoad;
+      // Attach the modified SVG to the target element
+      const target = document.querySelector(targetElement);
+      if (target) {
+        target.appendChild(svgRef.current);
+      }
     }
+  }, [targetElement, effectType, delay, loop, transitionDuration]);
 
-    if (isLoaded && isSvgReady) {
-      initializeElements();
-    }
-  }, [imagePath, targetElement, effectType, delay, loop, loopCount, isLoaded, isSvgReady]);
-
-  return (
-    <svg ref={svgRef} xmlns="http://www.w3.org/2000/svg" xlinkHref={imagePath} style={svgStyle}>
-      <image href={imagePath} onLoad={handleImageLoad} />
-      <script type="text/ecmascript" onLoad={handleSvgReady} />
-    </svg>
-  );
+  return <SVGComponent ref={svgRef} />;
 };
 
-export default SvgEffect;
+export default SVGEffect;

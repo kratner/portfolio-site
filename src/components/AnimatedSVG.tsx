@@ -14,7 +14,6 @@ const AnimatedSVG: React.FC<AnimatedSVGProps> = ({
   fadeOutDuration = '.1s',
 }) => {
   const svgRef = useRef<HTMLDivElement | null>(null);
-  const logRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const fetchSvg = async () => {
@@ -94,19 +93,6 @@ const AnimatedSVG: React.FC<AnimatedSVGProps> = ({
         }}
       />
 
-      <div
-        ref={logRef}
-        style={{
-          position: 'fixed',
-          bottom: 0,
-          left: 0,
-          padding: '10px',
-          background: 'rgba(0, 0, 0, 0.5)',
-          color: 'white',
-          fontSize: '14px',
-          lineHeight: '1.5',
-        }}
-      />
     </>
   );
 };

@@ -72,3 +72,13 @@ body {
   nav {
     float: right;
   }
+
+  h2.title {
+    position: fixed;
+    bottom: 0em;
+    right: 1em;
+    font-size: 9em;
+    animation: slide-in;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+  }

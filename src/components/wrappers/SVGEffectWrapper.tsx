@@ -1,17 +1,17 @@
-import React from "react";
-import SvgEffect from "../SVGEffect";
+// SVGEffectWrapper.tsx
+import React from 'react';
+import SVGEffect from '../SVGEffect';
+import TestSVG from '../../assets/images/test.svg';
 
 const SVGEffectWrapper: React.FC = () => {
-    return (
-        <SvgEffect
-            imagePath="https://kratner.github.io/portfolio-site/images/moeba-white.svg"
-            targetElement="path"
-            effectType="fade-in"
-            delay={5000}
-            loop={true}
-            transitionDuration={5000}
-        />
-    );
+  return (
+    <SVGEffect
+      svgFile={TestSVG}
+      targetElement="path"
+      effectType="fade-in"
+      delay={5000}
+    />
+  );
 };
 
 export default SVGEffectWrapper;
