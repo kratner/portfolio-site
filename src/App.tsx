@@ -19,8 +19,8 @@ const App:React.FC = () => {
         <AnimatedSVG 
           svgPath="https://kratner.github.io/portfolio-site/images/moeba-white.svg" 
           targetElements={["path"]} 
-          fadeInDuration="1s"
-          fadeOutDuration=".75s"
+          fadeInDuration=".1ms"
+          fadeOutDuration=".1ms"
           captionTitle={captionTitle}
           captionDescription={captionDescription}
         />
