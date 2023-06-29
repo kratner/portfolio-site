@@ -4,12 +4,17 @@
     -webkit-background-clip: text;
     color: transparent;
     font-size: 2.75em;
+    font-weight: 900;
     text-align: left;
     animation: glowing-text-animation 4s ease-in-out infinite;
     padding: .1em .25em;
 }
 
 .logo-text {
-    font-size: 2em;
-    font-weight: 800;
+    a {
+        font-size: 1em;
+        font-weight: 800;
+        cursor: pointer;
+        text-decoration: none;
+    }
 }

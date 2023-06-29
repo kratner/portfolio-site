@@ -1,10 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface AnimatedSVGProps {
   svgPath: string;
   targetElements: string[];
   fadeInDuration?: string;
   fadeOutDuration?: string;
+  captionTitle?: string;
+  captionDescription?: string;
 }
 
 const AnimatedSVG: React.FC<AnimatedSVGProps> = ({
@@ -12,8 +14,35 @@ const AnimatedSVG: React.FC<AnimatedSVGProps> = ({
   targetElements,
   fadeInDuration = '.1s',
   fadeOutDuration = '.1s',
+  captionTitle = 'Title',
+  captionDescription = 'Descriptive Text',
 }) => {
+  const [containerSize, setContainerSize] = useState<{ width: number; height: number }>({ width: 0, height: 0 });
+  const svgContainerRef = useRef<HTMLDivElement | null>(null);
   const svgRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (svgContainerRef.current) {
+        const { width, height } = svgContainerRef.current.getBoundingClientRect();
+        setContainerSize({ width, height });
+      }
+    };
+
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (svgRef.current) {
+      svgRef.current.style.width = '100%';
+      svgRef.current.style.height = '100%';
+    }
+  }, [containerSize]);
 
   useEffect(() => {
     const fetchSvg = async () => {
@@ -67,7 +96,7 @@ const AnimatedSVG: React.FC<AnimatedSVGProps> = ({
         svgImage.src = svgPath;
       } catch (error) {
         console.error('Error fetching SVG:', error);
-      }
+     }
     };
 
     if (svgPath) {
@@ -78,22 +107,41 @@ const AnimatedSVG: React.FC<AnimatedSVGProps> = ({
   }, [svgPath, targetElements, fadeInDuration, fadeOutDuration]);
 
   return (
-    <>
+    <div
+      ref={svgContainerRef}
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
       <div
-        ref={svgRef}
         style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100vw',
-          height: '100vh',
+          maxWidth: '100%',
+          maxHeight: '100%',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
         }}
-      />
-
-    </>
+      >
+        <div
+          ref={svgRef}
+          style={{
+            width: '100%',
+            height: '100%',
+          }}
+        />
+      </div>
+      <div className='svg-caption'>
+        <div className='caption-title'>{captionTitle}</div>
+        <div className='caption-description' dangerouslySetInnerHTML={{ __html: captionDescription }}></div>
+      </div>
+    </div>
   );
 };
 

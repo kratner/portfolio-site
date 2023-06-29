@@ -7,6 +7,10 @@ import Footer from "./components/wrappers/Footer";
 import AnimatedSVG from "./components/AnimatedSVG";
 
 const App:React.FC = () => {
+  const currentYear = new Date().getFullYear();
+  const captionTitle = `“Moeba”`
+  const captionDescription = `&copy; Keith Ratner ${currentYear}`;
+
   return (
     <div>
       <h2 className="title">Keith Ratner</h2>
@@ -17,6 +21,8 @@ const App:React.FC = () => {
           targetElements={["path"]} 
           fadeInDuration="1s"
           fadeOutDuration=".75s"
+          captionTitle={captionTitle}
+          captionDescription={captionDescription}
         />
       </main>
       <Footer />
