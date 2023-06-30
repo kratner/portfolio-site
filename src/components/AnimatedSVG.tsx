@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 export interface AnimatedSVGProps {
-  containerBackgroundStyle?: string;
+  containerBackgroundCSS?: string;
   svgPath: string;
   targetElements: string[];
   fadeInDuration?: string;
@@ -14,7 +14,7 @@ export interface AnimatedSVGProps {
 }
 
 const AnimatedSVG: React.FC<AnimatedSVGProps> = ({
-  containerBackgroundStyle,
+  containerBackgroundCSS,
   svgPath,
   targetElements,
   fadeInDuration = '.1s',
@@ -118,7 +118,7 @@ const AnimatedSVG: React.FC<AnimatedSVGProps> = ({
       <div
         ref={svgContainerRef}
         style={{
-          background: containerBackgroundStyle,
+          background: containerBackgroundCSS,
           position: 'fixed',
           top: 0,
           left: 0,
