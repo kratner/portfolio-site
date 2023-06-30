@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-interface AnimatedSVGProps {
+export interface AnimatedSVGProps {
+  containerBackgroundStyle?: string;
   svgPath: string;
   targetElements: string[];
   fadeInDuration?: string;
@@ -10,6 +11,7 @@ interface AnimatedSVGProps {
 }
 
 const AnimatedSVG: React.FC<AnimatedSVGProps> = ({
+  containerBackgroundStyle,
   svgPath,
   targetElements,
   fadeInDuration = '.1s',
@@ -107,41 +109,42 @@ const AnimatedSVG: React.FC<AnimatedSVGProps> = ({
   }, [svgPath, targetElements, fadeInDuration, fadeOutDuration]);
 
   return (
-    <div
-      ref={svgContainerRef}
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
       <div
+        ref={svgContainerRef}
         style={{
-          maxWidth: '100%',
-          maxHeight: '100%',
+          background: containerBackgroundStyle,
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
         }}
       >
         <div
-          ref={svgRef}
           style={{
-            width: '100%',
-            height: '100%',
+            maxWidth: '100%',
+            maxHeight: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
-        />
+        >
+          <div
+            ref={svgRef}
+            style={{
+              width: '100%',
+              height: '100%',
+            }}
+          />
+        </div>
+        <div className='svg-caption'>
+          <div className='caption-title'>{captionTitle}</div>
+          <div className='caption-description' dangerouslySetInnerHTML={{ __html: captionDescription }}></div>
+        </div>
       </div>
-      <div className='svg-caption'>
-        <div className='caption-title'>{captionTitle}</div>
-        <div className='caption-description' dangerouslySetInnerHTML={{ __html: captionDescription }}></div>
-      </div>
-    </div>
   );
 };
 
