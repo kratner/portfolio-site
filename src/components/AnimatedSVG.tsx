@@ -8,6 +8,9 @@ export interface AnimatedSVGProps {
   fadeOutDuration?: string;
   captionTitle?: string;
   captionDescription?: string;
+  captionStyle?: React.CSSProperties;
+  captionTitleStyle?: React.CSSProperties;
+  captionDescriptionStyle?: React.CSSProperties;
 }
 
 const AnimatedSVG: React.FC<AnimatedSVGProps> = ({
@@ -18,6 +21,9 @@ const AnimatedSVG: React.FC<AnimatedSVGProps> = ({
   fadeOutDuration = '.1s',
   captionTitle = 'Title',
   captionDescription = 'Descriptive Text',
+  captionStyle,
+  captionTitleStyle,
+  captionDescriptionStyle
 }) => {
   const [containerSize, setContainerSize] = useState<{ width: number; height: number }>({ width: 0, height: 0 });
   const svgContainerRef = useRef<HTMLDivElement | null>(null);
@@ -140,9 +146,9 @@ const AnimatedSVG: React.FC<AnimatedSVGProps> = ({
             }}
           />
         </div>
-        <div className='svg-caption'>
-          <div className='caption-title'>{captionTitle}</div>
-          <div className='caption-description' dangerouslySetInnerHTML={{ __html: captionDescription }}></div>
+        <div className='svg-caption' style={captionStyle}>
+          <div className='caption-title' style={captionTitleStyle}>{captionTitle}</div>
+          <div className='caption-description' style={captionDescriptionStyle} dangerouslySetInnerHTML={{ __html: captionDescription }}></div>
         </div>
       </div>
   );
