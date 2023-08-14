@@ -1,26 +1,28 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-export interface AnimatedSVGProps {
-  containerBackgroundCSS?: string;
+interface SvgData {
   svgPath: string;
+  captionTitle: string;
+  captionDescription: string;
+}
+
+export interface AnimatedSVGLoopProps {
+  containerBackgroundCSS?: string;
+  svgData: SvgData[];
   targetElements: string[];
   fadeInDuration?: string;
   fadeOutDuration?: string;
-  captionTitle?: string;
-  captionDescription?: string;
   captionStyle?: React.CSSProperties;
   captionTitleStyle?: React.CSSProperties;
   captionDescriptionStyle?: React.CSSProperties;
 }
 
-const AnimatedSVG: React.FC<AnimatedSVGProps> = ({
+const AnimatedSVGLoop: React.FC<AnimatedSVGLoopProps> = ({
   containerBackgroundCSS,
-  svgPath,
+  svgData,
   targetElements,
   fadeInDuration = '.1s',
   fadeOutDuration = '.1s',
-  captionTitle = 'Title',
-  captionDescription = 'Descriptive Text',
   captionStyle,
   captionTitleStyle,
   captionDescriptionStyle
@@ -28,6 +30,9 @@ const AnimatedSVG: React.FC<AnimatedSVGProps> = ({
   const [containerSize, setContainerSize] = useState<{ width: number; height: number }>({ width: 0, height: 0 });
   const svgContainerRef = useRef<HTMLDivElement | null>(null);
   const svgRef = useRef<HTMLDivElement | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [totalElements, setTotalElements] = useState(0);
+  const [completedElements, setCompletedElements] = useState(0);
 
   useEffect(() => {
     const handleResize = () => {
@@ -47,15 +52,16 @@ const AnimatedSVG: React.FC<AnimatedSVGProps> = ({
 
   useEffect(() => {
     if (svgRef.current) {
-      svgRef.current.style.width = '100%';
-      svgRef.current.style.height = '100%';
+      svgRef.current.style.width = `${containerSize.width}px`;
+      svgRef.current.style.height = `${containerSize.height}px`;
     }
   }, [containerSize]);
 
   useEffect(() => {
     const fetchSvg = async () => {
       try {
-        const response = await fetch(svgPath);
+        const svgItem = svgData[currentIndex];
+        const response = await fetch(svgItem.svgPath);
         if (!response.ok) {
           console.error('Failed to fetch SVG:', response.statusText);
           return;
@@ -63,8 +69,11 @@ const AnimatedSVG: React.FC<AnimatedSVGProps> = ({
 
         const svgText = await response.text();
         svgRef.current!.innerHTML = svgText;
+        console.log(svgText);
 
         const elements = targetElements.map((selector) => svgRef.current!.querySelectorAll(selector));
+        const totalElementsCount = elements.reduce((count, elementList) => count + elementList.length, 0);
+        setTotalElements(totalElementsCount);
 
         const fadeElementsIn = () => {
           elements.forEach((elementList, elementListIndex) => {
@@ -74,6 +83,7 @@ const AnimatedSVG: React.FC<AnimatedSVGProps> = ({
               (element as HTMLElement).style.transition = `opacity ${fadeInDuration} ease ${fadeInDelay}s`;
               setTimeout(() => {
                 (element as HTMLElement).style.opacity = '1';
+                setCompletedElements((prevCount) => prevCount + 1);
               }, fadeInDelay * 1000);
             });
           });
@@ -83,7 +93,6 @@ const AnimatedSVG: React.FC<AnimatedSVGProps> = ({
           elements.forEach((elementList, elementListIndex) => {
             elementList.forEach((element, elementIndex) => {
               const fadeOutDelay = parseFloat(fadeOutDuration) * elementIndex;
-              console.log(elementIndex);
               (element as HTMLElement).style.opacity = '0';
               (element as HTMLElement).style.transition = `opacity ${fadeOutDuration} ease ${fadeOutDelay}s`;
             });
@@ -94,43 +103,60 @@ const AnimatedSVG: React.FC<AnimatedSVGProps> = ({
           fadeElementsOut();
           setTimeout(() => {
             fadeElementsIn();
-            setTimeout(startFadeLoop, (fadeInDuration ? parseFloat(fadeInDuration) : 0) * elements.length * 1000);
           }, (fadeOutDuration ? parseFloat(fadeOutDuration) : 0) * elements.length * 1000);
         };
 
         const svgImage = new Image();
         svgImage.onload = () => {
           startFadeLoop();
+          if (currentIndex + 1 < svgData.length) {
+            setTimeout(() => {
+              if (completedElements >= totalElements) {
+                setCurrentIndex(currentIndex + 1);
+                setCompletedElements(0);
+              }
+            }, (fadeInDuration ? parseFloat(fadeInDuration) : 0) * totalElementsCount * 1000);
+          }
         };
-        svgImage.src = svgPath;
+        svgImage.src = svgItem.svgPath;
       } catch (error) {
         console.error('Error fetching SVG:', error);
-     }
+      }
     };
 
-    if (svgPath) {
+    if (svgData.length > 0) {
       fetchSvg();
     } else {
-      console.warn('No SVG path provided.');
+      console.warn('No SVG data provided.');
     }
-  }, [svgPath, targetElements, fadeInDuration, fadeOutDuration]);
+  }, [svgData, targetElements, fadeInDuration, fadeOutDuration, currentIndex, completedElements, totalElements]);
 
   return (
+    <div
+      ref={svgContainerRef}
+      style={{
+        background: containerBackgroundCSS,
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden',
+      }}
+    >
       <div
-        ref={svgContainerRef}
         style={{
-          background: containerBackgroundCSS,
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+          height: '100%',
         }}
       >
         <div
+          ref={svgRef}
           style={{
             maxWidth: '100%',
             maxHeight: '100%',
@@ -138,21 +164,20 @@ const AnimatedSVG: React.FC<AnimatedSVGProps> = ({
             alignItems: 'center',
             justifyContent: 'center',
           }}
-        >
-          <div
-            ref={svgRef}
-            style={{
-              width: '100%',
-              height: '100%',
-            }}
-          />
-        </div>
-        <div className='svg-caption' style={captionStyle}>
-          <div className='caption-title' style={captionTitleStyle}>{captionTitle}</div>
-          <div className='caption-description' style={captionDescriptionStyle} dangerouslySetInnerHTML={{ __html: captionDescription }}></div>
-        </div>
+        />
       </div>
+      <div className="svg-caption" style={captionStyle}>
+        <div className="caption-title" style={captionTitleStyle}>
+          {svgData[currentIndex]?.captionTitle}
+        </div>
+        <div
+          className="caption-description"
+          style={captionDescriptionStyle}
+          dangerouslySetInnerHTML={{ __html: svgData[currentIndex]?.captionDescription }}
+        ></div>
+      </div>
+    </div>
   );
 };
 
-export default AnimatedSVG;
+export default AnimatedSVGLoop;

@@ -5,7 +5,7 @@ import NavigationLinks from "../NavigationLinks";
 function Header() {
   return (
     <header>
-      <GlowingText textContent="Keith Ratner" />
+      {/* <GlowingText textContent="Keith Ratner" /> */}
       <NavigationLinks size={"2x"} />
     </header>
   );
