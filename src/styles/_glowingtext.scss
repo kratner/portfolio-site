@@ -1,20 +1,20 @@
 .glowing-text {
-    background: linear-gradient(to right, #ADD8E6, #F5DEB3);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    font-size: 2.75em;
-    font-weight: 900;
-    text-align: left;
-    animation: glowing-text-animation 4s ease-in-out infinite;
-    padding: .1em .25em;
+  background: linear-gradient(to right, #add8e6, #f5deb3);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 2.75em;
+  font-weight: 900;
+  text-align: left;
+  animation: glowing-text-animation 4s ease-in-out infinite;
+  padding: 0.1em 0.25em;
 }
 
 .logo-text {
-    a {
-        font-size: 1em;
-        font-weight: 800;
-        cursor: pointer;
-        text-decoration: none;
-    }
+  a {
+    font-size: 1em;
+    font-weight: 800;
+    cursor: pointer;
+    text-decoration: none;
+  }
 }

@@ -44,7 +44,7 @@ interface SocialMediaIconsProps {
 
 const SocialMediaIcons: React.FC<SocialMediaIconsProps> = ({ size, color }) => {
   return (
-    <div className="social-media-icons">
+    <nav className="social-media-icons">
       {socialMediaLinks.map((link) => (
         <a
           href={link.url}
@@ -62,7 +62,7 @@ const SocialMediaIcons: React.FC<SocialMediaIconsProps> = ({ size, color }) => {
           />
         </a>
       ))}
-    </div>
+    </nav>
   );
 };
 

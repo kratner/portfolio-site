@@ -1,13 +1,13 @@
 import React from "react";
-import GlowingText from "../GlowingText";
 import NavigationLinks from "../NavigationLinks";
+import SocialMediaIcons from "../SocialMediaIcons";
+import IconLinks from "../IconLinks";
 
 function Header() {
   return (
-    <header>
-      {/* <GlowingText textContent="Keith Ratner" /> */}
-      <NavigationLinks size={"2x"} />
-    </header>
+    <React.Fragment>
+      <IconLinks size={"2x"} />
+    </React.Fragment>
   );
 }
 

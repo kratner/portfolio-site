@@ -1,28 +1,32 @@
 .nav {
-    display: flex;
-    justify-content: space-between;
-    list-style: none;
-    padding: 0;
-  }
-  
-  .nav li {
-    margin: 0 1rem;
-    a {
-      color: beige;
-      text-decoration: none;
-      &:hover {      
-        color: yellow;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  ul {
+    position: absolute;
+    right: 0;
+    li {
+      margin: 0 1rem;
+      display: inline;
+      cursor: pointer;
+      a {
+        color: rgb(105, 199, 227);
         text-decoration: none;
-        text-shadow: 0 0 15px rgba(197, 246, 132, 0.9);
-        transition: text-shadow 0.3s ease-in-out;
-      }
-      .nav-icon {
-        animation: pulse-blue-purple 2s ease-in-out infinite;
         &:hover {
-          animation: glow 2s ease-in-out infinite alternate;
           color: yellow;
-      } 
+          text-decoration: none;
+          text-shadow: 0 0 15px rgba(197, 246, 132, 0.9);
+          transition: text-shadow 0.3s ease-in-out;
+        }
+        .nav-icon {
+          // animation: pulse-blue-purple 2s ease-in-out infinite;
+          &:hover {
+            animation: glow 2s ease-in-out infinite alternate;
+            color: yellow;
+          }
+        }
+      }
     }
   }
-  }
-  
+}

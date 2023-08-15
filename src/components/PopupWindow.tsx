@@ -3,12 +3,13 @@ import React, { useState, ReactNode, CSSProperties } from "react";
 
 interface PopupWindowProps {
   linkText: string | ReactNode;
-  linkTitle: string;
+  linkTitle: string | undefined;
   popupContent: React.ComponentType;
   width?: string;
   height?: string;
   border?: string;
   background?: string;
+  url?: string;
 }
 
 const PopupWindow: React.FC<PopupWindowProps> = ({
@@ -19,6 +20,7 @@ const PopupWindow: React.FC<PopupWindowProps> = ({
   height,
   border,
   background,
+  url,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -58,13 +60,9 @@ const PopupWindow: React.FC<PopupWindowProps> = ({
   };
 
   return (
-    <div>
-      <a href="#" title={linkTitle} onClick={openPopup}>
-        {typeof linkText === "string" ? (
-          linkText
-        ) : (
-          <span>{linkText}</span>
-        )}
+    <React.Fragment>
+      <a href={url} title={linkTitle} onClick={openPopup}>
+        {typeof linkText === "string" ? linkText : <span>{linkText}</span>}
       </a>
 
       {isOpen && (
@@ -81,7 +79,7 @@ const PopupWindow: React.FC<PopupWindowProps> = ({
           </div>
         </div>
       )}
-    </div>
+    </React.Fragment>
   );
 };
 

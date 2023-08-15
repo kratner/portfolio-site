@@ -5,20 +5,9 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-// Set header and footer to transparent
-header,
-footer {
-  background-color: transparent;
-}
-
-// Set header and footer to semi-transparent with a black background
-// header,
-// footer {
-//   background-color: rgba(0, 0, 0, 0.5);
-// }
-
 // Position the header at the top of the screen with a height of 60px
 header {
+  background-color: #0000006b;
   position: fixed;
   top: 0;
   left: 0;
@@ -29,14 +18,14 @@ header {
 
 // Position the footer at the bottom of the screen with a height of 40px
 footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 40px;
-  z-index: 1000; // ensure the footer is on top of the slideshow
-  text-align: right;
-  padding: .75em 0;
+  // position: fixed;
+  // bottom: 0;
+  // left: 0;
+  // right: 0;
+  // height: 40px;
+  // z-index: 1000; // ensure the footer is on top of the slideshow
+  // text-align: right;
+  padding: 0.75em 0;
 }
 
 .fullscreen-image-container {
@@ -50,7 +39,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 .fullscreen-image {
@@ -61,17 +50,17 @@ footer {
 
 .glowing-text.logo-text {
   float: left;
-  margin-left: .75em;
-  margin-top: .25em;
+  margin-left: 0.75em;
+  margin-top: 0.25em;
   animation: pulse-yellow-purple 2s ease-in-out infinite;
   &:hover {
-      animation: glow 2s ease-in-out infinite alternate;
+    animation: glow 2s ease-in-out infinite alternate;
   }
 }
 
-nav {
-  float: right;
-}
+// nav {
+//   float: right;
+// }
 
 h2.title {
   position: fixed;
@@ -93,8 +82,8 @@ h2.title {
   border-radius: 1em;
   border-style: solid;
   border-color: #ffffffa3;
-  border-width: .1em;
-  text-shadow: #000 .1em .1em;
+  border-width: 0.1em;
+  text-shadow: #000 0.1em 0.1em;
 
   .caption-title {
     font-weight: 800;
