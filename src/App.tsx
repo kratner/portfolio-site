@@ -29,19 +29,7 @@ const App: React.FC = () => {
     <div>
       <h2 className="title">Keith Ratner</h2>
       <Header />
-      <main>
-        {isLoading && (
-          <Preloader indeterminateAnimationDuration="1s" strokeWidth={400} />
-        )}
-        {/* <Preloader indeterminateAnimationDuration="1s" strokeWidth={400} /> */}
-        <SVGFileLoader
-          src="https://kratner.github.io/portfolio-site/images/portal.svg"
-          onLoading={handleSvgLoading}
-          onLoaded={handleSvgLoaded}
-        />
-        {!isLoading && <SVGViewer svgContent={svgContent} />}
-        {/* <SVGEffect svgContent={svgContent} targetElements={['.element-class']} effectClass="my-effect" /> */}
-      </main>
+      <main></main>
       <Footer />
     </div>
   );

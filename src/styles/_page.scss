@@ -1,13 +1,14 @@
 // Set body background to black
 body {
-  background-color: #000;
+  background-color: #202020;
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 // Position the header at the top of the screen with a height of 60px
 header {
-  background-color: #0000006b;
+  // background-color: #0000006b;
+  display: flex;
   position: fixed;
   top: 0;
   left: 0;
@@ -68,9 +69,10 @@ h2.title {
   right: 1em;
   font-size: 9em;
   white-space: nowrap;
-  animation: slide-in;
-  animation-duration: 8s;
-  animation-iteration-count: infinite;
+  display: none;
+  // animation: slide-in;
+  // animation-duration: 8s;
+  // animation-iteration-count: infinite;
 }
 
 .svg-caption {
