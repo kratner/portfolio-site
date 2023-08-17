@@ -1,6 +1,6 @@
 import React from "react";
-import RemoteImageCrossFader from "../RemoteImageCrossFader";
-import ImageCrossFader from "../ImageCrossFader";
+import RemoteImageCrossFader from "./RemoteImageCrossFader";
+import ImageCrossFader from "./ImageCrossFader";
 
 const CrossFadeImages: React.FC = () => {
   const images = [
@@ -32,7 +32,7 @@ const CrossFadeImages: React.FC = () => {
 
   return (
     <div>
-        <RemoteImageCrossFader images={images} transitionDuration={1000} />
+      <RemoteImageCrossFader images={images} transitionDuration={1000} />
     </div>
   );
 };

@@ -1,7 +1,7 @@
 // SVGEffectWrapper.tsx
-import React from 'react';
-import SVGEffect from '../SVGEffect';
-import TestSVG from '../../assets/images/test.svg';
+import React from "react";
+import SVGEffect from "./SVGEffect";
+import TestSVG from "../../assets/images/test.svg";
 
 const SVGEffectWrapper: React.FC = () => {
   return (

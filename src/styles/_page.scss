@@ -63,7 +63,7 @@ footer {
 //   float: right;
 // }
 
-h2.title {
+h1.title {
   position: fixed;
   bottom: 0em;
   right: 1em;
@@ -73,6 +73,10 @@ h2.title {
   // animation: slide-in;
   // animation-duration: 8s;
   // animation-iteration-count: infinite;
+}
+
+main {
+  margin-top: 7rem;
 }
 
 .svg-caption {
@@ -93,5 +97,13 @@ h2.title {
   }
   .caption-description {
     font-style: italic;
+  }
+}
+
+.target-item {
+  opacity: 0;
+  transition: opacity 1s;
+  &.visible {
+    opacity: 1;
   }
 }
