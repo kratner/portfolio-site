@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faYoutube,
@@ -104,9 +104,24 @@ interface IconLinkProps {
 }
 
 const IconLinks: React.FC<IconLinkProps> = ({ size, color }) => {
+  const [isNavOpen, setIsNavOpen] = useState(false);
+
+  const toggleNav = () => {
+    setIsNavOpen(!isNavOpen);
+  };
   return (
     <nav className="nav">
-      <ul>
+      <input
+        type="checkbox"
+        id="nav-toggle"
+        className="nav-toggle"
+        checked={isNavOpen}
+        onChange={toggleNav}
+      />
+      <label htmlFor="nav-toggle" className="nav-toggle-label">
+        <span></span>
+      </label>
+      <ul className={`nav-list ${isNavOpen ? "show" : ""}`}>
         {iconLinks.map((link) => (
           <li key={link.title}>
             {link.popupWindow ? (
