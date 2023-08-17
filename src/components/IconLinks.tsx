@@ -15,6 +15,11 @@ import {
 import YouTubePlaylist from "./YouTubePlaylist";
 import PopupWindow from "./PopupWindow";
 
+interface IconLinkProps {
+  size: string;
+  color?: string;
+}
+
 interface PopupWindowProp {
   content?: React.ReactNode;
   iconSize?: string;
@@ -95,7 +100,6 @@ const iconLinks: IconLink[] = [
       />
     ),
   },
-  // ... (other links)
 ];
 
 interface IconLinkProps {
@@ -171,5 +175,6 @@ const IconLinks: React.FC<IconLinkProps> = ({ size, color }) => {
     </nav>
   );
 };
+export { iconLinks };
 
 export default IconLinks;

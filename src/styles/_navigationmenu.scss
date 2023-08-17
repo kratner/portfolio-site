@@ -1,0 +1,49 @@
+nav.navigation-menu {
+  ul {
+    list-style: none;
+    li {
+    }
+  }
+  @media screen and (min-width: 769px) {
+    ul {
+      list-style: none;
+      li {
+        display: inline;
+        a {
+          color: #ccc;
+          text-decoration: none;
+          padding: 0 0.5rem;
+          &:hover {
+            color: rgb(224, 224, 20);
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+    .mobile-menu {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .desktop-menu {
+      display: none;
+    }
+    .mobile-menu {
+      .menu-close-button {
+        display: none;
+      }
+      .hamburger-button {
+        cursor: pointer;
+      }
+      &.open {
+        .hamburger-button {
+          display: none;
+        }
+        .menu-close-button {
+          display: block;
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import React from "react";
-import IconLinks from "../IconLinks";
 import SiteLogo from "../SiteLogo";
+import NavigationMenu from "../NavigationMenu";
 
 const Header = () => {
   const anchorProps = {
@@ -22,7 +22,7 @@ const Header = () => {
   return (
     <header className="header-container">
       <SiteLogo anchorProps={anchorProps} imageProps={imageProps} />
-      <IconLinks size={"2x"} />
+      <NavigationMenu />
     </header>
   );
 };
