@@ -2,6 +2,8 @@ import React from "react";
 import Section from "../Section";
 import HeroHeader from "../sections/HeroHeader";
 import IntersectionObserverComponent from "../../IntersectionObserverComponent";
+import FeaturesList from "../sections/FeaturesList";
+import featuresData from "../sections/featuresData.json";
 
 const HomePage: React.FC = () => {
   return (
@@ -16,6 +18,9 @@ const HomePage: React.FC = () => {
             className: "hero-image",
           }}
         />
+      </Section>
+      <Section className="features-list">
+        <FeaturesList panels={featuresData} />
       </Section>
 
       <div

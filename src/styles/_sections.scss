@@ -35,7 +35,6 @@
   }
 }
 
-/* Media query for responsiveness */
 @media (max-width: 768px) {
   .hero-header-content h2 {
     font-size: 30px;
@@ -43,5 +42,28 @@
 
   .hero-header-content p {
     font-size: 16px;
+  }
+}
+
+/* FeaturesList */
+.features-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* Change to 'flex-start' to align panels in the same row */
+  margin: -10px; /* Add negative margin to account for spacing between panels */
+}
+
+.panel {
+  flex: 0 0 calc(33.33% - 20px); /* Use 'flex' property for equal-width panels */
+  margin: 10px; /* Add margin for spacing between panels */
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-sizing: border-box; /* Include border and padding in width calculation */
+}
+
+/* Add your responsive styles as needed */
+@media (max-width: 768px) {
+  .panel {
+    width: 100%;
   }
 }
