@@ -1,12 +1,10 @@
 nav.navigation-menu {
   ul {
     list-style: none;
-    li {
-    }
+    font-size: 0.75rem;
   }
   @media screen and (min-width: 769px) {
     ul {
-      list-style: none;
       li {
         display: inline;
         a {
@@ -30,16 +28,34 @@ nav.navigation-menu {
       display: none;
     }
     .mobile-menu {
+      ul {
+        position: fixed;
+        top: 2rem;
+        right: 1rem;
+        li {
+          margin-bottom: 0.5rem;
+          text-align: center;
+          .nav-icon {
+            color: rgb(247, 245, 245);
+            text-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
+            &:hover {
+              color: #fff;
+            }
+          }
+        }
+      }
       .menu-close-button {
         display: none;
       }
-      .hamburger-button {
+      button.hamburger-button {
+        height: 22px;
+        width: 22px;
         cursor: pointer;
+        position: fixed;
+        right: 1rem;
+        top: 1rem;
       }
       &.open {
-        .hamburger-button {
-          display: none;
-        }
         .menu-close-button {
           display: block;
         }
