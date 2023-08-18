@@ -11,7 +11,7 @@ const HomePage: React.FC = () => {
           headingText="Transforming ideas into captivating experiences"
           bodyText="With a passion for creativity and a keen eye for detail, Keith Ratner brings a unique perspective to each and every new project."
           heroImage={{
-            src: "/portfolio-site/images/moeba-lr-1080p.jpg",
+            src: `${process.env.PUBLIC_URL}/images/moeba-lr-1080p.jpg`,
             alt: "Keith Ratner's Artwork",
             className: "hero-image",
           }}
