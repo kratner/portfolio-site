@@ -1,4 +1,5 @@
 import React from "react";
+import QRCode from "react-qr-code";
 import Section from "../Section";
 import HeroHeader from "../sections/HeroHeader";
 import IntersectionObserverComponent from "../../IntersectionObserverComponent";
@@ -7,6 +8,7 @@ import featuresData from "../sections/featuresData.json";
 import servicesData from "../sections/servicesData.json";
 
 const HomePage: React.FC = () => {
+  const cardUrl = "https://kratner.github.io/portfolio-site/";
   return (
     <React.Fragment>
       <Section className="hero-header">
@@ -28,6 +30,9 @@ const HomePage: React.FC = () => {
           panels={servicesData[0].panels}
           initialHeading={servicesData[0].primaryHeading}
         />
+      </Section>
+      <Section className="qr-code">
+        <QRCode value={cardUrl} size={100} />
       </Section>
 
       <IntersectionObserverComponent
