@@ -30,23 +30,8 @@ const HomePage: React.FC = () => {
         />
       </Section>
 
-      <div
-        className="target-item"
-        style={{
-          height: "400px",
-          background: "#ccc",
-        }}
-      >
-        panel 3
-      </div>
-
       <IntersectionObserverComponent
         targetSelector=".features-list"
-        className="visible"
-      />
-
-      <IntersectionObserverComponent
-        targetSelector=".target-item"
         className="visible"
       />
     </React.Fragment>
