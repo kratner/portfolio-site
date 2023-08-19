@@ -34,6 +34,11 @@ const HomePage: React.FC = () => {
       </div>
 
       <IntersectionObserverComponent
+        targetSelector=".features-list"
+        className="visible"
+      />
+
+      <IntersectionObserverComponent
         targetSelector=".target-item"
         className="visible"
       />
