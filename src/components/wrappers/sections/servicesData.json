@@ -1,0 +1,31 @@
+[
+  {
+    "primaryHeading": "We offer top-notch graphic design services to bring your vision to life.",
+    "panels": [
+      {
+        "image": {
+          "src": "/images/quaddra-dashboard-charts.jpg",
+          "alt": "Keith Ratner's Artwork"
+        },
+        "heading": "Enhance user experiences with our expert user experience engineering",
+        "body": "Our digital art services combine creativity and technology to create stunning visuals."
+      },
+      {
+        "image": {
+          "src": "/images/baybio-whitepaper-report-cover.jpg",
+          "alt": "Keith Ratner's Artwork"
+        },
+        "heading": "Capture attention with our captivating graphic design solutions.",
+        "body": "We design user experiences that engage and delight your audience."
+      },
+      {
+        "image": {
+          "src": "/images/wall-art-red.jpg",
+          "alt": "Keith Ratner's Artwork"
+        },
+        "heading": "Transform your ideas into stunning digital art masterpieces",
+        "body": "Our digital art services are tailored to your unique creative needs."
+      }
+    ]
+  }
+]

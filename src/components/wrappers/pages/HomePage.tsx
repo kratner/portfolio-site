@@ -4,6 +4,7 @@ import HeroHeader from "../sections/HeroHeader";
 import IntersectionObserverComponent from "../../IntersectionObserverComponent";
 import FeaturesList from "../sections/FeaturesList";
 import featuresData from "../sections/featuresData.json";
+import servicesData from "../sections/servicesData.json";
 
 const HomePage: React.FC = () => {
   return (
@@ -20,7 +21,13 @@ const HomePage: React.FC = () => {
         />
       </Section>
       <Section className="features-list">
-        <FeaturesList panels={featuresData} />
+        <FeaturesList panels={featuresData[0].panels} />
+      </Section>
+      <Section className="services">
+        <FeaturesList
+          panels={servicesData[0].panels}
+          initialHeading={servicesData[0].primaryHeading}
+        />
       </Section>
 
       <div

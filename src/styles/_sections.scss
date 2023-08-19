@@ -59,6 +59,11 @@
   justify-content: flex-start; /* Change to 'flex-start' to align panels in the same row */
   margin: -10px; /* Add negative margin to account for spacing between panels */
 
+  .initial-heading {
+    width: 100%;
+    text-align: center;
+  }
+
   .panel {
     flex: 0 0 calc(33.33% - 20px); /* Use 'flex' property for equal-width panels */
     margin: 10px; /* Add margin for spacing between panels */
@@ -67,6 +72,17 @@
     box-sizing: border-box; /* Include border and padding in width calculation */
     display: flex;
     flex-direction: column;
+
+    .panel-image {
+      position: relative;
+      padding-bottom: 75%; /* 4:3 aspect ratio */
+      img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Maintain aspect ratio and fill container */
+      }
+    }
 
     .panel-heading {
       margin-top: auto;
@@ -99,6 +115,10 @@
 @media (max-width: 768px) {
   .features-list {
     display: block;
+    .initial-heading {
+      width: 100%;
+      text-align: center;
+    }
     .panel {
       width: 100%; /* Full width on smaller viewports */
       margin: 10px 0; /* Remove horizontal margin for spacing */

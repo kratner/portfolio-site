@@ -1,14 +1,18 @@
 [
   {
-    "heading": "Background",
-    "body": "A talented graphic designer, user experience engineer, and digital artist, with a passon for creating visually stunning and user-friendly designs"
-  },
-  {
-    "heading": "Expertise",
-    "body": "Extensive experience in graphic design allows him to create captivating visuals that effectively communicate your brand's message"
-  },
-  {
-    "heading": "UX",
-    "body": "Specializing in user experience engineering, ensuring that your website or application is intuitive, user-friendly, and optimized for maximum engagement."
+    "panels": [
+      {
+        "heading": "Background",
+        "body": "A talented graphic designer, user experience engineer, and digital artist, with a passon for creating visually stunning and user-friendly designs"
+      },
+      {
+        "heading": "Expertise",
+        "body": "Extensive experience in graphic design allows him to create captivating visuals that effectively communicate your brand's message"
+      },
+      {
+        "heading": "UX",
+        "body": "Specializing in user experience engineering, ensuring that your website or application is intuitive, user-friendly, and optimized for maximum engagement."
+      }
+    ]
   }
 ]
