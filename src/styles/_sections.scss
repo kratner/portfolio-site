@@ -221,7 +221,10 @@ section.portfolio-list {
           }
 
           a {
-            // Style the link here
+            color: #ccc;
+            &:hover {
+              color: yellow;
+            }
           }
         }
       }
