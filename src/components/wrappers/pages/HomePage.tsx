@@ -6,9 +6,15 @@ import IntersectionObserverComponent from "../../IntersectionObserverComponent";
 import FeaturesList from "../sections/FeaturesList";
 import featuresData from "../sections/featuresData.json";
 import servicesData from "../sections/servicesData.json";
+import portfolioListData from "../sections/portfolioListData.json";
+import PortfolioList from "../sections/PortfolioList";
 
 const HomePage: React.FC = () => {
-  const cardUrl = "https://kratner.github.io/portfolio-site/";
+  const siteUrl = "https://kratner.github.io/portfolio-site/";
+  const handleIntersection = (target: Element) => {
+    target.classList.add("visible");
+  };
+
   return (
     <React.Fragment>
       <Section className="hero-header">
@@ -31,13 +37,22 @@ const HomePage: React.FC = () => {
           initialHeading={servicesData[0].primaryHeading}
         />
       </Section>
-      <Section className="qr-code">
-        <QRCode value={cardUrl} size={100} />
+      <Section className="portfolio-list">
+        <PortfolioList data={portfolioListData} />
       </Section>
-
+      <Section className="qr-code">
+        <QRCode value={siteUrl} size={100} />
+      </Section>
       <IntersectionObserverComponent
-        targetSelector=".features-list"
+        targetSelector="section.features-list, section.services, section.portfolio-list .main-header"
         className="visible"
+        onIntersection={handleIntersection}
+      />
+      <IntersectionObserverComponent
+        className="visible"
+        targetSelector="section.portfolio-list .panel"
+        threshold={0.25}
+        onIntersection={handleIntersection}
       />
     </React.Fragment>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 
 interface IntersectionObserverComponentProps {
   targetSelector: string;
@@ -6,6 +6,7 @@ interface IntersectionObserverComponentProps {
   root?: Element | null;
   rootMargin?: string;
   threshold?: number;
+  onIntersection: (target: Element) => void;
 }
 
 const IntersectionObserverComponent: React.FC<
@@ -16,15 +17,13 @@ const IntersectionObserverComponent: React.FC<
   root = null,
   rootMargin = "0px",
   threshold = 0.5,
+  onIntersection,
 }) => {
-  const observerRef = useRef<IntersectionObserver | null>(null);
-
   useEffect(() => {
     const callback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add(className);
-          observerRef.current?.unobserve(entry.target);
+          onIntersection(entry.target);
         }
       });
     };
@@ -38,17 +37,12 @@ const IntersectionObserverComponent: React.FC<
     const observer = new IntersectionObserver(callback, options);
     const targets = document.querySelectorAll(targetSelector);
 
-    if (targets.length > 0) {
-      targets.forEach((target) => observer.observe(target));
-      observerRef.current = observer;
-    }
+    targets.forEach((target) => observer.observe(target));
 
     return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-      }
+      targets.forEach((target) => observer.unobserve(target));
     };
-  }, [targetSelector, className, root, rootMargin, threshold]);
+  }, [targetSelector, root, rootMargin, threshold, onIntersection]);
 
   return null;
 };

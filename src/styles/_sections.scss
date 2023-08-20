@@ -1,3 +1,9 @@
+/* QRCode */
+
+.qr-code {
+  text-align: center;
+}
+
 /* HeroHeader */
 
 .hero-header-container {
@@ -47,13 +53,15 @@
 
 /* FeaturesList */
 
-.features-list {
+section.features-list {
   opacity: 0;
   transition: opacity 1s;
   &.visible {
     opacity: 1;
   }
+}
 
+.features-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start; /* Change to 'flex-start' to align panels in the same row */
@@ -140,9 +148,83 @@
     }
   }
 }
+/* Services */
 
-/* QR Code */
+section.services {
+  opacity: 0;
+  transition: opacity 1s;
+  &.visible {
+    opacity: 1;
+  }
+}
 
-.qr-code {
-  text-align: center;
+/* PortfolioList */
+
+section.portfolio-list {
+  .main-header,
+  .panel {
+    opacity: 0;
+    transition: opacity 1s;
+    &.visible {
+      opacity: 1;
+    }
+  }
+}
+
+.portfolio-list {
+  width: 100%; // Make the component full width
+
+  .portfolio-item {
+    margin: 20px;
+    padding: 20px;
+    // border: 1px solid #ccc;
+
+    .main-header,
+    .main-body-text {
+      text-align: center;
+    }
+
+    .panels {
+      display: flex;
+      flex-direction: column;
+
+      .panel {
+        margin-top: 20px;
+        // border: 1px solid #ddd;
+        // border-radius: 5px;
+
+        .panel-header {
+          // Style the panel header here
+        }
+
+        .panel-image {
+          position: relative;
+          width: 100%;
+          padding-top: 75%; // 4:3 aspect ratio
+          overflow: hidden;
+
+          img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .panel-content {
+          // Style the panel content here
+
+          p {
+            // Style the panel body text here
+          }
+
+          a {
+            // Style the link here
+          }
+        }
+      }
+    }
+  }
 }
