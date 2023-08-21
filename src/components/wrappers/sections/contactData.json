@@ -1,0 +1,15 @@
+{
+  "firstName": "Keith",
+  "lastName": "Ratner",
+  "phone": "650-516-72781",
+  "email": "keith.ratner@gmail.com",
+  "address1": "1551 Chalcedony St",
+  "address2": "Apt 5B",
+  "city": "San Diego",
+  "state": "California",
+  "zip": "92109",
+  "websites": [
+    "https://kratner.github.com/portfolio-site",
+    "https://keithratner.live"
+  ]
+}

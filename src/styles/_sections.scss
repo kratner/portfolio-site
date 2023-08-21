@@ -107,6 +107,18 @@
   }
 }
 
+/* ContactInformation */
+
+.contact-information {
+  padding: 0 2rem;
+  a {
+    color: #ccc;
+    &:hover {
+      color: rgb(218, 218, 8);
+    }
+  }
+}
+
 /* FeaturesList */
 
 section.features-list {

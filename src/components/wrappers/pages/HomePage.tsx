@@ -7,6 +7,8 @@ import featuresData from "../sections/featuresData.json";
 import servicesData from "../sections/servicesData.json";
 import portfolioListData from "../sections/portfolioListData.json";
 import ColumnarList from "../sections/ColumnarList";
+import ContactInformation from "../sections/ContactInformation";
+import contactData from "../sections/contactData.json";
 
 const HomePage: React.FC = () => {
   const siteUrl = "https://kratner.github.io/portfolio-site/";
@@ -39,6 +41,9 @@ const HomePage: React.FC = () => {
       </Section>
       <Section className="qr-code">
         <QRCode value={siteUrl} size={100} />
+      </Section>
+      <Section className="contact-information">
+        <ContactInformation data={contactData} />
       </Section>
       <IntersectionObserverComponent
         targetSelector="section.features-list, section.services .main-header, section.services .panel"
