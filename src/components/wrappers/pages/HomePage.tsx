@@ -3,11 +3,10 @@ import QRCode from "react-qr-code";
 import Section from "../Section";
 import HeroHeader from "../sections/HeroHeader";
 import IntersectionObserverComponent from "../../IntersectionObserverComponent";
-import FeaturesList from "../sections/FeaturesList";
 import featuresData from "../sections/featuresData.json";
 import servicesData from "../sections/servicesData.json";
 import portfolioListData from "../sections/portfolioListData.json";
-import PortfolioList from "../sections/PortfolioList";
+import ColumnarList from "../sections/ColumnarList";
 
 const HomePage: React.FC = () => {
   const siteUrl = "https://kratner.github.io/portfolio-site/";
@@ -29,28 +28,26 @@ const HomePage: React.FC = () => {
         />
       </Section>
       <Section className="features-list">
-        <FeaturesList panels={featuresData[0].panels} />
+        <ColumnarList data={featuresData} />
       </Section>
       <Section className="services">
-        <FeaturesList
-          panels={servicesData[0].panels}
-          initialHeading={servicesData[0].primaryHeading}
-        />
+        <ColumnarList data={servicesData} />
       </Section>
       <Section className="portfolio-list">
-        <PortfolioList data={portfolioListData} />
+        {/* <PortfolioList data={portfolioListData} /> */}
+        <ColumnarList data={portfolioListData} />
       </Section>
       <Section className="qr-code">
         <QRCode value={siteUrl} size={100} />
       </Section>
       <IntersectionObserverComponent
-        targetSelector="section.features-list, section.services, section.portfolio-list .main-header"
+        targetSelector="section.features-list, section.services"
         className="visible"
         onIntersection={handleIntersection}
       />
       <IntersectionObserverComponent
         className="visible"
-        targetSelector="section.portfolio-list .panel"
+        targetSelector="section.portfolio-list .main-header, section.portfolio-list .panel"
         threshold={0.25}
         onIntersection={handleIntersection}
       />

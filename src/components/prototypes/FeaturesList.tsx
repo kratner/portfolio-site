@@ -2,7 +2,7 @@ import React from "react";
 
 interface PanelContent {
   heading?: string;
-  body: string;
+  bodyText: string;
   cta1?: string;
   cta2?: string;
   image?: ImageWithSrc;
@@ -40,7 +40,7 @@ const FeaturesList: React.FC<FeaturesListProps> = ({
             </div>
           )}
           {panel.heading && <h3 className="panel-heading">{panel.heading}</h3>}
-          <p className="panel-body">{panel.body}</p>
+          <p className="panel-body">{panel.bodyText}</p>
           {panel.cta1 || panel.cta2 ? (
             <div className="cta">
               {panel.cta1 && <button>{panel.cta1}</button>}

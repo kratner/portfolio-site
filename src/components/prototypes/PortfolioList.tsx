@@ -8,12 +8,14 @@ interface Panel {
   bodyText: string;
   linkText: string;
   linkUrl: string;
+  cta1?: string;
+  cta2?: string;
 }
 
 interface Project {
-  primaryHeading: string;
+  primaryHeading?: string;
   subHeading?: string;
-  bodyText: string;
+  bodyText?: string;
   panels: Panel[];
 }
 
@@ -26,10 +28,16 @@ const PortfolioList: React.FC<PortfolioListProps> = ({ data }) => {
     <div className="portfolio-list">
       {data.map((project, index) => (
         <div className="portfolio-item" key={index}>
-          <div className="main-header">
-            <h2>{project.primaryHeading}</h2>
-            {project.subHeading && <h3>{project.subHeading}</h3>}
-          </div>
+          {project.primaryHeading && (
+            <div className="main-heading">
+              <h2>{project.primaryHeading}</h2>
+            </div>
+          )}
+          {project.subHeading && (
+            <div className="main-subheading">
+              <h3>{project.subHeading}</h3>
+            </div>
+          )}
           <div className="main-body-text">
             <p>{project.bodyText}</p>
           </div>
@@ -50,6 +58,12 @@ const PortfolioList: React.FC<PortfolioListProps> = ({ data }) => {
                   <p>{panel.bodyText}</p>
                   <a href={panel.linkUrl}>{panel.linkText}</a>
                 </div>
+                {panel.cta1 || panel.cta2 ? (
+                  <div className="cta">
+                    {panel.cta1 && <button>{panel.cta1}</button>}
+                    {panel.cta2 && <button>{panel.cta2}</button>}
+                  </div>
+                ) : null}
               </div>
             ))}
           </div>

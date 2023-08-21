@@ -8,7 +8,7 @@
           "alt": "Keith Ratner's Artwork"
         },
         "heading": "Enhance user experiences with our expert user experience engineering",
-        "body": "Our digital art services combine creativity and technology to create stunning visuals."
+        "bodyText": "Our digital art services combine creativity and technology to create stunning visuals."
       },
       {
         "image": {
@@ -16,7 +16,7 @@
           "alt": "Keith Ratner's Artwork"
         },
         "heading": "Capture attention with our captivating graphic design solutions.",
-        "body": "We design user experiences that engage and delight your audience."
+        "bodyText": "We design user experiences that engage and delight your audience."
       },
       {
         "image": {
@@ -24,7 +24,7 @@
           "alt": "Keith Ratner's Artwork"
         },
         "heading": "Transform your ideas into stunning digital art masterpieces",
-        "body": "Our digital art services are tailored to your unique creative needs."
+        "bodyText": "Our digital art services are tailored to your unique creative needs."
       }
     ]
   }

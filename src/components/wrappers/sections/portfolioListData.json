@@ -4,8 +4,10 @@
     "bodyText": "Explore Keith's portfolio showcasing some of his best work.",
     "panels": [
       {
-        "imageSrc": "/images/baybio-annual-report.jpg",
-        "imageAlt": "BayBio Annual Report Design",
+        "image": {
+          "src": "/images/baybio-annual-report.jpg",
+          "alt": "BayBio Annual Report Design"
+        },
         "heading": "BayBio Annual Report Design",
         "subHeading": "Biotechnology Trade Association Annual Report Design",
         "bodyText": "Design of first annual report for trade association",
@@ -13,11 +15,24 @@
         "linkUrl": "project1/panel1"
       },
       {
-        "imageSrc": "/images/ca-biomedical-industry-report.jpg",
-        "imageAlt": "California Biomedical Industry Report",
+        "image": {
+          "src": "/images/ca-biomedical-industry-report.jpg",
+          "alt": "California Biomedical Industry Report"
+        },
         "heading": "California Biomedical Industry Report",
         "subHeading": "California Biomedical Industry Report Design",
         "bodyText": "Trifold report design for the California biomedical industry",
+        "linkText": "Learn More",
+        "linkUrl": "project1/panel2"
+      },
+      {
+        "image": {
+          "src": "/images/baybio-whitepaper-report.jpg",
+          "alt": "BayBio Whitepaper Report"
+        },
+        "heading": "BayBio Whitepaper Report",
+        "subHeading": "BayBio Whitepaper Report design",
+        "bodyText": "Whitepaper report design for biotechnology trade association",
         "linkText": "Learn More",
         "linkUrl": "project1/panel2"
       }
