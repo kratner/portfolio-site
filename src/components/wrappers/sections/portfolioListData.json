@@ -24,17 +24,6 @@
         "bodyText": "Trifold report design for the California biomedical industry",
         "linkText": "Learn More",
         "linkUrl": "project1/panel2"
-      },
-      {
-        "image": {
-          "src": "/images/baybio-whitepaper-report.jpg",
-          "alt": "BayBio Whitepaper Report"
-        },
-        "heading": "BayBio Whitepaper Report",
-        "subHeading": "BayBio Whitepaper Report design",
-        "bodyText": "Whitepaper report design for biotechnology trade association",
-        "linkText": "Learn More",
-        "linkUrl": "project1/panel2"
       }
     ]
   }

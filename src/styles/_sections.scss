@@ -99,6 +99,14 @@
   }
 }
 
+.full-width .columnar-list {
+  // display: block;
+  .panels {
+    display: block;
+    width: 100%;
+  }
+}
+
 /* FeaturesList */
 
 section.features-list {
@@ -206,10 +214,13 @@ section.features-list {
 /* Services */
 
 section.services {
-  opacity: 0;
-  transition: opacity 1s;
-  &.visible {
-    opacity: 1;
+  .main-header,
+  .panel {
+    opacity: 0;
+    transition: opacity 1s;
+    &.visible {
+      opacity: 1;
+    }
   }
 }
 

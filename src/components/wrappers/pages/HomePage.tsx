@@ -33,7 +33,7 @@ const HomePage: React.FC = () => {
       <Section className="services">
         <ColumnarList data={servicesData} />
       </Section>
-      <Section className="portfolio-list">
+      <Section className="portfolio-list full-width">
         {/* <PortfolioList data={portfolioListData} /> */}
         <ColumnarList data={portfolioListData} />
       </Section>
@@ -41,7 +41,7 @@ const HomePage: React.FC = () => {
         <QRCode value={siteUrl} size={100} />
       </Section>
       <IntersectionObserverComponent
-        targetSelector="section.features-list, section.services"
+        targetSelector="section.features-list, section.services .main-header, section.services .panel"
         className="visible"
         onIntersection={handleIntersection}
       />
