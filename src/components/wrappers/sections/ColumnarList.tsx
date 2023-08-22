@@ -4,6 +4,18 @@ interface ImageWithSrc extends React.ImgHTMLAttributes<HTMLImageElement> {
   src: string;
 }
 
+interface CTA {
+  buttonText: string;
+  buttonID: string;
+}
+
+interface TextLink {
+  linkText: string;
+  linkTitle: string;
+  linkURL: string;
+  linkID: string;
+}
+
 interface Panel {
   image?: ImageWithSrc;
   imageSrc?: string;
@@ -17,8 +29,8 @@ interface Panel {
   authorName?: string;
   postDate?: string;
   readingTime?: string;
-  linkText?: string;
-  linkUrl?: string;
+  textLink?: TextLink;
+  cta?: CTA;
 }
 
 interface Project {
@@ -68,12 +80,12 @@ const ColumnarList: React.FC<ColumnarListProps> = ({ data }) => {
                   )}
                   {panel.heading && (
                     <div className="panel-heading">
-                      <h3 className="panel-heading">{panel.heading}</h3>
+                      <h3>{panel.heading}</h3>
                     </div>
                   )}
                   {panel.subHeading && (
                     <div className="panel-subheading">
-                      <h5>{panel.subHeading}</h5>
+                      <h4>{panel.subHeading}</h4>
                     </div>
                   )}
                   {panel.bodyText && (
@@ -81,11 +93,24 @@ const ColumnarList: React.FC<ColumnarListProps> = ({ data }) => {
                       <p>{panel.bodyText}</p>
                     </div>
                   )}
-                  {panel.linkUrl && (
+                  {panel.textLink && (
                     <div className="panel-links">
                       <p>
-                        <a href={panel.linkUrl}>{panel.linkText}</a>
+                        <a
+                          title={panel.textLink.linkTitle}
+                          href={panel.textLink.linkURL}
+                          data-id={panel.textLink.linkID}
+                        >
+                          {panel.textLink.linkText}
+                        </a>
                       </p>
+                    </div>
+                  )}
+                  {panel.cta && (
+                    <div className="cta-links">
+                      <button data-id={panel.cta.buttonID}>
+                        {panel.cta.buttonText}
+                      </button>
                     </div>
                   )}
                   {panel.authorName && (

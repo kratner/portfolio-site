@@ -3,12 +3,12 @@ import QRCode from "react-qr-code";
 import Section from "../Section";
 import HeroHeader from "../sections/HeroHeader";
 import IntersectionObserverComponent from "../../IntersectionObserverComponent";
-import featuresData from "../sections/featuresData.json";
-import servicesData from "../sections/servicesData.json";
-import portfolioListData from "../sections/portfolioListData.json";
+import featuresData from "../../../data/featuresData.json";
+import servicesData from "../../../data/servicesData.json";
+import portfolioListData from "../../../data/portfolioListData.json";
 import ColumnarList from "../sections/ColumnarList";
 import ContactInformation from "../sections/ContactInformation";
-import contactData from "../sections/contactData.json";
+import contactData from "../../../data/contactData.json";
 
 const HomePage: React.FC = () => {
   const siteUrl = "https://kratner.github.io/portfolio-site/";

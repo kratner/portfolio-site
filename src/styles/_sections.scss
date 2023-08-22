@@ -55,6 +55,7 @@
 
 .columnar-list {
   .main-header {
+    padding: 0 0.75rem;
     text-align: center;
   }
   .main-body-text {
@@ -83,6 +84,10 @@
       }
       .panel-heading {
         text-align: center;
+        margin-top: 1.25rem;
+      }
+      .panel-subheading {
+        text-align: center;
       }
       .panel-links {
         a {
@@ -90,6 +95,15 @@
           &:hover {
             color: rgb(236, 236, 8);
           }
+        }
+      }
+      .cta-links {
+        padding-top: 1.25rem;
+        text-align: right;
+        button {
+          width: 25%;
+          height: 2rem;
+          cursor: pointer;
         }
       }
     }
