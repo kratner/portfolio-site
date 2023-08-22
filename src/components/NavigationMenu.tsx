@@ -14,70 +14,74 @@ import {
   faEnvelope,
   faMusic,
   faBlog,
+  faDoorClosed,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import IconSize from "./utils/IconSize";
+import Target from "./utils/Target";
 
 interface NavigationMenuProps {
   iconSize: IconSize;
+  links: Link[];
 }
 
 interface Link {
-  icon?: any;
+  icon?: IconProp | undefined;
   iconSize?: string;
   iconColor?: string;
   title: string;
   linktext: string;
   url: string;
-  target?: "_self" | "_blank" | "_parent" | "_top";
+  target?: Target;
 }
 
-const links: Link[] = [
-  {
-    title: "View my LinkedIn Profile",
-    icon: faLinkedin,
-    url: "https://www.linkedin.com/in/keithratner",
-    target: "_blank",
-    linktext: "LinkedIn",
-  },
-  {
-    title: "Blog",
-    icon: faBlog,
-    url: "https://keithratner.live",
-    target: "_blank",
-    linktext: "KeithRatner.Live",
-  },
-  {
-    title: "Visit My VBA Code Library",
-    icon: faCode,
-    url: "https://optionexplicit.live",
-    target: "_blank",
-    linktext: "VBA",
-  },
-  {
-    title: "Shop for My Artwork!",
-    icon: faStore,
-    url: "https://keithratner.live/shop/",
-    target: "_blank",
-    linktext: "Shop",
-  },
-  {
-    title: "Contact Me",
-    icon: faEnvelope,
-    url: "https://keithratner.live/about/#contactme",
-    target: "_blank",
-    linktext: "Contact",
-  },
-  {
-    icon: faMusic,
-    title: "My Music Videos",
-    url: "https://www.youtube.com/watch?v=CIPymPMCHdw&list=PLvqe7VuhXJoScsg_frwUsvMwQ6J_9hKOS&ab_channel=KeithRatner",
-    target: "_blank",
-    linktext: "Music",
-  },
-];
+// const links: Link[] = [
+//   {
+//     title: "View my LinkedIn Profile",
+//     icon: faLinkedin,
+//     url: "https://www.linkedin.com/in/keithratner",
+//     target: "_blank",
+//     linktext: "LinkedIn",
+//   },
+//   {
+//     title: "Blog",
+//     icon: faBlog,
+//     url: "https://keithratner.live",
+//     target: "_blank",
+//     linktext: "KeithRatner.Live",
+//   },
+//   {
+//     title: "Visit My VBA Code Library",
+//     icon: faCode,
+//     url: "https://optionexplicit.live",
+//     target: "_blank",
+//     linktext: "VBA",
+//   },
+//   {
+//     title: "Shop for My Artwork!",
+//     icon: faStore,
+//     url: "https://keithratner.live/shop/",
+//     target: "_blank",
+//     linktext: "Shop",
+//   },
+//   {
+//     title: "Contact Me",
+//     icon: faEnvelope,
+//     url: "https://keithratner.live/about/#contactme",
+//     target: "_blank",
+//     linktext: "Contact",
+//   },
+//   {
+//     icon: faMusic,
+//     title: "My Music Videos",
+//     url: "https://www.youtube.com/watch?v=CIPymPMCHdw&list=PLvqe7VuhXJoScsg_frwUsvMwQ6J_9hKOS&ab_channel=KeithRatner",
+//     target: "_blank",
+//     linktext: "Music",
+//   },
+// ];
 
-const NavigationMenu: React.FC<NavigationMenuProps> = ({ iconSize }) => {
+const NavigationMenu: React.FC<NavigationMenuProps> = ({ iconSize, links }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const closeMenu = () => {
@@ -135,7 +139,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({ iconSize }) => {
             <li key={index}>
               <a href={link.url} title={link.title} target={link.target}>
                 <FontAwesomeIcon
-                  icon={link.icon}
+                  icon={link.icon || faDoorClosed}
                   size={iconSize}
                   //   size={size as any}
                   //   style={{ color }}
