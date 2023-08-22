@@ -46,13 +46,6 @@ const links: Link[] = [
     linktext: "KeithRatner.Live",
   },
   {
-    title: "View my Instagram",
-    icon: faInstagram,
-    url: "https://www.instagram.com/keithratner",
-    target: "_blank",
-    linktext: "Instagram",
-  },
-  {
     title: "Visit My VBA Code Library",
     icon: faCode,
     url: "https://optionexplicit.live",
