@@ -24,7 +24,7 @@ interface Panel {
   category?: string;
   heading: string;
   subHeading?: string;
-  bodyText: string;
+  bodyText?: string;
   avatarImgSrc?: string;
   avatarImgAlt?: string;
   authorName?: string;
@@ -51,17 +51,19 @@ const ColumnarList: React.FC<ColumnarListProps> = ({ data }) => {
     <div className="columnar-list">
       {data.map((project, index) => (
         <div className="columnar-item" key={index}>
-          {project.primaryHeading || project.subHeading ? (
-            <div className="main-header">
-              {project.primaryHeading && <h2>{project.primaryHeading}</h2>}
-              {project.subHeading && <h3>{project.subHeading}</h3>}
-            </div>
-          ) : null}
-          {project.bodyText && (
-            <div className="main-body-text">
-              <p>{project.bodyText}</p>
-            </div>
-          )}
+          <span className="project-meta">
+            {project.primaryHeading || project.subHeading ? (
+              <div className="main-header">
+                {project.primaryHeading && <h2>{project.primaryHeading}</h2>}
+                {project.subHeading && <h3>{project.subHeading}</h3>}
+              </div>
+            ) : null}
+            {project.bodyText && (
+              <div className="main-body-text">
+                <p>{project.bodyText}</p>
+              </div>
+            )}
+          </span>
           {project.panels && (
             <div className="panels">
               {project.panels.map((panel, panelIndex) => (

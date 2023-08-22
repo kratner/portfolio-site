@@ -1,66 +1,60 @@
 import React from "react";
 
-interface ContactInformationProps {
-  data: {
-    firstName: string;
-    lastName: string;
-    phone: string;
-    email: string;
-    address1: string;
-    address2?: string;
-    city?: string;
-    state?: string;
-    zip?: string;
-    websites?: string[];
-  };
+export interface ContactMethod {
+  heading: string;
+  linkText: string;
+  linkTitle: string;
+  linkURL: string;
+  linkID: string;
+  linkTarget?: string;
 }
 
-const ContactInformation: React.FC<ContactInformationProps> = ({ data }) => {
-  const {
-    firstName,
-    lastName,
-    phone,
-    email,
-    address1,
-    address2,
-    city,
-    state,
-    zip,
-    websites,
-  } = data;
+interface ContactInformationProps {
+  primaryHeading: string;
+  bodyText: string;
+  panels: ContactMethod[];
+}
 
+const ContactInformation: React.FC<ContactInformationProps> = ({
+  primaryHeading,
+  bodyText,
+  panels,
+}) => {
   return (
-    <React.Fragment>
-      <h2>Contact Information</h2>
-      <p className="full-name">
-        <strong>Name:</strong> {firstName} {lastName}
-      </p>
-      <p className="phone-number">
-        <strong>Phone:</strong> {phone}
-      </p>
-      <p className="email-address">
-        <strong>Email:</strong> {email}
-      </p>
-      {/* <p className="address-block">
-        <strong>Address:</strong> {address1}
-        {address2 && `, ${address2}`}
-        {city && `, ${city}`}
-        {state && `, ${state}`}
-        {zip && `, ${zip}`}
-      </p> */}
-      {websites && (
-        <div className="website-block">
-          <strong>Websites:</strong>
-          <ul>
-            {websites.map((website, index) => (
-              <li key={index}>
-                <a href={website}>{website}</a>
-              </li>
-            ))}
-          </ul>
+    <div className="contact-information">
+      <div className="contact-meta">
+        <div className="primary-heading">
+          <h2>{primaryHeading}</h2>
         </div>
-      )}
-    </React.Fragment>
+        <div className="body-text">
+          <p>{bodyText}</p>
+        </div>
+      </div>
+      <div className="contact-methods">
+        {panels.map((panel, index) => (
+          <div className="panel" key={index}>
+            {panel.heading && (
+              <div className="panel-heading">
+                <h3>{panel.heading}</h3>
+              </div>
+            )}
+            {panel.linkURL && (
+              <div className="panel-content">
+                <a
+                  href={panel.linkURL}
+                  title={panel.linkTitle}
+                  target={panel.linkTarget ? panel.linkTarget : ""}
+                  rel="noopener noreferrer"
+                  id={panel.linkID}
+                >
+                  {panel.linkText}
+                </a>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 

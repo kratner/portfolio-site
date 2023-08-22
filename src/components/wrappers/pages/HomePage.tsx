@@ -7,8 +7,10 @@ import featuresData from "../../../data/featuresData.json";
 import servicesData from "../../../data/servicesData.json";
 import portfolioListData from "../../../data/portfolioListData.json";
 import ColumnarList from "../sections/ColumnarList";
-import ContactInformation from "../sections/ContactInformation";
-import contactData from "../../../data/contactData.json";
+import ContactInformation, {
+  ContactMethod,
+} from "../sections/ContactInformation";
+import { contactMethods } from "../../../data/contactData";
 import YouTubePlaylist from "../../YouTubePlaylist";
 
 const HomePage: React.FC = () => {
@@ -54,7 +56,11 @@ const HomePage: React.FC = () => {
         <QRCode value={siteUrl} size={100} />
       </Section>
       <Section className="contact-information">
-        <ContactInformation data={contactData} />
+        <ContactInformation
+          primaryHeading="Get in Touch"
+          bodyText="We'd love to hear from you. Contact us for any inquiries or collaborations."
+          panels={contactMethods}
+        />
       </Section>
       <IntersectionObserverComponent
         targetSelector="section.features-list, section.services .main-header, section.portfolio-list .main-header"

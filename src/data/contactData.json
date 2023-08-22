@@ -1,15 +1,38 @@
-{
-  "firstName": "Keith",
-  "lastName": "Ratner",
-  "phone": "650-516-72781",
-  "email": "keith.ratner@gmail.com",
-  "address1": "1551 Chalcedony St",
-  "address2": "Apt 5B",
-  "city": "San Diego",
-  "state": "California",
-  "zip": "92109",
-  "websites": [
-    "https://kratner.github.com/portfolio-site",
-    "https://keithratner.live"
-  ]
-}
+[
+  {
+    "primaryHeading": "Get in Touch",
+    "bodyText": "We'd love to hear from you. Contact us for any inquiries or collaborations.",
+    "panels": [
+      {
+        "heading": "Email",
+        "textLink": {
+          "linkText": "keith.ratner@gmail.com",
+          "linkTitle": "Email Keith Ratner",
+          "linkURL": "mailto:keith.ratner@gmail.com",
+          "linkID": "email-link",
+          "linkTarget": "_blank"
+        }
+      },
+      {
+        "heading": "Phone",
+        "textLink": {
+          "linkText": "650-516-7281",
+          "linkTitle": "Email Keith Ratner",
+          "linkURL": "tel:6505167281",
+          "linkID": "phone-link",
+          "linkTarget": "_blank"
+        }
+      },
+      {
+        "heading": "Website",
+        "textLink": {
+          "linkText": "https://kratner.github.com/portfolio-site",
+          "linkTitle": "Keith Ratner's Portfolio Site",
+          "linkURL": "https://kratner.github.com/portfolio-site",
+          "linkID": "website-link",
+          "linkTarget": "_blank"
+        }
+      }
+    ]
+  }
+]
