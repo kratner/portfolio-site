@@ -7,6 +7,8 @@ import {
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 import {
+  faBars,
+  faClose,
   faStore,
   faCode,
   faEnvelope,
@@ -121,27 +123,30 @@ const NavigationMenu: React.FC = () => {
           onClick={toggleMenu}
           title={`${isOpen ? "Close Menu" : "Expand Menu"}`}
         >
-          {`${isOpen ? "×" : "☰"}`}
+          {/* {`${isOpen ? "×" : "☰"}`} */}
+          {isOpen ? (
+            <FontAwesomeIcon icon={faClose} />
+          ) : (
+            <FontAwesomeIcon icon={faBars} />
+          )}
         </button>
-        {isOpen && (
-          <ul>
-            {links.map((link, index) => (
-              <li key={index}>
-                <a href={link.url} title={link.title} target={link.target}>
-                  <FontAwesomeIcon
-                    icon={link.icon}
-                    // size={ICON_SIZE}
-                    size="1x"
-                    //   size={size as any}
-                    //   style={{ color }}
-                    aria-label={link.title}
-                    className="nav-icon"
-                  />
-                </a>
-              </li>
-            ))}
-          </ul>
-        )}
+        <ul className={`${isOpen ? "open" : ""}`}>
+          {links.map((link, index) => (
+            <li key={index}>
+              <a href={link.url} title={link.title} target={link.target}>
+                <FontAwesomeIcon
+                  icon={link.icon}
+                  // size={ICON_SIZE}
+                  size="1x"
+                  //   size={size as any}
+                  //   style={{ color }}
+                  aria-label={link.title}
+                  className="nav-icon"
+                />
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </nav>
   );
