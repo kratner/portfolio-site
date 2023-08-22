@@ -69,8 +69,9 @@ nav.navigation-menu {
 
   @media screen and (max-width: 768px) {
     .desktop-menu {
-      opacity: 0;
-      transition: opacity 1s;
+      // opacity: 0;
+      // transition: opacity 1s;
+      display: none;
     }
     .mobile-menu {
       ul {
