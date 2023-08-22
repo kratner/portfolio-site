@@ -24,19 +24,28 @@ nav.navigation-menu {
       width: 1.5rem;
       cursor: pointer;
       position: fixed;
-      right: 1rem;
-      top: 1rem;
+      right: 2rem;
+      top: 1.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1rem;
+      color: #ccc;
+      background-color: transparent;
+      border: none;
+      &:hover {
+        color: rgb(216, 216, 16);
+      }
     }
     ul {
       position: fixed;
-      top: 2.5rem;
+      top: 3rem;
       right: 1rem;
+      padding: 1rem 0.5rem 0rem;
+      background-color: rgba(0, 0, 0, 0.8);
+      border-radius: 0.5rem;
       li {
-        margin-bottom: 0.5rem;
+        margin-bottom: 1rem;
         text-align: center;
         .nav-icon {
           color: rgb(4, 161, 205);

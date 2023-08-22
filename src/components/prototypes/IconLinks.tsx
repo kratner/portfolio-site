@@ -12,8 +12,8 @@ import {
   faEnvelope,
   faMusic,
 } from "@fortawesome/free-solid-svg-icons";
-import YouTubePlaylist from "./YouTubePlaylist";
-import PopupWindow from "./PopupWindow";
+import YouTubePlaylist from "../YouTubePlaylist";
+import PopupWindow from "../PopupWindow";
 
 interface IconLinkProps {
   size: string;

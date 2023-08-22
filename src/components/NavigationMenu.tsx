@@ -16,6 +16,11 @@ import {
   faBlog,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import IconSize from "./utils/IconSize";
+
+interface NavigationMenuProps {
+  iconSize: IconSize;
+}
 
 interface Link {
   icon?: any;
@@ -26,11 +31,6 @@ interface Link {
   url: string;
   target?: "_self" | "_blank" | "_parent" | "_top";
 }
-
-// interface NavigationMenuProps {
-//   links: Link[];
-// }
-const ICON_SIZE = "2x";
 
 const links: Link[] = [
   {
@@ -77,7 +77,7 @@ const links: Link[] = [
   },
 ];
 
-const NavigationMenu: React.FC = () => {
+const NavigationMenu: React.FC<NavigationMenuProps> = ({ iconSize }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const closeMenu = () => {
@@ -125,9 +125,9 @@ const NavigationMenu: React.FC = () => {
         >
           {/* {`${isOpen ? "×" : "☰"}`} */}
           {isOpen ? (
-            <FontAwesomeIcon icon={faClose} />
+            <FontAwesomeIcon icon={faClose} size={iconSize} />
           ) : (
-            <FontAwesomeIcon icon={faBars} />
+            <FontAwesomeIcon icon={faBars} size={iconSize} />
           )}
         </button>
         <ul className={`${isOpen ? "open" : ""}`}>
@@ -136,8 +136,7 @@ const NavigationMenu: React.FC = () => {
               <a href={link.url} title={link.title} target={link.target}>
                 <FontAwesomeIcon
                   icon={link.icon}
-                  // size={ICON_SIZE}
-                  size="1x"
+                  size={iconSize}
                   //   size={size as any}
                   //   style={{ color }}
                   aria-label={link.title}
