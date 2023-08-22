@@ -155,3 +155,26 @@ section.portfolio-list {
     }
   }
 }
+
+/* YouTube Playlist */
+
+section.youtube-playlist {
+  .panel-heading {
+    text-align: center;
+  }
+  .youtube-playlist-container {
+    margin-bottom: 2rem;
+  }
+}
+
+section.youtube-playlist {
+  .panel-heading,
+  .panel-subheading,
+  .youtube-playlist-container {
+    opacity: 0;
+    transition: opacity 1s;
+    &.visible {
+      opacity: 1;
+    }
+  }
+}

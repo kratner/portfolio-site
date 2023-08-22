@@ -88,8 +88,8 @@ const iconLinks: IconLink[] = [
             playlistID="PLvqe7VuhXJoScsg_frwUsvMwQ6J_9hKOS"
             width={82}
             height={82}
-            iframeHeight="82%"
-            iframeWidth="82%"
+            iframeHeight={82}
+            iframeWidth={82}
             iframeBorder="#59594b solid .01em"
             background="dfdfd01c"
           />
@@ -143,8 +143,8 @@ const IconLinks: React.FC<IconLinkProps> = ({ size, color }) => {
                     playlistID="PLvqe7VuhXJoScsg_frwUsvMwQ6J_9hKOS"
                     width={82}
                     height={82}
-                    iframeHeight="82%"
-                    iframeWidth="82%"
+                    iframeHeight={82}
+                    iframeWidth={82}
                     iframeBorder="#59594b solid .01em"
                     background="dfdfd01c"
                   />

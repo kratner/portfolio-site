@@ -9,6 +9,7 @@ import portfolioListData from "../../../data/portfolioListData.json";
 import ColumnarList from "../sections/ColumnarList";
 import ContactInformation from "../sections/ContactInformation";
 import contactData from "../../../data/contactData.json";
+import YouTubePlaylist from "../../YouTubePlaylist";
 
 const HomePage: React.FC = () => {
   const siteUrl = "https://kratner.github.io/portfolio-site/";
@@ -39,6 +40,16 @@ const HomePage: React.FC = () => {
         {/* <PortfolioList data={portfolioListData} /> */}
         <ColumnarList data={portfolioListData} />
       </Section>
+      <Section className="youtube-playlist">
+        <YouTubePlaylist
+          heading="Keith Ratner's Music"
+          position="relative"
+          width={100}
+          iframeHeight={100}
+          iframeWidth={100}
+          playlistID="PLvqe7VuhXJoScsg_frwUsvMwQ6J_9hKOS"
+        />
+      </Section>
       <Section className="qr-code">
         <QRCode value={siteUrl} size={100} />
       </Section>
@@ -59,8 +70,14 @@ const HomePage: React.FC = () => {
       <IntersectionObserverComponent
         className="visible"
         targetSelector="section.portfolio-list .main-header, section.portfolio-list .panel"
-        threshold={0.25}
+        threshold={0.1}
         onIntersection={handleIntersection}
+      />
+      <IntersectionObserverComponent
+        className="visible"
+        targetSelector="section.youtube-playlist .panel-heading, section.youtube-playlist .panel-subheading, section.youtube-playlist .youtube-playlist-container"
+        onIntersection={handleIntersection}
+        threshold={0.2}
       />
     </React.Fragment>
   );

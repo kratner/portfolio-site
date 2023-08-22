@@ -10,7 +10,14 @@
         },
         "heading": "BayBio Annual Report Design",
         "subHeading": "Biotechnology Trade Association Annual Report Design",
-        "bodyText": "Design of first annual report for trade association"
+        "bodyText": "Design of first annual report for trade association",
+        "textLink": {
+          "linkText": "View the Report",
+          "linkTitle": "View the BayBio Annual Report design",
+          "linkURL": "https://keithratner.live/baybio-2010-annual-report-design",
+          "linkID": "baybio-annual-report",
+          "linkTarget": "_blank"
+        }
       },
       {
         "image": {
@@ -20,6 +27,22 @@
         "heading": "California Biomedical Industry Report",
         "subHeading": "California Biomedical Industry Report Design",
         "bodyText": "Trifold report design for the California biomedical industry"
+      },
+      {
+        "image": {
+          "src": "/images/baybio-whitepaper-report-cover.jpg",
+          "alt": "BayBio Whitepaper Report"
+        },
+        "heading": "BayBio Whitepaper Report",
+        "subHeading": "BayBio Whitepaper Report Design",
+        "bodyText": "Whitepaper report design for biotechnology trade association",
+        "textLink": {
+          "linkText": "View the Report",
+          "linkTitle": "View the BayBio Whitepaper Report design",
+          "linkURL": "https://keithratner.live/baybio-whitepaper-report-design/",
+          "linkID": "baybio-whitepaper-report",
+          "linkTarget": "_blank"
+        }
       }
     ]
   }

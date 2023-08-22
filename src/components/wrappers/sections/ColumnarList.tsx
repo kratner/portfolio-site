@@ -14,6 +14,7 @@ interface TextLink {
   linkTitle: string;
   linkURL: string;
   linkID: string;
+  linkTarget: string;
 }
 
 interface Panel {
@@ -100,6 +101,7 @@ const ColumnarList: React.FC<ColumnarListProps> = ({ data }) => {
                           title={panel.textLink.linkTitle}
                           href={panel.textLink.linkURL}
                           data-id={panel.textLink.linkID}
+                          target={panel.textLink.linkTarget}
                         >
                           {panel.textLink.linkText}
                         </a>
