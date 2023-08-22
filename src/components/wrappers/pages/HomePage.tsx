@@ -46,9 +46,15 @@ const HomePage: React.FC = () => {
         <ContactInformation data={contactData} />
       </Section>
       <IntersectionObserverComponent
-        targetSelector="section.features-list, section.services .main-header, section.services .panel"
+        targetSelector="section.features-list, section.services .main-header, section.portfolio-list .main-header"
         className="visible"
         onIntersection={handleIntersection}
+      />
+      <IntersectionObserverComponent
+        targetSelector="section.services .panel"
+        className="visible"
+        onIntersection={handleIntersection}
+        threshold={0.2}
       />
       <IntersectionObserverComponent
         className="visible"
