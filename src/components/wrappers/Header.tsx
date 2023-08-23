@@ -1,6 +1,6 @@
 import React from "react";
 import SiteLogo from "../SiteLogo";
-import NavigationMenu from "../NavigationMenu";
+import NavigationMenu from "./sections/NavigationMenu";
 import IconSize from "../utils/IconSize";
 import { links } from "../../data/linkData";
 

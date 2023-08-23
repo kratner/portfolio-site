@@ -7,9 +7,7 @@ import featuresData from "../../../data/featuresData.json";
 import servicesData from "../../../data/servicesData.json";
 import portfolioListData from "../../../data/portfolioListData.json";
 import ColumnarList from "../sections/ColumnarList";
-import ContactInformation, {
-  ContactMethod,
-} from "../sections/ContactInformation";
+import ContactInformation from "../sections/ContactInformation";
 import { contactMethods } from "../../../data/contactData";
 import YouTubePlaylist from "../../YouTubePlaylist";
 
@@ -44,23 +42,21 @@ const HomePage: React.FC = () => {
       </Section>
       <Section className="youtube-playlist">
         <YouTubePlaylist
+          className="youtube-playlist"
           heading="Keith Ratner's Music"
           position="relative"
-          width={100}
-          iframeHeight={100}
-          iframeWidth={100}
           playlistID="PLvqe7VuhXJoScsg_frwUsvMwQ6J_9hKOS"
         />
-      </Section>
-      <Section className="qr-code">
-        <QRCode value={siteUrl} size={100} />
       </Section>
       <Section className="contact-information">
         <ContactInformation
           primaryHeading="Get in Touch"
           bodyText="We'd love to hear from you. Contact us for any inquiries or collaborations."
-          panels={contactMethods}
+          contactMethods={contactMethods}
         />
+      </Section>
+      <Section className="qr-code">
+        <QRCode value={siteUrl} size={100} />
       </Section>
       <IntersectionObserverComponent
         targetSelector="section.features-list, section.services .main-header, section.portfolio-list .main-header"

@@ -86,8 +86,8 @@ const iconLinks: IconLink[] = [
         popupContent={() => (
           <YouTubePlaylist
             playlistID="PLvqe7VuhXJoScsg_frwUsvMwQ6J_9hKOS"
-            width={82}
-            height={82}
+            width="82%"
+            height="82%"
             iframeHeight={82}
             iframeWidth={82}
             iframeBorder="#59594b solid .01em"
@@ -141,8 +141,8 @@ const IconLinks: React.FC<IconLinkProps> = ({ size, color }) => {
                 popupContent={() => (
                   <YouTubePlaylist
                     playlistID="PLvqe7VuhXJoScsg_frwUsvMwQ6J_9hKOS"
-                    width={82}
-                    height={82}
+                    width="82%"
+                    height="82%"
                     iframeHeight={82}
                     iframeWidth={82}
                     iframeBorder="#59594b solid .01em"

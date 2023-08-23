@@ -1,4 +1,8 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDoorClosed } from "@fortawesome/free-solid-svg-icons";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import IconSize from "../../utils/IconSize";
 
 export interface ContactMethod {
   heading: string;
@@ -7,18 +11,22 @@ export interface ContactMethod {
   linkURL: string;
   linkID: string;
   linkTarget?: string;
+  icon?: IconProp | undefined;
+  iconSize?: IconSize;
 }
 
 interface ContactInformationProps {
   primaryHeading: string;
   bodyText: string;
-  panels: ContactMethod[];
+  contactMethods: ContactMethod[];
+  iconSize?: IconSize;
 }
 
 const ContactInformation: React.FC<ContactInformationProps> = ({
   primaryHeading,
   bodyText,
-  panels,
+  contactMethods,
+  iconSize = "1x",
 }) => {
   return (
     <div className="contact-information">
@@ -31,26 +39,41 @@ const ContactInformation: React.FC<ContactInformationProps> = ({
         </div>
       </div>
       <div className="contact-methods">
-        {panels.map((panel, index) => (
-          <div className="panel" key={index}>
-            {panel.heading && (
-              <div className="panel-heading">
-                <h3>{panel.heading}</h3>
+        {contactMethods.map((contactMethod, index) => (
+          <div className="contact-method" key={index}>
+            {contactMethod.icon && (
+              <div className="contact-method-icon">
+                <FontAwesomeIcon
+                  icon={contactMethod.icon || faDoorClosed}
+                  size={contactMethod.iconSize}
+                  //   style={{ color }}
+                  // aria-label={contactMethod.title}
+                  className="nav-icon"
+                />
               </div>
             )}
-            {panel.linkURL && (
-              <div className="panel-content">
-                <a
-                  href={panel.linkURL}
-                  title={panel.linkTitle}
-                  target={panel.linkTarget ? panel.linkTarget : ""}
-                  rel="noopener noreferrer"
-                  id={panel.linkID}
-                >
-                  {panel.linkText}
-                </a>
-              </div>
-            )}
+            <div className="contact-method-text">
+              {contactMethod.heading && (
+                <div className="contact-method-heading">
+                  <h3>{contactMethod.heading}</h3>
+                </div>
+              )}
+              {contactMethod.linkURL && (
+                <div className="contact-method-link">
+                  <a
+                    href={contactMethod.linkURL}
+                    title={contactMethod.linkTitle}
+                    target={
+                      contactMethod.linkTarget ? contactMethod.linkTarget : ""
+                    }
+                    rel="noopener noreferrer"
+                    id={contactMethod.linkID}
+                  >
+                    {contactMethod.linkText}
+                  </a>
+                </div>
+              )}
+            </div>
           </div>
         ))}
       </div>

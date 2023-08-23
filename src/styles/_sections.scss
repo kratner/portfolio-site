@@ -147,15 +147,6 @@ section.portfolio-list {
 /* YouTube Playlist */
 
 section.youtube-playlist {
-  .panel-heading {
-    text-align: center;
-  }
-  .youtube-playlist-container {
-    margin-bottom: 2rem;
-  }
-}
-
-section.youtube-playlist {
   .panel-heading,
   .panel-subheading,
   .youtube-playlist-container {
@@ -165,24 +156,55 @@ section.youtube-playlist {
       opacity: 1;
     }
   }
+  .panel-heading {
+    text-align: center;
+  }
+  .youtube-playlist-container {
+    // padding: 0 1rem;
+    margin-bottom: 2rem;
+    // position: relative;
+    padding-top: calc(75%); /* 4:3 aspect ratio */
+    iframe.youtube-playlist {
+      border: none;
+      position: absolute;
+      top: 0;
+      left: 1rem;
+      width: calc(100% - 2rem);
+      height: 100%;
+    }
+  }
 }
 
 section.contact-information {
   .contact-information {
-    display: flex;
-  }
-  a {
-    color: #ccc;
-    &:hover {
-      color: rgb(224, 224, 15);
+    padding: 0 1rem 1rem;
+    a {
+      color: #ccc;
+      text-decoration: none;
+      &:hover {
+        color: rgb(224, 224, 15);
+        text-decoration: underline;
+      }
     }
-  }
-  .contact-meta,
-  .contact-methods {
-    padding: 0 1rem;
-    flex-grow: 0;
-    flex-shrink: 0;
-    flex-basis: calc(50% - 20px);
-    flex-direction: column;
+
+    .contact-method {
+      display: flex;
+      align-items: flex-start; /* Align items at the top of the container */
+      .contact-method-icon {
+        margin-right: 0.5rem; /* Add some space between icon and text */
+      }
+      .contact-method-text {
+        display: flex;
+        flex-direction: column; /* Stack text elements vertically */
+        margin-bottom: 1rem;
+        margin-left: 1rem;
+        .contact-method-heading {
+          h3 {
+            margin-top: 0;
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
   }
 }
