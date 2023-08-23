@@ -38,9 +38,9 @@ export const contactMethods: ContactMethod[] = [
   {
     icon: faGlobe,
     heading: "Website",
-    linkText: "https://kratner.github.com/portfolio-site",
+    linkText: "https://kratner.github.io/portfolio-site",
     linkTitle: "Keith Ratner's Portfolio Site",
-    linkURL: "https://kratner.github.com/portfolio-site",
+    linkURL: "https://kratner.github.io/portfolio-site",
     linkID: "website-link",
     linkTarget: Target.Blank,
   },
