@@ -6,10 +6,12 @@ import IntersectionObserverComponent from "../../IntersectionObserverComponent";
 import featuresData from "../../../data/featuresData.json";
 import servicesData from "../../../data/servicesData.json";
 import portfolioListData from "../../../data/portfolioListData.json";
+import testimonialsSliderData from "../../../data/testimonialsSliderData.json";
 import ColumnarList from "../sections/ColumnarList";
 import ContactInformation from "../sections/ContactInformation";
 import { contactMethods } from "../../../data/contactData";
 import YouTubePlaylist from "../../YouTubePlaylist";
+import Slider from "../../Slider";
 
 const HomePage: React.FC = () => {
   const siteUrl = "https://kratner.github.io/portfolio-site/";
@@ -37,7 +39,6 @@ const HomePage: React.FC = () => {
         <ColumnarList data={servicesData} />
       </Section>
       <Section className="portfolio-list full-width">
-        {/* <PortfolioList data={portfolioListData} /> */}
         <ColumnarList data={portfolioListData} />
       </Section>
       <Section className="youtube-playlist">
@@ -46,6 +47,13 @@ const HomePage: React.FC = () => {
           heading="Keith Ratner's Music"
           position="relative"
           playlistID="PLvqe7VuhXJoScsg_frwUsvMwQ6J_9hKOS"
+        />
+      </Section>
+      <Section className="testimonials-slider">
+        <Slider
+          slides={testimonialsSliderData}
+          sliderHeading="Testimonials"
+          sliderSubheading="Hear what they're saying about Keith"
         />
       </Section>
       <Section className="contact-information">
@@ -78,6 +86,12 @@ const HomePage: React.FC = () => {
       <IntersectionObserverComponent
         className="visible"
         targetSelector="section.youtube-playlist .panel-heading, section.youtube-playlist .panel-subheading, section.youtube-playlist .youtube-playlist-container"
+        onIntersection={handleIntersection}
+        threshold={0.2}
+      />
+      <IntersectionObserverComponent
+        className="visible"
+        targetSelector="section.testimonials-slider .slider"
         onIntersection={handleIntersection}
         threshold={0.2}
       />

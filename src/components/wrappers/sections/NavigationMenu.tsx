@@ -1,19 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 import {
-  faYoutube,
-  faTwitter,
-  faInstagram,
-  faLinkedin,
-} from "@fortawesome/free-brands-svg-icons";
-import {
   faBars,
   faClose,
-  faStore,
-  faCode,
-  faEnvelope,
-  faMusic,
-  faBlog,
   faDoorClosed,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

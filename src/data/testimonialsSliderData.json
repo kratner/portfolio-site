@@ -1,0 +1,29 @@
+[
+  {
+    "imgSrc": "/images/logo-quaddra-software.svg",
+    "imgAltText": "Quaddra Software",
+    "bodyText": "Keith worked for me at Quaddra Software, an enterprise data analytics startup I co-founded. Keith did excellent work at Quaddra. Our customers and prospects complemented the user interface of our application, as created by Keith. He was a core member of the team, providing design and input, while collaborating with the backend engineers. If we needed a fix or feature from Keith, we could count on him getting it done on time.",
+    "avatarSrc": "/images/photo-quaddra-software-jeffrey-fischer.jpg",
+    "avatarAltText": "Jeffrey Fischer",
+    "avatarHeading": "Jeffrey Fischer",
+    "avatarSubheading": "Co-Founder and CTO"
+  },
+  {
+    "imgSrc": "/images/logo-davis-vision.svg",
+    "imgAltText": "Davis Vision",
+    "bodyText": "Keith's ability to learn quickly and grasp complex application processes allowed Davis Vision to save thousands of dollars in consulting fees. Keith was able to learn how to provide application development for a fairly complex application that was critical to Davis Vision's compliance efforts. Without Keith's efforts, Davis Vision would have been forced to hire outside application support to do this work.",
+    "avatarSrc": "/images/photo-davis-vision-david-merwitz.jpg",
+    "avatarAltText": "David Merwitz",
+    "avatarHeading": "David Merwitz",
+    "avatarSubheading": "Director of Operational Compliance"
+  },
+  {
+    "imgSrc": "/images/logo-academyx.svg",
+    "imgAltText": "AcademyX",
+    "bodyText": "Keith's remarkable empathy and ability to place himself in his students' shoes created a deeply enriching learning atmosphere at AcademyX. His exceptional talent in simplifying complex concepts ensured that learners from diverse backgrounds could easily grasp the material. His dedication to nurturing individual growth and his passion for Adobe software made him an invaluable asset to our firm.",
+    "avatarSrc": "/images/photo-academyx-prescott-finn.jpg",
+    "avatarAltText": "Prescott Finn",
+    "avatarHeading": "Prescott Finn",
+    "avatarSubheading": "Branch Manager"
+  }
+]

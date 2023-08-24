@@ -1,14 +1,7 @@
 // linkData.ts
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faLinkedin, faYoutube } from "@fortawesome/free-brands-svg-icons";
-import {
-  faDoorClosed,
-  faStore,
-  faCode,
-  faEnvelope,
-  faMusic,
-  faBlog,
-} from "@fortawesome/free-solid-svg-icons";
+import { faStore, faCode, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import Target from "../components/utils/Target";
 
 export interface Link {
@@ -27,13 +20,6 @@ export const links: Link[] = [
     target: Target.Blank,
     linktext: "LinkedIn",
   },
-  //   {
-  //     title: "Blog",
-  //     // icon: faBlog,
-  //     url: "https://keithratner.live",
-  //     target: Target.Blank,
-  //     linktext: "KeithRatner.Live",
-  //   },
   {
     title: "Visit My VBA Code Library",
     icon: faCode,
