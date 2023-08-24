@@ -22,6 +22,7 @@
     .arrow {
       cursor: pointer;
       padding: 1rem;
+      font-size: 2rem;
       color: #0bbbe7;
       &:hover {
         color: rgb(220, 220, 19);
@@ -39,7 +40,7 @@
       z-index: 10;
     }
     .slide {
-      padding: 0 3rem;
+      padding: 0 3.5rem;
       .main-image {
         display: flex;
         justify-content: center;
