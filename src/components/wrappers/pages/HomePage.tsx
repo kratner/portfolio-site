@@ -46,8 +46,8 @@ const HomePage: React.FC = () => {
         <Slider
           sliderHeading="Digital Prints"
           slides={artworkSliderData}
-          autoPlay={false}
-          // autoPlayInterval={1000}
+          autoPlay={true}
+          autoPlayInterval={3000}
         />
       </Section>
       <Section className="youtube-playlist">
