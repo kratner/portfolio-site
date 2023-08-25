@@ -92,12 +92,13 @@ const HomePage: React.FC = () => {
         threshold={0.1}
         onIntersection={handleIntersection}
       />
-      <IntersectionObserverComponent
+      {/* un-comment this after we fix the slider */}
+      {/* <IntersectionObserverComponent
         className="visible"
         targetSelector="section.artwork-slider .slider-heading, section.artwork-slider .slides-all"
         threshold={0.1}
         onIntersection={handleIntersection}
-      />
+      /> */}
       <IntersectionObserverComponent
         className="visible"
         targetSelector="section.youtube-playlist .panel-heading, section.youtube-playlist .panel-subheading, section.youtube-playlist .youtube-playlist-container"

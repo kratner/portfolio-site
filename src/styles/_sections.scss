@@ -167,14 +167,16 @@ section.portfolio-list {
 /* Artwork Slider */
 
 section.artwork-slider {
-  .slider-heading,
-  .slides-all {
-    opacity: 0;
-    transition: opacity 1s;
-    &.visible {
-      opacity: 1;
-    }
-  }
+  /* un-comment this after we fix the slider */
+  // .slider-heading,
+  // .slides-all {
+  //   opacity: 0;
+  //   transition: opacity 1s;
+  //   &.visible {
+  //     opacity: 1;
+  //   }
+  // }
+
   .slide-subheading {
     h3 {
       text-align: center;
