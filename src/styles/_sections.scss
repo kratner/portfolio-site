@@ -164,6 +164,41 @@ section.portfolio-list {
   }
 }
 
+/* Artwork Slider */
+
+section.artwork-slider {
+  .slider-heading,
+  .slides-all {
+    opacity: 0;
+    transition: opacity 1s;
+    &.visible {
+      opacity: 1;
+    }
+  }
+  .slide-subheading {
+    h3 {
+      text-align: center;
+      margin: 0;
+    }
+  }
+  .slide-cta {
+    text-align: center;
+    margin-top: 1rem;
+    a {
+      cursor: pointer;
+      text-decoration: none;
+      color: white;
+      font-weight: 800;
+      background-color: #063a54;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.5rem;
+      &:hover {
+        background-color: rgb(4, 99, 4);
+      }
+    }
+  }
+}
+
 /* YouTube Playlist */
 
 section.youtube-playlist {
@@ -191,6 +226,18 @@ section.youtube-playlist {
       left: 1rem;
       width: calc(100% - 2rem);
       height: 100%;
+    }
+  }
+}
+
+/* Testimonials Slider */
+
+section.testimonials-slider {
+  .slider {
+    opacity: 0;
+    transition: opacity 1s;
+    &.visible {
+      opacity: 1;
     }
   }
 }

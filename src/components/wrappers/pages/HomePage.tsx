@@ -7,6 +7,7 @@ import featuresData from "../../../data/featuresData.json";
 import servicesData from "../../../data/servicesData.json";
 import portfolioListData from "../../../data/portfolioListData.json";
 import testimonialsSliderData from "../../../data/testimonialsSliderData.json";
+import artworkSliderData from "../../../data/artworkSliderData.json";
 import ColumnarList from "../sections/ColumnarList";
 import ContactInformation from "../sections/ContactInformation";
 import { contactMethods } from "../../../data/contactData";
@@ -40,6 +41,14 @@ const HomePage: React.FC = () => {
       </Section>
       <Section className="portfolio-list full-width">
         <ColumnarList data={portfolioListData} />
+      </Section>
+      <Section className="artwork-slider">
+        <Slider
+          sliderHeading="Digital Prints"
+          slides={artworkSliderData}
+          autoPlay={false}
+          // autoPlayInterval={1000}
+        />
       </Section>
       <Section className="youtube-playlist">
         <YouTubePlaylist
@@ -80,6 +89,12 @@ const HomePage: React.FC = () => {
       <IntersectionObserverComponent
         className="visible"
         targetSelector="section.portfolio-list .main-header, section.portfolio-list .panel"
+        threshold={0.1}
+        onIntersection={handleIntersection}
+      />
+      <IntersectionObserverComponent
+        className="visible"
+        targetSelector="section.artwork-slider .slider-heading, section.artwork-slider .slides-all"
         threshold={0.1}
         onIntersection={handleIntersection}
       />

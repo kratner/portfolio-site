@@ -14,6 +14,10 @@ interface Slide {
   avatarHeading?: string;
   avatarSubheading?: string;
   avatarBodyText?: string;
+  ctaButtonText?: string;
+  ctaButtonURL?: string;
+  ctaButtonTitle?: string;
+  ctaButtonTarget?: string;
 }
 
 interface SliderProps {
@@ -111,6 +115,21 @@ const Slider: React.FC<SliderProps> = ({
                         <p>{slide.bodyText}</p>
                       </div>
                     )}
+                    {(slide.ctaButtonText ||
+                      slide.ctaButtonTitle ||
+                      slide.ctaButtonURL) && (
+                      <div className="slide-cta">
+                        <a
+                          href={slide.ctaButtonURL}
+                          title={slide.ctaButtonTitle}
+                          target={
+                            slide.ctaButtonTarget ? slide.ctaButtonTarget : ""
+                          }
+                        >
+                          {slide.ctaButtonText}
+                        </a>
+                      </div>
+                    )}
                     {slide.avatarSrc && (
                       <div className="slide-avatar">
                         <img
@@ -172,6 +191,21 @@ const Slider: React.FC<SliderProps> = ({
                     {slide.bodyText && (
                       <div className="slide-bodyText">
                         <p>{slide.bodyText}</p>
+                      </div>
+                    )}
+                    {(slide.ctaButtonText ||
+                      slide.ctaButtonTitle ||
+                      slide.ctaButtonURL) && (
+                      <div className="slide-cta">
+                        <a
+                          href={slide.ctaButtonURL}
+                          title={slide.ctaButtonTitle}
+                          target={
+                            slide.ctaButtonTarget ? slide.ctaButtonTarget : ""
+                          }
+                        >
+                          {slide.ctaButtonText}
+                        </a>
                       </div>
                     )}
                     {slide.avatarSrc && (

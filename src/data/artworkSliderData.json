@@ -1,0 +1,38 @@
+[
+  {
+    "imgSrc": "/images/moeba-lr-1080p.jpg",
+    "imgAltText": "\"Moeba\" - Canvas Print",
+    "subheading": "\"Moeba\" - Canvas Print",
+    "ctaButtonText": "Buy Now",
+    "ctaButtonTitle": "Buy Now",
+    "ctaButtonURL": "https://keithratner.live/product/moeba/",
+    "ctaButtonTarget": "_blank"
+  },
+  {
+    "imgSrc": "/images/horn-living-room-peach-on-black.jpg",
+    "imgAltText": "\"Horn\" - Canvas Print",
+    "subheading": "\"Horn\" - Canvas Print",
+    "ctaButtonText": "Buy Now",
+    "ctaButtonTitle": "Buy Now",
+    "ctaButtonURL": "https://keithratner.live/product/horn/",
+    "ctaButtonTarget": "_blank"
+  },
+  {
+    "imgSrc": "/images/jaime-living-room-white-on-black.jpg",
+    "imgAltText": "\"Jaime\" - Canvas Print",
+    "subheading": "\"Jaime\" - Canvas Print",
+    "ctaButtonText": "Buy Now",
+    "ctaButtonTitle": "Buy Now",
+    "ctaButtonURL": "https://keithratner.live/product/jaime/",
+    "ctaButtonTarget": "_blank"
+  },
+  {
+    "imgSrc": "/images/zipper-living-room-peach-on-black.jpg",
+    "imgAltText": "\"Zipper\" - Canvas Print",
+    "subheading": "\"Zipper\" - Canvas Print",
+    "ctaButtonText": "Buy Now",
+    "ctaButtonTitle": "Buy Now",
+    "ctaButtonURL": "https://keithratner.live/product/zipper-print/",
+    "ctaButtonTarget": "_blank"
+  }
+]
