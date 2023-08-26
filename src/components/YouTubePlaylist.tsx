@@ -57,12 +57,12 @@ const YouTubePlaylist: React.FC<YouTubePlaylistProps> = ({
     <React.Fragment>
       {heading && (
         <div className="panel-heading">
-          <h3>{heading}</h3>
+          <h2>{heading}</h2>
         </div>
       )}
       {subHeading && (
         <div className="panel-subheading">
-          <h4>{subHeading}</h4>
+          <h3>{subHeading}</h3>
         </div>
       )}
       <div className="youtube-playlist-container" style={containerStyle}>

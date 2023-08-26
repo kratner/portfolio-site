@@ -157,6 +157,26 @@ section.portfolio-list {
   }
 }
 
+section.portfolio-list {
+  .panel-content {
+    padding: 0 2rem;
+  }
+  .panel-links {
+    text-align: center;
+    a {
+      text-decoration: none;
+      color: white;
+      font-weight: 800;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.5rem;
+      background-color: #063a54;
+      &:hover {
+        background-color: #046304;
+      }
+    }
+  }
+}
+
 /* Artwork Slider */
 
 section.artwork-slider {
