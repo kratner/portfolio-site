@@ -240,8 +240,22 @@ section.testimonials-slider {
     &.visible {
       opacity: 1;
     }
+    .slider-container {
+      .slides-all {
+        .shadow-slides,
+        .slides {
+          .main-image {
+            img {
+              width: 75%;
+            }
+          }
+        }
+      }
+    }
   }
 }
+
+/* Contact */
 
 section.contact-information {
   .contact-information {
