@@ -265,11 +265,15 @@ const Slider: React.FC<SliderProps> = ({
         </div>
         <div className="slide-position">
           {slides.map((_, index) => {
+            const handleDotClick = () => {
+              setCurrentSlide(index);
+            };
             return (
               <div
                 className={
                   "indicator" + (index === currentSlide ? " active" : "")
                 }
+                onClick={handleDotClick}
                 key={index}
               />
             );
