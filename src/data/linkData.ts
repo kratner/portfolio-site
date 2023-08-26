@@ -21,13 +21,6 @@ export const links: Link[] = [
     linktext: "LinkedIn",
   },
   {
-    title: "Visit My VBA Code Library",
-    icon: faCode,
-    url: "https://optionexplicit.live",
-    target: Target.Blank,
-    linktext: "VBA",
-  },
-  {
     title: "Shop for My Artwork!",
     icon: faStore,
     url: "https://keithratner.live/shop/",
@@ -40,6 +33,13 @@ export const links: Link[] = [
     url: "https://keithratner.live/about/#contactme",
     target: Target.Blank,
     linktext: "Contact",
+  },
+  {
+    title: "Visit My VBA Code Library",
+    icon: faCode,
+    url: "https://optionexplicit.live",
+    target: Target.Blank,
+    linktext: "Code",
   },
   {
     icon: faYoutube,
