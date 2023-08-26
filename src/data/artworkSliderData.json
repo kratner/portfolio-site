@@ -1,5 +1,32 @@
 [
   {
+    "imgSrc": "/images/horn-living-room-green-on-black.jpg",
+    "imgAltText": "\"Horn\" - Canvas Print",
+    "subheading": "\"Horn\" - Canvas Print",
+    "ctaButtonText": "Buy Now",
+    "ctaButtonTitle": "Buy Now",
+    "ctaButtonURL": "https://keithratner.live/product/horn/",
+    "ctaButtonTarget": "_blank"
+  },
+  {
+    "imgSrc": "/images/hummingbird-living-room-white-on-brown.jpg",
+    "imgAltText": "\"Hummingbird\" - Canvas Print",
+    "subheading": "\"Hummingbird\" - Canvas Print",
+    "ctaButtonText": "Buy Now",
+    "ctaButtonTitle": "Buy Now",
+    "ctaButtonURL": "https://keithratner.live/product/hummingbird/",
+    "ctaButtonTarget": "_blank"
+  },
+  {
+    "imgSrc": "/images/zipper-living-room-red-on-black.jpg",
+    "imgAltText": "\"Zipper\" - Canvas Print",
+    "subheading": "\"Zipper\" - Canvas Print",
+    "ctaButtonText": "Buy Now",
+    "ctaButtonTitle": "Buy Now",
+    "ctaButtonURL": "https://keithratner.live/product/zipper/",
+    "ctaButtonTarget": "_blank"
+  },
+  {
     "imgSrc": "/images/moeba-lr-1080p.jpg",
     "imgAltText": "\"Moeba\" - Canvas Print",
     "subheading": "\"Moeba\" - Canvas Print",
