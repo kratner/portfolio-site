@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 
 import { faCircleLeft, faCircleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -38,21 +38,46 @@ const Slider: React.FC<SliderProps> = ({
   const PUBLIC_URL = process.env.PUBLIC_URL;
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const goToPrevious = useCallback(() => {
+  const goToPrevious = () => {
     const newSlide = (currentSlide - 1 + slides.length) % slides.length;
     setCurrentSlide(newSlide);
-  }, [currentSlide, slides.length]);
+  };
 
   const goToNext = useCallback(() => {
     const newSlide = (currentSlide + 1) % slides.length;
     setCurrentSlide(newSlide);
   }, [currentSlide, slides.length]);
 
-  if (autoPlay) {
-    setInterval(() => {
-      goToNext();
-    }, autoPlayInterval);
-  }
+  const handlePrevClick = () => {
+    goToPrevious();
+  };
+
+  const handleNextClick = () => {
+    goToNext();
+  };
+
+  useEffect(() => {
+    let intervalId: NodeJS.Timeout | null = null;
+
+    const handleAutoPlay = () => {
+      intervalId = setInterval(goToNext, autoPlayInterval);
+    };
+
+    const clearAutoPlayInterval = () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
+    };
+
+    if (autoPlay) {
+      handleAutoPlay();
+    }
+
+    return () => {
+      clearAutoPlayInterval();
+    };
+  }, [autoPlay, autoPlayInterval, goToNext]);
 
   return (
     <React.Fragment>
@@ -68,7 +93,7 @@ const Slider: React.FC<SliderProps> = ({
           </div>
         )}
         <div className="slider-container">
-          <div className="arrow prev" onClick={goToPrevious}>
+          <div className="arrow prev" onClick={handlePrevClick}>
             <span>
               <FontAwesomeIcon icon={faCircleLeft} />
             </span>
@@ -77,14 +102,15 @@ const Slider: React.FC<SliderProps> = ({
             <div className="shadow-slides">
               {slides.map((slide, index) => {
                 return (
-                  <div
-                    className={
-                      index === currentSlide
-                        ? "slide-container active"
-                        : "slide-container"
-                    }
-                    key={index}
-                  >
+                  // <div
+                  //   className={
+                  //     index === currentSlide
+                  //       ? "slide-container active"
+                  //       : "slide-container"
+                  //   }
+                  //   key={index}
+                  // >
+                  <div className="slide-container" key={index}>
                     <div className="slide">
                       {slide.imgSrc && (
                         <div className="main-image">
@@ -231,7 +257,7 @@ const Slider: React.FC<SliderProps> = ({
               })}
             </div>
           </div>
-          <div className="arrow next" onClick={goToNext}>
+          <div className="arrow next" onClick={handleNextClick}>
             <span>
               <FontAwesomeIcon icon={faCircleRight} />
             </span>
