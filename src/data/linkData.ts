@@ -21,7 +21,7 @@ export const links: Link[] = [
     linktext: "LinkedIn",
   },
   {
-    title: "Shop for My Artwork!",
+    title: "Shop for My Artwork",
     icon: faStore,
     url: "https://keithratner.live/shop/",
     target: Target.Blank,
