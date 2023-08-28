@@ -29,9 +29,9 @@ export const contactMethods: ContactMethod[] = [
   {
     icon: faPhoneAlt,
     heading: "Phone",
-    linkText: "650-516-7281",
-    linkTitle: "Email Keith Ratner",
-    linkURL: "tel:6505167281",
+    linkText: "+1 650-516-7281",
+    linkTitle: "Call Keith Ratner",
+    linkURL: "tel:+16505167281",
     linkID: "phone-link",
     linkTarget: Target.Blank,
   },
