@@ -39,7 +39,7 @@ const HomePage: React.FC = () => {
       <Section className="services">
         <ColumnarList data={servicesData} />
       </Section>
-      <Section className="portfolio-list full-width">
+      <Section className="portfolio-list">
         <ColumnarList data={portfolioListData} />
       </Section>
       <Section className="artwork-slider">

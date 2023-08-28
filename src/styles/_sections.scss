@@ -120,6 +120,36 @@
     width: 100%;
   }
 }
+.half-width .columnar-list {
+  // display: block;
+
+  .panels {
+    display: flex;
+    .panel {
+      flex-grow: 0;
+      flex-shrink: 0;
+      @media (min-width: 768px) {
+        flex-basis: calc(50% - 20px);
+      }
+      @media (min-width: 1024px) {
+        flex-basis: calc(33.33% - 20px);
+      }
+      // @media (min-width: 1201px) {
+      //   flex-basis: calc(25% - 20px);
+      // }
+      margin: 10px;
+      padding: 0 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  @media (min-width: 1024px) {
+    .panel {
+      flex-basis: calc(33.33% - 20px);
+    }
+  }
+}
 
 /* FeaturesList */
 
@@ -240,6 +270,26 @@ section.testimonials-slider {
             }
           }
         }
+      }
+    }
+  }
+  @media (min-width: 1024px) {
+    .slide {
+      display: flex;
+      .slide-branding,
+      .slide-meta {
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: calc(50% - 20px);
+        margin: 10px;
+        padding: 0 20px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .slide-branding {
+        border-right: 0.25rem solid rgb(18, 122, 178);
       }
     }
   }

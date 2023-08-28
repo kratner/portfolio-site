@@ -112,67 +112,75 @@ const Slider: React.FC<SliderProps> = ({
                   // >
                   <div className="slide-container" key={index}>
                     <div className="slide">
-                      {slide.imgSrc && (
-                        <div className="main-image">
-                          <img
-                            src={(PUBLIC_URL ?? "") + slide.imgSrc}
-                            alt={slide.imgAltText ? slide.imgAltText : ""}
-                          />
-                        </div>
-                      )}
-                      {slide.heading && (
-                        <div className="slide-heading">
-                          <h2>{slide.heading}</h2>
-                        </div>
-                      )}
-                      {slide.subheading && (
-                        <div className="slide-subheading">
-                          <h3>{slide.subheading}</h3>
-                        </div>
-                      )}
-                      {slide.bodyText && (
-                        <div className="slide-bodyText">
-                          <p>{slide.bodyText}</p>
-                        </div>
-                      )}
-                      {(slide.ctaButtonText ||
-                        slide.ctaButtonTitle ||
-                        slide.ctaButtonURL) && (
-                        <div className="slide-cta">
-                          <a
-                            href={slide.ctaButtonURL}
-                            title={slide.ctaButtonTitle}
-                            target={
-                              slide.ctaButtonTarget ? slide.ctaButtonTarget : ""
-                            }
-                          >
-                            {slide.ctaButtonText}
-                          </a>
-                        </div>
-                      )}
-                      {slide.avatarSrc && (
-                        <div className="slide-avatar">
-                          <img
-                            src={(PUBLIC_URL ?? "") + slide.avatarSrc}
-                            alt={slide.avatarAltText ? slide.avatarAltText : ""}
-                          />
-                        </div>
-                      )}
-                      {slide.avatarHeading && (
-                        <div className="slide-avatar-heading">
-                          <h2>{slide.avatarHeading}</h2>
-                        </div>
-                      )}
-                      {slide.avatarSubheading && (
-                        <div className="slide-avatar-subheading">
-                          <h3>{slide.avatarSubheading}</h3>
-                        </div>
-                      )}
-                      {slide.avatarBodyText && (
-                        <div className="slide-avatar-subheading">
-                          <h3>{slide.avatarBodyText}</h3>
-                        </div>
-                      )}
+                      <div className="slide-branding">
+                        {slide.imgSrc && (
+                          <div className="main-image">
+                            <img
+                              src={(PUBLIC_URL ?? "") + slide.imgSrc}
+                              alt={slide.imgAltText ? slide.imgAltText : ""}
+                            />
+                          </div>
+                        )}
+                      </div>
+                      <div className="slide-meta">
+                        {slide.heading && (
+                          <div className="slide-heading">
+                            <h2>{slide.heading}</h2>
+                          </div>
+                        )}
+                        {slide.subheading && (
+                          <div className="slide-subheading">
+                            <h3>{slide.subheading}</h3>
+                          </div>
+                        )}
+                        {slide.bodyText && (
+                          <div className="slide-bodyText">
+                            <p>{slide.bodyText}</p>
+                          </div>
+                        )}
+                        {(slide.ctaButtonText ||
+                          slide.ctaButtonTitle ||
+                          slide.ctaButtonURL) && (
+                          <div className="slide-cta">
+                            <a
+                              href={slide.ctaButtonURL}
+                              title={slide.ctaButtonTitle}
+                              target={
+                                slide.ctaButtonTarget
+                                  ? slide.ctaButtonTarget
+                                  : ""
+                              }
+                            >
+                              {slide.ctaButtonText}
+                            </a>
+                          </div>
+                        )}
+                        {slide.avatarSrc && (
+                          <div className="slide-avatar">
+                            <img
+                              src={(PUBLIC_URL ?? "") + slide.avatarSrc}
+                              alt={
+                                slide.avatarAltText ? slide.avatarAltText : ""
+                              }
+                            />
+                          </div>
+                        )}
+                        {slide.avatarHeading && (
+                          <div className="slide-avatar-heading">
+                            <h2>{slide.avatarHeading}</h2>
+                          </div>
+                        )}
+                        {slide.avatarSubheading && (
+                          <div className="slide-avatar-subheading">
+                            <h3>{slide.avatarSubheading}</h3>
+                          </div>
+                        )}
+                        {slide.avatarBodyText && (
+                          <div className="slide-avatar-subheading">
+                            <h3>{slide.avatarBodyText}</h3>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
                 );
@@ -190,67 +198,75 @@ const Slider: React.FC<SliderProps> = ({
                     key={index}
                   >
                     <div className="slide">
-                      {slide.imgSrc && (
-                        <div className="main-image">
-                          <img
-                            src={(PUBLIC_URL ?? "") + slide.imgSrc}
-                            alt={slide.imgAltText ? slide.imgAltText : ""}
-                          />
-                        </div>
-                      )}
-                      {slide.heading && (
-                        <div className="slide-heading">
-                          <h2>{slide.heading}</h2>
-                        </div>
-                      )}
-                      {slide.subheading && (
-                        <div className="slide-subheading">
-                          <h3>{slide.subheading}</h3>
-                        </div>
-                      )}
-                      {slide.bodyText && (
-                        <div className="slide-bodyText">
-                          <p>{slide.bodyText}</p>
-                        </div>
-                      )}
-                      {(slide.ctaButtonText ||
-                        slide.ctaButtonTitle ||
-                        slide.ctaButtonURL) && (
-                        <div className="slide-cta">
-                          <a
-                            href={slide.ctaButtonURL}
-                            title={slide.ctaButtonTitle}
-                            target={
-                              slide.ctaButtonTarget ? slide.ctaButtonTarget : ""
-                            }
-                          >
-                            {slide.ctaButtonText}
-                          </a>
-                        </div>
-                      )}
-                      {slide.avatarSrc && (
-                        <div className="slide-avatar">
-                          <img
-                            src={(PUBLIC_URL ?? "") + slide.avatarSrc}
-                            alt={slide.avatarAltText ? slide.avatarAltText : ""}
-                          />
-                        </div>
-                      )}
-                      {slide.avatarHeading && (
-                        <div className="slide-avatar-heading">
-                          <h2>{slide.avatarHeading}</h2>
-                        </div>
-                      )}
-                      {slide.avatarSubheading && (
-                        <div className="slide-avatar-subheading">
-                          <h3>{slide.avatarSubheading}</h3>
-                        </div>
-                      )}
-                      {slide.avatarBodyText && (
-                        <div className="slide-avatar-subheading">
-                          <h3>{slide.avatarBodyText}</h3>
-                        </div>
-                      )}
+                      <div className="slide-branding">
+                        {slide.imgSrc && (
+                          <div className="main-image">
+                            <img
+                              src={(PUBLIC_URL ?? "") + slide.imgSrc}
+                              alt={slide.imgAltText ? slide.imgAltText : ""}
+                            />
+                          </div>
+                        )}
+                      </div>
+                      <div className="slide-meta">
+                        {slide.heading && (
+                          <div className="slide-heading">
+                            <h2>{slide.heading}</h2>
+                          </div>
+                        )}
+                        {slide.subheading && (
+                          <div className="slide-subheading">
+                            <h3>{slide.subheading}</h3>
+                          </div>
+                        )}
+                        {slide.bodyText && (
+                          <div className="slide-bodyText">
+                            <p>{slide.bodyText}</p>
+                          </div>
+                        )}
+                        {(slide.ctaButtonText ||
+                          slide.ctaButtonTitle ||
+                          slide.ctaButtonURL) && (
+                          <div className="slide-cta">
+                            <a
+                              href={slide.ctaButtonURL}
+                              title={slide.ctaButtonTitle}
+                              target={
+                                slide.ctaButtonTarget
+                                  ? slide.ctaButtonTarget
+                                  : ""
+                              }
+                            >
+                              {slide.ctaButtonText}
+                            </a>
+                          </div>
+                        )}
+                        {slide.avatarSrc && (
+                          <div className="slide-avatar">
+                            <img
+                              src={(PUBLIC_URL ?? "") + slide.avatarSrc}
+                              alt={
+                                slide.avatarAltText ? slide.avatarAltText : ""
+                              }
+                            />
+                          </div>
+                        )}
+                        {slide.avatarHeading && (
+                          <div className="slide-avatar-heading">
+                            <h2>{slide.avatarHeading}</h2>
+                          </div>
+                        )}
+                        {slide.avatarSubheading && (
+                          <div className="slide-avatar-subheading">
+                            <h3>{slide.avatarSubheading}</h3>
+                          </div>
+                        )}
+                        {slide.avatarBodyText && (
+                          <div className="slide-avatar-subheading">
+                            <h3>{slide.avatarBodyText}</h3>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
                 );

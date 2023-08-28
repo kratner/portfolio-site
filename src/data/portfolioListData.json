@@ -26,7 +26,14 @@
         },
         "heading": "California Biomedical Industry Report",
         "subHeading": "California Biomedical Industry Report Design",
-        "bodyText": "Trifold report design for the California biomedical industry"
+        "bodyText": "Trifold report design for the California biomedical industry",
+        "textLink": {
+          "linkText": "View the Report",
+          "linkTitle": "View the California Biomedical Industry Report Design",
+          "linkURL": "https://keithratner.live/california-biomedical-industry-report/",
+          "linkID": "california-biomedical-industry-report",
+          "linkTarget": "_blank"
+        }
       },
       {
         "image": {
@@ -38,7 +45,7 @@
         "bodyText": "Whitepaper report design for biotechnology trade association",
         "textLink": {
           "linkText": "View the Report",
-          "linkTitle": "View the BayBio Whitepaper Report design",
+          "linkTitle": "View the BayBio Whitepaper Report Design",
           "linkURL": "https://keithratner.live/baybio-whitepaper-report-design/",
           "linkID": "baybio-whitepaper-report",
           "linkTarget": "_blank"
