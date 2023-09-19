@@ -53,7 +53,7 @@ const HomePage: React.FC = () => {
       <Section className="youtube-playlist">
         <YouTubePlaylist
           className="youtube-playlist"
-          heading="Keith Ratner's Music"
+          heading="Keith Ratner's Music and Video"
           position="relative"
           playlistID="PLvqe7VuhXJoScsg_frwUsvMwQ6J_9hKOS"
         />

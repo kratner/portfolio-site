@@ -1,6 +1,10 @@
 // linkData.ts
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { faLinkedin, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import {
+  faLinkedin,
+  faYoutube,
+  faGithub,
+} from "@fortawesome/free-brands-svg-icons";
 import { faStore, faCode, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import Target from "../components/utils/Target";
 
@@ -40,6 +44,13 @@ export const links: Link[] = [
     url: "https://optionexplicit.live",
     target: Target.Blank,
     linktext: "Code",
+  },
+  {
+    title: "Check Out My Incredibly Useful Illustrator Scripts",
+    icon: faGithub,
+    url: "https://github.com/kratner/Scripts",
+    target: Target.Blank,
+    linktext: "Scripts",
   },
   {
     icon: faYoutube,
