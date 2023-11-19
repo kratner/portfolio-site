@@ -50,14 +50,14 @@ const HomePage: React.FC = () => {
           // autoPlayInterval={3000}
         />
       </Section>
-      <Section className="youtube-playlist">
+      {/* <Section className="youtube-playlist">
         <YouTubePlaylist
           className="youtube-playlist"
           heading="Keith Ratner's Music and Video"
           position="relative"
           playlistID="PLvqe7VuhXJoScsg_frwUsvMwQ6J_9hKOS"
         />
-      </Section>
+      </Section> */}
       <Section className="testimonials-slider">
         <Slider
           slides={testimonialsSliderData}
@@ -92,7 +92,6 @@ const HomePage: React.FC = () => {
         threshold={0.1}
         onIntersection={handleIntersection}
       />
-      {/* un-comment this after we fix the slider */}
       <IntersectionObserverComponent
         className="visible"
         targetSelector="section.artwork-slider .slider-heading, section.artwork-slider .slider-container"
@@ -108,6 +107,12 @@ const HomePage: React.FC = () => {
       <IntersectionObserverComponent
         className="visible"
         targetSelector="section.testimonials-slider .slider"
+        onIntersection={handleIntersection}
+        threshold={0.2}
+      />
+      <IntersectionObserverComponent
+        className="visible"
+        targetSelector="section.contact-information"
         onIntersection={handleIntersection}
         threshold={0.2}
       />
