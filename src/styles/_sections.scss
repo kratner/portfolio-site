@@ -1,6 +1,11 @@
 /* QRCode */
 
 .qr-code {
+  opacity: 0;
+  transition: opacity 1s;
+  &.visible {
+    opacity: 1;
+  }
   text-align: center;
   padding-bottom: 1rem;
 }

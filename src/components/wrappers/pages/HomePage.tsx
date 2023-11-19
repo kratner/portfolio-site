@@ -1,5 +1,7 @@
 import React from "react";
-import QRCode from "react-qr-code";
+// import QRCode from "react-qr-code";
+import QRCode from "qrcode.react";
+// import VenmoQRCode from "../../VenmoQRCode";
 import Section from "../Section";
 import HeroHeader from "../sections/HeroHeader";
 import IntersectionObserverComponent from "../../IntersectionObserverComponent";
@@ -11,7 +13,7 @@ import artworkSliderData from "../../../data/artworkSliderData.json";
 import ColumnarList from "../sections/ColumnarList";
 import ContactInformation from "../sections/ContactInformation";
 import { contactMethods } from "../../../data/contactData";
-import YouTubePlaylist from "../../YouTubePlaylist";
+// import YouTubePlaylist from "../../YouTubePlaylist";
 import Slider from "../../Slider";
 
 const HomePage: React.FC = () => {
@@ -75,6 +77,9 @@ const HomePage: React.FC = () => {
       <Section className="qr-code">
         <QRCode value={siteUrl} size={100} />
       </Section>
+      {/* <Section className="venmo-qr-code">
+        <VenmoQRCode venmoUsername="@Keith-Ratner" amount={10} />
+      </Section> */}
       <IntersectionObserverComponent
         targetSelector="section.features-list, section.services .main-header, section.portfolio-list .main-header"
         className="visible"
@@ -113,6 +118,12 @@ const HomePage: React.FC = () => {
       <IntersectionObserverComponent
         className="visible"
         targetSelector="section.contact-information"
+        onIntersection={handleIntersection}
+        threshold={0.2}
+      />
+      <IntersectionObserverComponent
+        className="visible"
+        targetSelector="section.qr-code"
         onIntersection={handleIntersection}
         threshold={0.2}
       />
