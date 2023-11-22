@@ -2,7 +2,7 @@
 import "./styles/main.scss";
 import React from "react";
 import Header from "./components/wrappers/Header";
-import Footer from "./components/wrappers/Footer";
+// import Footer from "./components/wrappers/Footer";
 
 import HomePage from "./components/wrappers/pages/HomePage";
 import GoogleAnalytics from "./components/utils/GoogleAnalytics";
