@@ -1,7 +1,7 @@
 // VenmoQRCode.tsx
 import React from "react";
 // import QRCode from "react-qr-code";
-import QRCode from "qrcode.react";
+import { QRCodeSVG as QRCode } from "qrcode.react";
 
 interface VenmoQRCodeProps {
   venmoUsername: string;
