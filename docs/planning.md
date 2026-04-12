@@ -84,10 +84,27 @@ Tracks planned and completed engineering work. Add new entries at the top. Mark 
 ### Verification Checklist
 
 - [x] `npm run build` succeeds; `build/index.html` references `/portfolio-site/` base path
-- [ ] `npm start` serves at `http://localhost:5173/portfolio-site/`
+- [x] `npm start` serves at `http://localhost:5173/portfolio-site/`
 - [x] `npm test -- --watchAll=false` runs without setup errors (pre-existing `App.test.js` failure is unrelated to migration)
 - [ ] `npm run deploy` pushes to `gh-pages` branch
 - [x] `npm audit` shows 0 critical/high vulnerabilities
+
+### Post-merge fix: `process.env.PUBLIC_URL` → `import.meta.env.BASE_URL`
+
+Discovered after initial migration: Vite does not polyfill Node's `process` global, causing a runtime crash on load.
+
+**Scope:** 10 usages across 8 files — all were `process.env.PUBLIC_URL`. No `REACT_APP_*` variables or `NODE_ENV` checks existed. No `.env` files required changes.
+
+**Two replacement patterns, depending on path format:**
+
+| Context | Before | After |
+|---|---|---|
+| Template literals with explicit `/images/` | `` `${process.env.PUBLIC_URL}/images/foo` `` | `` `${import.meta.env.BASE_URL}images/foo` `` |
+| Variable assigned then concatenated with leading-slash paths | `const PUBLIC_URL = process.env.PUBLIC_URL` | `const PUBLIC_URL = import.meta.env.BASE_URL.replace(/\/$/, "")` |
+
+`BASE_URL` has a trailing slash (`/portfolio-site/`); `PUBLIC_URL` in CRA did not. The `.replace(/\/$/, "")` strips the trailing slash to keep existing `PUBLIC_URL + panel.someSlashPrefixedPath` patterns correct.
+
+**Files changed:** `Header.tsx`, `HomePage.tsx`, `Slider.tsx`, `ColumnarList.tsx`, `prototypes/__slider.tsx`, `prototypes/FeaturesList.tsx`, `prototypes/ImageCrossFader.tsx`, `prototypes/PortfolioList.tsx`
 
 ---
 
