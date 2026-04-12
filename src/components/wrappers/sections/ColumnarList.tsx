@@ -46,7 +46,7 @@ interface ColumnarListProps {
 }
 
 const ColumnarList: React.FC<ColumnarListProps> = ({ data }) => {
-  const PUBLIC_URL = process.env.PUBLIC_URL;
+  const PUBLIC_URL = import.meta.env.BASE_URL.replace(/\/$/, "");
   return (
     <div className="columnar-list">
       {data.map((project, index) => (
@@ -122,7 +122,7 @@ const ColumnarList: React.FC<ColumnarListProps> = ({ data }) => {
                       {panel.avatarImgSrc && (
                         <div className="panel-author-avatar">
                           <img
-                            src={process.env.PUBLIC_URL + panel.avatarImgSrc}
+                            src={PUBLIC_URL + panel.avatarImgSrc}
                             alt={panel.avatarImgAlt}
                           />
                         </div>

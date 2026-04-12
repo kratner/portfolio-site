@@ -35,7 +35,7 @@ const Slider: React.FC<SliderProps> = ({
   sliderHeading,
   sliderSubheading,
 }) => {
-  const PUBLIC_URL = process.env.PUBLIC_URL;
+  const PUBLIC_URL = import.meta.env.BASE_URL.replace(/\/$/, "");
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const goToPrevious = () => {

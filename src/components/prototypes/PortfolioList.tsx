@@ -46,7 +46,7 @@ const PortfolioList: React.FC<PortfolioListProps> = ({ data }) => {
               <div className="panel" key={panelIndex}>
                 <div className="panel-image">
                   <img
-                    src={process.env.PUBLIC_URL + panel.imageSrc}
+                    src={import.meta.env.BASE_URL.replace(/\/$/, "") + panel.imageSrc}
                     alt={panel.imageAlt}
                   />
                 </div>

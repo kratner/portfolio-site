@@ -22,7 +22,7 @@ const FeaturesList: React.FC<FeaturesListProps> = ({
   initialHeading,
 }) => {
   const resolveImageUrl = (src: string) => {
-    return `${process.env.PUBLIC_URL}${src}`;
+    return `${import.meta.env.BASE_URL.replace(/\/$/, "")}${src}`;
   };
 
   return (

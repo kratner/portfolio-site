@@ -14,7 +14,7 @@ const Header = () => {
   };
 
   const imageProps = {
-    src: `${process.env.PUBLIC_URL}/images/keith_ratner_white.svg`, // Use the imported logoImage directly
+    src: `${import.meta.env.BASE_URL}images/keith_ratner_white.svg`,
     alt: "Keith Ratner", // Empty string for decorative image
     width: 200,
     height: 100,

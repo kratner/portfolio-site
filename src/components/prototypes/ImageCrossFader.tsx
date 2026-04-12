@@ -19,7 +19,7 @@ const ImageCrossFader: React.FC<ImageCrossFaderProps> = ({ images, transitionDur
         return new Promise<void>((resolve) => {
           const img = new Image();
           img.onload = () => resolve();
-          img.src = process.env.PUBLIC_URL + "/images/" + image.src;
+          img.src = import.meta.env.BASE_URL + "images/" + image.src;
         });
       });
 
@@ -71,7 +71,7 @@ const ImageCrossFader: React.FC<ImageCrossFaderProps> = ({ images, transitionDur
       {loadedImages.map((image, index) => (
         <img
           key={index}
-          src={process.env.PUBLIC_URL + "/images/" + image}
+          src={import.meta.env.BASE_URL + "images/" + image}
           alt={images[index].alt}
           style={{
             maxWidth: "100%",
