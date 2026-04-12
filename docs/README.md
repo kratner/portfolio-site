@@ -6,6 +6,7 @@ This folder contains living documentation for the portfolio site. Update these f
 
 | File | Description |
 |---|---|
+| [planning.md](planning.md) | Versioned planning log — all planned, in-progress, and completed work |
 | [architecture.md](architecture.md) | Component tree, data flow, project structure |
 | [tech-stack.md](tech-stack.md) | Dependencies, build tooling, deployment |
 | [testing.md](testing.md) | Current test coverage, framework decisions, roadmap |
