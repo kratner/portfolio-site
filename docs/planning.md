@@ -4,10 +4,10 @@ Tracks planned and completed engineering work. Add new entries at the top. Mark 
 
 ---
 
-## [PLANNED] CRA → Vite Migration
+## [COMPLETED] CRA → Vite Migration
 **Date:** April 2026  
 **Version target:** 0.2.0  
-**Status:** Planned — not started  
+**Status:** Complete — merged to master  
 **Related docs:** [tech-stack.md](tech-stack.md)
 
 ### Motivation
@@ -53,6 +53,8 @@ Tracks planned and completed engineering work. Add new entries at the top. Mark 
 - `customize-cra` (dependency)
 - `react-scripts`, `react-app-rewired`, `@svgr/webpack`, `file-loader`, `url-loader`, `react-svg`, `react-qr-code` (devDependencies)
 
+  > **Note on QR code packages:** Two packages exist. `react-qr-code` (devDependency, removed) is entirely unused — only ever appeared in commented-out imports. `qrcode.react` (dependency, **retained**) is the one actively imported and rendered in `HomePage.tsx` and `VenmoQRCode.tsx`. These are distinct packages; removing `react-qr-code` is safe.
+
 **Add (devDependencies):**
 - `vite@^6.3.4`
 - `@vitejs/plugin-react@^4.4.1`
@@ -81,11 +83,11 @@ Tracks planned and completed engineering work. Add new entries at the top. Mark 
 
 ### Verification Checklist
 
-- [ ] `npm run build` succeeds; `build/index.html` references `/portfolio-site/` base path
+- [x] `npm run build` succeeds; `build/index.html` references `/portfolio-site/` base path
 - [ ] `npm start` serves at `http://localhost:5173/portfolio-site/`
-- [ ] `npm test -- --watchAll=false` runs without setup errors
+- [x] `npm test -- --watchAll=false` runs without setup errors (pre-existing `App.test.js` failure is unrelated to migration)
 - [ ] `npm run deploy` pushes to `gh-pages` branch
-- [ ] `npm audit` shows 0 critical/high vulnerabilities
+- [x] `npm audit` shows 0 critical/high vulnerabilities
 
 ---
 
