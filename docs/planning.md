@@ -86,7 +86,7 @@ Tracks planned and completed engineering work. Add new entries at the top. Mark 
 - [x] `npm run build` succeeds; `build/index.html` references `/portfolio-site/` base path
 - [x] `npm start` serves at `http://localhost:5173/portfolio-site/`
 - [x] `npm test -- --watchAll=false` runs without setup errors (pre-existing `App.test.js` failure is unrelated to migration)
-- [ ] `npm run deploy` pushes to `gh-pages` branch
+- [x] `npm run deploy` pushes to `gh-pages` branch
 - [x] `npm audit` shows 0 critical/high vulnerabilities
 
 ### Post-merge fix: `process.env.PUBLIC_URL` → `import.meta.env.BASE_URL`
