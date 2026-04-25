@@ -1,0 +1,39 @@
+# Keith Ratner — Portfolio Site
+
+> This is the professional portfolio of Keith Ratner, an AI workflow strategist and creative operations leader. The site showcases AI-augmented creative operations work, UX/UI engineering, digital marketing leadership, and hands-on agentic workflow implementation. Keith is actively seeking senior roles in AI strategy, AI content operations, and creative operations management.
+
+## About Keith
+
+Decades of experience across graphic design, UX/UI engineering, front-end development, digital marketing, and creative leadership. Hands-on daily user of Claude, GitHub Copilot, generative AI video platforms (Kling, Veo, Sora), and agentic workflow tools. Former roles at Apple (contract), Price Waterhouse, and Director of Creative Services at a national healthcare company for nearly a decade.
+
+Based in Staunton, Virginia. Open to senior remote and hybrid roles.
+
+## What This Site Demonstrates
+
+- AI workflow leadership and creative operations strategy
+- React/TypeScript/Vite front-end engineering (this site is itself a deployed example)
+- Agentic pipeline design and team AI enablement
+- UX/UI design and digital product thinking
+
+## Portfolio Sections
+
+- [Hero / Overview](https://kratner.github.io/portfolio-site/): "Where AI Meets Creative Operations" — positioning and summary
+- [AI Workflows](https://kratner.github.io/portfolio-site/#features): Core capabilities in AI-augmented creative operations
+- [Services](https://kratner.github.io/portfolio-site/#services): AI content strategy, workflow automation, team enablement, and creative direction
+- [Projects](https://kratner.github.io/portfolio-site/#portfolio): Selected work and case studies
+- [Contact](https://kratner.github.io/portfolio-site/#contact): Outreach and availability
+
+## Technical Stack (This Site)
+
+React, TypeScript, Vite, SCSS, GitHub Pages, gh-pages deployment
+
+## AI Tools — Daily Implementation
+
+Claude (Anthropic), GitHub Copilot, VS Code, Kling, Veo, Sora, Adobe Creative Cloud
+
+## Contact
+
+- Email: keith.ratner@gmail.com
+- LinkedIn: https://linkedin.com/in/keithratner
+- GitHub: https://github.com/kratner
+- Primary site: https://keithratner.live
