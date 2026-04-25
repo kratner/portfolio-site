@@ -26,8 +26,8 @@ const HomePage: React.FC = () => {
     <React.Fragment>
       <Section className="hero-header">
         <HeroHeader
-          headingText="Transforming ideas into captivating experiences"
-          bodyText="With a passion for creativity and a keen eye for detail, Keith Ratner brings a unique perspective to each and every new project."
+          headingText="Where AI Meets Creative Operations"
+          bodyText="Implementing agentic AI workflows daily — Claude, GitHub Copilot, Kling, Veo, Sora — and leading team adoption through hands-on training and workflow design. Decades of creative and marketing leadership, now applied to the frontier of AI content production."
           heroImage={{
             src: `${import.meta.env.BASE_URL}images/moeba-lr-1080p.jpg`,
             alt: "Keith Ratner's Artwork",
