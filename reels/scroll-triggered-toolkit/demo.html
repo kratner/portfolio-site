@@ -1,0 +1,473 @@
+<!--
+  ============================================================================
+  Creative Toolkit — Scroll-Triggered Narrative
+  Adapted from Outdoor Survival Kit v10 architecture
+  ============================================================================
+  Purpose : Demonstrate scroll-driven animation of a creative toolkit opening
+            and closing in sync with scroll position. Showcases AI-augmented
+            creative operations capabilities.
+  Pattern : Pinned Stage with scroll-scrubbed animation + floating tools.
+  Tech    : GSAP 3.14.2 + ScrollTrigger, CSS3, Vanilla JavaScript
+  ============================================================================
+-->
+<section class="kit-stn" data-kit="stn">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap');
+
+    .kit-stn {
+      width: 100vw !important;
+      margin-left: calc(-50vw + 50%) !important;
+      margin-right: calc(-50vw + 50%) !important;
+      max-width: 100vw !important;
+      padding: 0 !important;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif !important;
+      color: #f0f0f0 !important;
+      background: #0a0a0a !important;
+      line-height: 1.6;
+      overflow-x: clip;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .kit-stn *, .kit-stn *::before, .kit-stn *::after { box-sizing: border-box; }
+    .kit-stn img { max-width: 100%; height: auto; display: block; }
+
+    .kit-stn {
+      --primary: #3b82f6;
+      --accent: #60a5fa;
+      --success: #10b981;
+      --text-bright: #ffffff;
+      --text-muted: #a0a0a0;
+      --dark-bg: #0a0a0a;
+      --card-bg: #1a1a1a;
+    }
+
+    /* ---- HEADER ---- */
+    .kit-stn .header {
+      padding: 80px 20px;
+      text-align: center;
+      background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+      border-bottom: 1px solid #333;
+    }
+
+    .kit-stn h1 {
+      font-family: 'Playfair Display', serif !important;
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
+      color: #fff !important;
+      margin: 0 0 12px 0;
+      font-weight: 700;
+    }
+
+    .kit-stn .subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ---- PINNED STAGE ---- */
+    .kit-stn .stage {
+      height: 100vh;
+      height: 100svh;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: radial-gradient(120% 100% at 50% 40%, #1a2a3a 0%, #0a0a0a 75%) !important;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kit-stn .stage-caption {
+      font-family: 'Playfair Display', serif !important;
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      color: #fff !important;
+      max-width: 700px;
+      margin: 0 0 40px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .kit-stn .stage-caption .hl {
+      color: var(--accent) !important;
+    }
+
+    /* ---- TOOLKIT CASE ---- */
+    .kit-stn .toolbox {
+      position: relative;
+      width: min(70vw, 400px);
+      height: 280px;
+      perspective: 1200px;
+      margin: 0 0 30px;
+    }
+
+    .kit-stn .case-shell {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #2a3a4a 0%, #1a2a3a 50%, #0f1f2f 100%);
+      border: 2px solid #444;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      color: var(--accent);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .kit-stn .case-shell.open {
+      background: linear-gradient(135deg, #1a3a2a 0%, #0f2a1a 100%);
+      border-color: var(--success);
+      box-shadow: 0 20px 60px rgba(16, 185, 129, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    /* ---- FLOATING TOOLS ---- */
+    .kit-stn .tools-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .kit-stn .tool {
+      position: absolute;
+      width: clamp(60px, 14vw, 110px);
+      height: clamp(60px, 14vw, 110px);
+      border-radius: 14px;
+      background: var(--card-bg);
+      border: 2px solid #444;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: scale(0.8);
+    }
+
+    .kit-stn .tool.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .kit-stn .tool:hover {
+      border-color: var(--accent);
+      box-shadow: 0 12px 32px rgba(96, 165, 250, 0.2);
+      transform: scale(1.05);
+    }
+
+    /* Tool positions (CSS Grid radial layout) */
+    .kit-stn .t-ai { --angle: 0deg; }
+    .kit-stn .t-design { --angle: 60deg; }
+    .kit-stn .t-code { --angle: 120deg; }
+    .kit-stn .t-strategy { --angle: 180deg; }
+    .kit-stn .t-team { --angle: 240deg; }
+    .kit-stn .t-analytics { --angle: 300deg; }
+
+    /* ---- COUNTER / STATUS ---- */
+    .kit-stn .capability-counter {
+      margin-top: 24px;
+      text-align: center;
+    }
+
+    .kit-stn .counter-label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .kit-stn .counter-value {
+      font-family: 'Playfair Display', serif !important;
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      color: var(--accent) !important;
+      line-height: 1;
+      font-weight: 700;
+    }
+
+    .kit-stn .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .kit-stn .scroll-indicator .arrow {
+      display: block;
+      font-size: 20px;
+      margin-top: 8px;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* ---- FOOTER / INFO ---- */
+    .kit-stn .info-section {
+      padding: 60px 20px;
+      background: #0a0a0a;
+      text-align: center;
+      border-top: 1px solid #333;
+    }
+
+    .kit-stn .info-section h2 {
+      font-family: 'Playfair Display', serif !important;
+      font-size: 2rem;
+      color: #fff !important;
+      margin: 0 0 20px;
+    }
+
+    .kit-stn .info-text {
+      max-width: 600px;
+      margin: 0 auto;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .kit-stn .tech-stack {
+      margin-top: 30px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .kit-stn .tech-badge {
+      background: #1a1a1a;
+      border: 1px solid #444;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 768px) {
+      .kit-stn .stage {
+        padding-bottom: 60px;
+      }
+
+      .kit-stn .tool {
+        width: clamp(50px, 12vw, 80px);
+        height: clamp(50px, 12vw, 80px);
+      }
+
+      .kit-stn .stage-caption {
+        margin-bottom: 30px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .kit-stn .tool, .kit-stn .case-shell {
+        animation: none;
+        transition: none;
+      }
+
+      .kit-stn .scroll-indicator .arrow {
+        animation: none;
+      }
+    }
+  </style>
+
+  <!-- Header -->
+  <div class="header">
+    <h1>Creative Toolkit</h1>
+    <p class="subtitle">Scroll down to reveal capabilities. Watch the toolkit open and close as you scroll.</p>
+  </div>
+
+  <!-- Pinned Stage -->
+  <div class="stage">
+    <div class="stage-caption">
+      Scroll to reveal <span class="hl">6 Core Capabilities</span>
+    </div>
+
+    <div class="toolbox">
+      <div class="case-shell">
+        <div class="tools-container">
+          <div class="tool t-ai">🤖</div>
+          <div class="tool t-design">✨</div>
+          <div class="tool t-code">⚙️</div>
+          <div class="tool t-strategy">🎯</div>
+          <div class="tool t-team">👥</div>
+          <div class="tool t-analytics">📊</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="capability-counter">
+      <div class="counter-label">Capabilities Unlocked</div>
+      <div class="counter-value" id="capCount">0</div>
+    </div>
+
+    <div class="scroll-indicator">
+      Scroll to explore
+      <span class="arrow">↓</span>
+    </div>
+  </div>
+
+  <!-- Info Section -->
+  <div class="info-section">
+    <h2>How It Works</h2>
+    <p class="info-text">
+      As you scroll through the page, the toolkit case opens and closes, revealing floating capability cards
+      that fan out around it. Each tool represents a core competency in creative operations and AI workflow design.
+      The counter increments as you scroll, demonstrating scroll-driven animation.
+    </p>
+    <div class="tech-stack">
+      <span class="tech-badge">GSAP 3.14.2</span>
+      <span class="tech-badge">ScrollTrigger</span>
+      <span class="tech-badge">CSS3 Transforms</span>
+      <span class="tech-badge">Vanilla JS</span>
+    </div>
+  </div>
+
+  <!-- GSAP Loader & Animation -->
+  <script>
+    // Load GSAP from CDN
+    const loadGSAP = async () => {
+      // Try multiple CDNs for robustness
+      const cdnList = [
+        'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.2/gsap.min.js',
+        'https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js',
+      ];
+
+      for (const url of cdnList) {
+        try {
+          const script = document.createElement('script');
+          script.src = url;
+          script.async = false;
+          await new Promise((resolve, reject) => {
+            script.onload = resolve;
+            script.onerror = reject;
+            document.head.appendChild(script);
+          });
+          return true;
+        } catch (e) {
+          continue;
+        }
+      }
+      return false;
+    };
+
+    const loadScrollTrigger = async () => {
+      const script = document.createElement('script');
+      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.2/ScrollTrigger.min.js';
+      script.async = false;
+      return new Promise((resolve) => {
+        script.onload = () => {
+          if (window.gsap) {
+            gsap.registerPlugin(ScrollTrigger);
+          }
+          resolve();
+        };
+        script.onerror = resolve;
+        document.head.appendChild(script);
+      });
+    };
+
+    const initAnimation = () => {
+      if (!window.gsap || !window.ScrollTrigger) {
+        console.warn('GSAP or ScrollTrigger not available');
+        return;
+      }
+
+      const stage = document.querySelector('.kit-stn .stage');
+      const caseShell = document.querySelector('.kit-stn .case-shell');
+      const tools = document.querySelectorAll('.kit-stn .tool');
+      const capCount = document.getElementById('capCount');
+
+      if (!stage || !caseShell) return;
+
+      // Create timeline for scroll-driven animation
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: stage,
+          start: 'top center',
+          end: 'bottom center',
+          scrub: 1,
+          markers: false,
+        },
+      });
+
+      // Animate case opening (0% -> 100%)
+      tl.fromTo(
+        caseShell,
+        { '--rotation': '0deg' },
+        { '--rotation': '10deg', duration: 1, ease: 'none' },
+        0
+      );
+
+      // Tool fan-out animation
+      tools.forEach((tool, index) => {
+        const angle = (index / tools.length) * 360;
+        const radius = 140;
+        const x = Math.cos((angle * Math.PI) / 180) * radius;
+        const y = Math.sin((angle * Math.PI) / 180) * radius;
+
+        tl.to(
+          tool,
+          {
+            opacity: 1,
+            transform: `translate(${x}px, ${y}px) scale(1)`,
+            duration: 0.8,
+          },
+          index * 0.1
+        );
+
+        tool.classList.add('visible');
+      });
+
+      // Case color transition on open
+      tl.to(caseShell, { borderColor: '#10b981' }, 0.3);
+
+      // Counter animation
+      tl.to(
+        { count: 0 },
+        {
+          count: tools.length,
+          onUpdate: function () {
+            capCount.textContent = Math.floor(this.targets()[0].count);
+          },
+          duration: 1,
+        },
+        0.5
+      );
+
+      // Close animation on scroll back
+      ScrollTrigger.create({
+        trigger: stage,
+        start: 'top center',
+        end: 'bottom center',
+        onUpdate: (self) => {
+          if (self.progress < 0.2) {
+            caseShell.classList.remove('open');
+          } else {
+            caseShell.classList.add('open');
+          }
+        },
+      });
+    };
+
+    // Initialize on load
+    document.addEventListener('DOMContentLoaded', async () => {
+      const gsapLoaded = await loadGSAP();
+      if (gsapLoaded) {
+        await loadScrollTrigger();
+        initAnimation();
+      }
+    });
+  </script>
+</section>
