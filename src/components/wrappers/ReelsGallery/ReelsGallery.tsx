@@ -15,16 +15,15 @@ const baseUrl = import.meta.env.BASE_URL;
 
 const REELS_DATA: ReelComponent[] = [
   {
-    id: 'scroll-narrative',
-    title: 'Scroll-Triggered Bundle Showcase',
+    id: 'scroll-toolkit',
+    title: 'Scroll-Triggered Toolkit',
     description:
-      'A 3-act scroll-driven narrative with pinned sequencing, animated transitions, and dynamic progress tracking. Guides users through product features with smooth scroll-linked reveals.',
-    demoUrl: `${baseUrl}reels/scroll-triggered-narrative/demo.html`,
-    iframeHeight: 600,
+      'Interactive toolkit that opens and closes based on scroll position. Features floating capability cards that fan out from a central case. Demonstrates scroll-driven animation synchronized with user scroll behavior.',
+    demoUrl: `${baseUrl}reels/scroll-triggered-toolkit/demo.html`,
+    iframeHeight: 800,
     techStack: [
       'GSAP 3.14.2',
-      'ScrollTrigger',
-      'HTML5',
+      'ScrollTrigger Plugin',
       'CSS3 Transforms',
       'Vanilla JavaScript',
     ],
