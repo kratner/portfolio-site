@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Military Watch Image Carousel</title>
+    <style>
+        html, body {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #militaryWatchCarouselWrapper .carousel-wrapper-outer {
+            width: 100vw;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            background: white;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+        }
+
+        #militaryWatchCarouselWrapper .carousel-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 1;
+            background: white;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        #militaryWatchCarouselWrapper .carousel-track {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+            margin: 0;
+            padding: 0;
+        }
+
+        #militaryWatchCarouselWrapper .carousel-slide {
+            position: relative;
+            width: 33.333%;
+            height: 100%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        #militaryWatchCarouselWrapper .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background: white;
+            padding: 0;
+            margin: 0;
+            display: block;
+        }
+
+        #militaryWatchCarouselWrapper .carousel-nav-button {
+            position: absolute;
+            top: 50%;
+            z-index: 20;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            user-select: none;
+            padding: 0;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            transform: translateY(-50%);
+        }
+
+        #militaryWatchCarouselWrapper .carousel-nav-button:hover {
+            background: rgba(0, 0, 0, 0.6);
+            border-color: rgba(0, 0, 0, 0.7);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        #militaryWatchCarouselWrapper .carousel-nav-button:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
+        #militaryWatchCarouselWrapper .carousel-nav-button.prev {
+            left: 15px;
+        }
+
+        #militaryWatchCarouselWrapper .carousel-nav-button.next {
+            right: 15px;
+        }
+
+        #militaryWatchCarouselWrapper .carousel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 15;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        #militaryWatchCarouselWrapper .carousel-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+            margin: 0;
+        }
+
+        #militaryWatchCarouselWrapper .carousel-indicator.active {
+            background: rgba(0, 0, 0, 0.7);
+            width: 30px;
+            border-radius: 5px;
+            border-color: rgba(0, 0, 0, 0.7);
+        }
+
+        #militaryWatchCarouselWrapper .carousel-counter {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: rgba(0, 0, 0, 0.6);
+            font-size: 14px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            z-index: 15;
+        }
+
+        @media (max-width: 1024px) {
+            #militaryWatchCarouselWrapper .carousel-container {
+                aspect-ratio: 3 / 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #militaryWatchCarouselWrapper .carousel-container {
+                aspect-ratio: 2.5 / 1;
+            }
+
+            #militaryWatchCarouselWrapper .carousel-nav-button {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+
+            #militaryWatchCarouselWrapper .carousel-indicators {
+                bottom: 15px;
+                gap: 8px;
+            }
+
+            #militaryWatchCarouselWrapper .carousel-counter {
+                font-size: 12px;
+                padding: 6px 10px;
+                top: 10px;
+                right: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #militaryWatchCarouselWrapper .carousel-container {
+                aspect-ratio: 1.5 / 1;
+            }
+
+            #militaryWatchCarouselWrapper .carousel-nav-button {
+                width: 35px;
+                height: 35px;
+                font-size: 18px;
+            }
+
+            #militaryWatchCarouselWrapper .carousel-nav-button.prev {
+                left: 8px;
+            }
+
+            #militaryWatchCarouselWrapper .carousel-nav-button.next {
+                right: 8px;
+            }
+
+            #militaryWatchCarouselWrapper .carousel-indicators {
+                bottom: 12px;
+                gap: 6px;
+            }
+
+            #militaryWatchCarouselWrapper .carousel-indicator {
+                width: 8px;
+                height: 8px;
+            }
+
+            #militaryWatchCarouselWrapper .carousel-indicator.active {
+                width: 24px;
+            }
+
+            #militaryWatchCarouselWrapper .carousel-counter {
+                font-size: 11px;
+                padding: 5px 8px;
+                top: 8px;
+                right: 8px;
+            }
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0;">
+    <div class="carousel-wrapper-outer" id="militaryWatchCarouselWrapper">
+        <div class="carousel-container">
+            <div class="carousel-track" id="militaryWatchCarouselTrack">
+                <div class="carousel-slide">
+                    <img src="https://mtp-images.com/Military_Watch_-_review_10.png" alt="Military Watch Review 1">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://mtp-images.com/Military_Watch_-_review_9.png" alt="Military Watch Review 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://mtp-images.com/Military_Watch_-_review_8.png" alt="Military Watch Review 3">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://mtp-images.com/Military_Watch_-_review_4.png" alt="Military Watch Review 4">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://mtp-images.com/Military_Watch_-_review_3.png" alt="Military Watch Review 5">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://mtp-images.com/Military_Watch_-_review_1.png" alt="Military Watch Review 6">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://mtp-images.com/Military_Watch_5.png" alt="Military Watch Product">
+                </div>
+                <!-- Cloned slides for infinite loop -->
+                <div class="carousel-slide">
+                    <img src="https://mtp-images.com/Military_Watch_-_review_10.png" alt="Military Watch Review 1">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://mtp-images.com/Military_Watch_-_review_9.png" alt="Military Watch Review 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://mtp-images.com/Military_Watch_-_review_8.png" alt="Military Watch Review 3">
+                </div>
+            </div>
+
+            <button class="carousel-nav-button prev" id="militaryWatchPrevBtn" type="button">❮</button>
+            <button class="carousel-nav-button next" id="militaryWatchNextBtn" type="button">❯</button>
+
+            <div class="carousel-indicators" id="militaryWatchIndicators"></div>
+            <div class="carousel-counter">
+                <span id="militaryWatchCurrentSlide">1</span> / <span id="militaryWatchTotalSlides">7</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const track = document.getElementById('militaryWatchCarouselTrack');
+            const prevBtn = document.getElementById('militaryWatchPrevBtn');
+            const nextBtn = document.getElementById('militaryWatchNextBtn');
+            const indicatorsContainer = document.getElementById('militaryWatchIndicators');
+            const currentSlideSpan = document.getElementById('militaryWatchCurrentSlide');
+            const totalSlidesSpan = document.getElementById('militaryWatchTotalSlides');
+            let currentSlide = 0;
+            let isTransitioning = false;
+            let autoPlayTimer = null;
+            const totalSlides = 7; // Only 7 real slides
+            // Fisher-Yates shuffle function
+            function shuffleArray(array) {
+                const arr = [...array];
+                for (let i = arr.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [arr[i], arr[j]] = [arr[j], arr[i]];
+                }
+                return arr;
+            }
+            // Shuffle slides on load
+            function shuffleSlides() {
+                const slides = Array.from(track.querySelectorAll('.carousel-slide')).slice(0, totalSlides);
+                const shuffledSlides = shuffleArray(slides);
+                // Reorder DOM - replace first 7 slides with shuffled order
+                shuffledSlides.forEach((slide, index) => {
+                    track.insertBefore(slide, track.children[index]);
+                });
+                // Update cloned slides at end to match first 3 shuffled images
+                const clonedSlides = Array.from(track.querySelectorAll('.carousel-slide')).slice(totalSlides);
+                for (let i = 0; i < 3; i++) {
+                    const originalImg = shuffledSlides[i].querySelector('img');
+                    const cloneImg = clonedSlides[i].querySelector('img');
+                    cloneImg.src = originalImg.src;
+                    cloneImg.alt = originalImg.alt;
+                }
+            }
+            // Shuffle on initialization
+            shuffleSlides();
+            const slides = Array.from(track.querySelectorAll('.carousel-slide'));
+            // Initialize
+            totalSlidesSpan.textContent = totalSlides;
+            // Create indicators
+            for (let i = 0; i < totalSlides; i++) {
+                const indicator = document.createElement('div');
+                indicator.className = 'carousel-indicator';
+                if (i === 0) indicator.classList.add('active');
+                indicator.addEventListener('click', function() {
+                    goToSlide(i);
+                    resetAutoPlay();
+                });
+                indicatorsContainer.appendChild(indicator);
+            }
+            function updateCarousel() {
+                const offset = -currentSlide * 33.333;
+                track.style.transition = 'transform 0.6s ease-in-out';
+                track.style.transform = 'translateX(' + offset + '%)';
+                // Update counter
+                currentSlideSpan.textContent = (currentSlide % totalSlides) + 1;
+                // Update indicators
+                const indicators = indicatorsContainer.querySelectorAll('.carousel-indicator');
+                indicators.forEach((ind, index) => {
+                    if (index === currentSlide % totalSlides) {
+                        ind.classList.add('active');
+                    } else {
+                        ind.classList.remove('active');
+                    }
+                });
+            }
+            function nextSlide() {
+                if (isTransitioning) return;
+                isTransitioning = true;
+                currentSlide++;
+                updateCarousel();
+                setTimeout(function() {
+                    isTransitioning = false;
+                    // If we've reached the cloned slides, reset to beginning
+                    if (currentSlide >= totalSlides) {
+                        currentSlide = 0;
+                        track.style.transition = 'none';
+                        track.style.transform = 'translateX(0%)';
+                    }
+                }, 600);
+            }
+            function previousSlide() {
+                if (isTransitioning) return;
+                isTransitioning = true;
+                currentSlide--;
+                // If we go below 0, jump to end
+                if (currentSlide < 0) {
+                    currentSlide = totalSlides - 1;
+                    track.style.transition = 'none';
+                    track.style.transform = 'translateX(' + (-currentSlide * 33.333) + '%)';
+                    isTransitioning = false;
+                } else {
+                    updateCarousel();
+                    setTimeout(function() {
+                        isTransitioning = false;
+                    }, 600);
+                }
+            }
+            function goToSlide(index) {
+                currentSlide = index % totalSlides;
+                updateCarousel();
+            }
+            function startAutoPlay() {
+                autoPlayTimer = setInterval(function() {
+                    nextSlide();
+                }, 5000);
+            }
+            function stopAutoPlay() {
+                if (autoPlayTimer) {
+                    clearInterval(autoPlayTimer);
+                    autoPlayTimer = null;
+                }
+            }
+            function resetAutoPlay() {
+                stopAutoPlay();
+                startAutoPlay();
+            }
+            // Event listeners
+            if (prevBtn) {
+                prevBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    previousSlide();
+                    resetAutoPlay();
+                });
+            }
+            if (nextBtn) {
+                nextBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    nextSlide();
+                    resetAutoPlay();
+                });
+            }
+            // Keyboard support
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowLeft') {
+                    previousSlide();
+                    resetAutoPlay();
+                } else if (e.key === 'ArrowRight') {
+                    nextSlide();
+                    resetAutoPlay();
+                }
+            });
+            // Touch support
+            let touchStartX = 0;
+            track.addEventListener('touchstart', function(e) {
+                touchStartX = e.touches[0].clientX;
+            });
+            track.addEventListener('touchend', function(e) {
+                const touchEndX = e.changedTouches[0].clientX;
+                const difference = touchStartX - touchEndX;
+                if (Math.abs(difference) > 50) {
+                    if (difference > 0) {
+                        nextSlide();
+                    } else {
+                        previousSlide();
+                    }
+                    resetAutoPlay();
+                }
+            });
+            // Pause on hover
+            track.addEventListener('mouseenter', stopAutoPlay);
+            track.addEventListener('mouseleave', startAutoPlay);
+            // Initialize carousel
+            updateCarousel();
+            startAutoPlay();
+        })();
+    </script>
+</body>
+</html>
