@@ -1,0 +1,723 @@
+<!-- ============================================================
+     SHTF Survival Kit — Bundle Showcase (HyperFrames)
+     Scroll-triggered 3-scene story using GSAP + ScrollTrigger.
+     Self-contained: drop into ClickFunnels Custom HTML element.
+     Dependency: GSAP 3.14.2 from CDN (loaded inline below).
+     ============================================================ -->
+
+<section class="shtf-hf-section" data-composition-id="shtf-bundle-showcase" data-track-index="0">
+
+<style>
+    .shtf-hf-section {
+        position: relative;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%) !important;
+        margin-right: calc(-50vw + 50%) !important;
+        max-width: 100vw !important;
+        background:
+            linear-gradient(180deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.94) 100%),
+            url('https://mtp-images.com/pr-photo-1419.png') center / cover no-repeat fixed;
+        color: #f0f0f0;
+        overflow: hidden;
+        font-family: inherit;
+    }
+    .shtf-hf-section *, .shtf-hf-section *::before, .shtf-hf-section *::after {
+        box-sizing: border-box;
+    }
+
+    /* ----- ACT 1: Header ----- */
+    .shtf-hf-head {
+        text-align: center;
+        padding: clamp(60px, 10vw, 100px) clamp(20px, 4vw, 40px) clamp(30px, 5vw, 50px);
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    .shtf-hf-eyebrow {
+        display: inline-block;
+        font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+        font-weight: 700;
+        letter-spacing: 0.25em;
+        color: #FF6B35;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        opacity: 0;
+    }
+    .shtf-hf-title {
+        font-size: clamp(1.9rem, 5vw, 3.4rem);
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+        color: #ffffff;
+        line-height: 1.05;
+        margin: 0 0 1rem 0;
+        text-shadow: 1px 1px 8px rgba(0,0,0,0.85);
+        opacity: 0;
+    }
+    .shtf-hf-title .hl { color: #FF6B35; }
+    .shtf-hf-sub {
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        color: #d0d0d0;
+        line-height: 1.5;
+        margin: 0;
+        opacity: 0;
+    }
+
+    /* ----- ACT 2: Pinned scene stage ----- */
+    .shtf-hf-stage {
+        position: relative;
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: clamp(30px, 5vw, 60px) clamp(20px, 4vw, 40px);
+    }
+    .shtf-hf-stage-inner {
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: clamp(30px, 5vw, 60px);
+        align-items: center;
+    }
+    .shtf-hf-media {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        border-radius: 14px;
+        overflow: hidden;
+        background: #0a0a0a;
+        box-shadow: 0 18px 50px rgba(0,0,0,0.55);
+    }
+    .shtf-hf-media img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        opacity: 0;
+        transform: scale(1.08);
+    }
+    .shtf-hf-media img[data-scene="0"] { opacity: 1; transform: scale(1); }
+
+    .shtf-hf-info {
+        position: relative;
+        min-height: clamp(280px, 40vh, 400px);
+    }
+    .shtf-hf-counter {
+        font-size: clamp(0.85rem, 1.4vw, 0.95rem);
+        font-weight: 700;
+        letter-spacing: 0.3em;
+        color: #FF6B35;
+        text-transform: uppercase;
+        margin-bottom: clamp(16px, 2.5vw, 24px);
+        font-variant-numeric: tabular-nums;
+    }
+    .shtf-hf-scene {
+        position: absolute;
+        top: clamp(36px, 6vw, 56px);
+        left: 0;
+        right: 0;
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    .shtf-hf-scene[data-scene="0"] { opacity: 1; transform: translateY(0); }
+    .shtf-hf-scene-name {
+        font-size: clamp(1.6rem, 4vw, 2.6rem);
+        font-weight: 900;
+        text-transform: uppercase;
+        line-height: 1.05;
+        letter-spacing: 0.01em;
+        margin: 0 0 1rem 0;
+        color: #ffffff;
+        text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+    }
+    .shtf-hf-scene-name sup {
+        font-size: 0.45em;
+        vertical-align: super;
+        color: #FF6B35;
+    }
+    .shtf-hf-scene-price {
+        font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+        color: #e0e0e0;
+        font-variant-numeric: tabular-nums;
+    }
+    .shtf-hf-scene-price .num {
+        color: #FF6B35;
+        font-weight: 800;
+        font-size: 1.15em;
+    }
+    .shtf-hf-scene-tag {
+        display: inline-block;
+        margin-top: clamp(14px, 2.5vw, 20px);
+        padding: 0.4em 0.85em;
+        background: rgba(255, 107, 53, 0.12);
+        border: 1px solid rgba(255, 107, 53, 0.4);
+        border-radius: 4px;
+        font-size: clamp(0.75rem, 1.3vw, 0.85rem);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: #FF6B35;
+    }
+
+    /* Scene progress bar */
+    .shtf-hf-progress {
+        position: absolute;
+        bottom: clamp(20px, 3vw, 32px);
+        left: 50%;
+        transform: translateX(-50%);
+        width: clamp(120px, 30vw, 240px);
+        height: 3px;
+        background: rgba(255,255,255,0.15);
+        border-radius: 2px;
+        overflow: hidden;
+    }
+    .shtf-hf-progress-fill {
+        position: absolute;
+        inset: 0 100% 0 0;
+        background: #FF6B35;
+        transition: right 0.05s linear;
+    }
+
+    /* Scroll-down cue — sits inside pinned stage, fades out as user scrubs */
+    .shtf-hf-scrollcue {
+        position: absolute;
+        bottom: clamp(40px, 6vw, 60px);
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        color: #FF6B35;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 5;
+    }
+    .shtf-hf-scrollcue-text {
+        font-size: clamp(0.7rem, 1.3vw, 0.8rem);
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+    }
+    .shtf-hf-scrollcue-arrow {
+        width: clamp(20px, 3vw, 26px);
+        height: clamp(20px, 3vw, 26px);
+        filter: drop-shadow(0 1px 3px rgba(0,0,0,0.6));
+    }
+
+    /* Fixed floating CTA — lower third of viewport */
+    .shtf-hf-fixedcta {
+        position: fixed;
+        left: 16px;
+        right: 16px;
+        bottom: clamp(20px, 4vh, 32px);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 14px 22px;
+        background: #E31C23;
+        color: #ffffff;
+        font-size: clamp(0.95rem, 2vw, 1.05rem);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        text-decoration: none;
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.55), 0 4px 12px rgba(227, 28, 35, 0.5);
+        opacity: 0;
+        transform: translateY(120%);
+        transition: opacity 0.35s ease, transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.25s ease;
+        pointer-events: none;
+        max-width: 520px;
+        margin: 0 auto;
+    }
+    .shtf-hf-fixedcta.is-active {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+    .shtf-hf-fixedcta:hover { background: #b71d11; }
+    .shtf-hf-fixedcta-arrow {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+        transition: transform 0.2s ease;
+    }
+    .shtf-hf-fixedcta:hover .shtf-hf-fixedcta-arrow { transform: translateX(3px); }
+
+    /* ----- ACT 3: Stack + CTA ----- */
+    .shtf-hf-foot {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: clamp(40px, 7vw, 80px) clamp(20px, 4vw, 40px) clamp(60px, 10vw, 100px);
+        text-align: center;
+    }
+    .shtf-hf-stack {
+        background: rgba(20, 20, 20, 0.78);
+        border: 1px solid rgba(255, 107, 53, 0.3);
+        border-radius: 12px;
+        padding: clamp(24px, 4vw, 36px);
+        backdrop-filter: blur(4px);
+        text-align: left;
+    }
+    .shtf-hf-stack-h {
+        font-size: clamp(1.1rem, 2vw, 1.3rem);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #ffffff;
+        margin: 0 0 1rem 0;
+        padding-bottom: 0.85rem;
+        border-bottom: 1px solid rgba(255,255,255,0.12);
+        text-align: center;
+        opacity: 0;
+    }
+    .shtf-hf-line {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 0.7rem 0;
+        font-size: clamp(0.95rem, 1.8vw, 1.08rem);
+        border-bottom: 1px dashed rgba(255,255,255,0.08);
+        opacity: 0;
+    }
+    .shtf-hf-line:last-of-type { border-bottom: none; }
+    .shtf-hf-line .item { color: #e8e8e8; }
+    .shtf-hf-line .val {
+        color: #ffffff;
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+    }
+    .shtf-hf-total {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-top: 1.2rem;
+        padding: 1rem 1.1rem;
+        background: rgba(255, 107, 53, 0.1);
+        border: 1px solid rgba(255, 107, 53, 0.4);
+        border-radius: 8px;
+        opacity: 0;
+        transform: scale(0.96);
+    }
+    .shtf-hf-total .label {
+        font-size: clamp(0.85rem, 1.6vw, 0.98rem);
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #FF6B35;
+        font-weight: 700;
+    }
+    .shtf-hf-total .value {
+        font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+        font-weight: 900;
+        color: #ffffff;
+        font-variant-numeric: tabular-nums;
+    }
+    .shtf-hf-total .strike {
+        text-decoration: line-through;
+        color: #888;
+        font-weight: 600;
+    }
+
+    .shtf-hf-cta-row {
+        margin-top: clamp(32px, 5vw, 44px);
+        opacity: 0;
+    }
+    .shtf-hf-cta {
+        display: inline-block;
+        padding: 1.25rem 3rem;
+        font-size: clamp(1.1rem, 2vw, 1.35rem);
+        font-weight: 800;
+        color: #ffffff;
+        background: #E31C23;
+        border: none;
+        border-radius: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+        box-shadow: 0 8px 26px rgba(227, 28, 35, 0.5);
+    }
+    .shtf-hf-cta:hover {
+        background: #b71d11;
+        transform: translateY(-2px);
+        box-shadow: 0 12px 32px rgba(227, 28, 35, 0.7);
+    }
+    .shtf-hf-cta:active { transform: translateY(0); }
+    .shtf-hf-trust {
+        margin-top: 1.2rem;
+        color: #c8c8c8;
+        font-size: clamp(0.82rem, 1.4vw, 0.95rem);
+        letter-spacing: 0.04em;
+    }
+    .shtf-hf-trust span { color: #FF6B35; font-weight: 700; }
+
+    /* ----- Responsive ----- */
+    @media (max-width: 968px) {
+        .shtf-hf-stage-inner {
+            grid-template-columns: 1fr;
+            gap: clamp(20px, 4vw, 32px);
+        }
+        .shtf-hf-info {
+            min-height: clamp(220px, 38vh, 320px);
+            text-align: center;
+        }
+        .shtf-hf-scene-tag { margin-left: auto; margin-right: auto; }
+        .shtf-hf-cta {
+            display: block;
+            width: 90%;
+            max-width: 360px;
+            margin: 0 auto;
+            padding: 1.05rem 2rem;
+        }
+    }
+
+    /* iOS Safari: background-attachment: fixed has bugs */
+    @supports (-webkit-touch-callout: none) {
+        .shtf-hf-section { background-attachment: scroll; }
+    }
+
+    /* Reduced-motion: show final state, no pinning, hide motion-only chevron, keep fixed CTA static */
+    @media (prefers-reduced-motion: reduce) {
+        .shtf-hf-eyebrow,
+        .shtf-hf-title,
+        .shtf-hf-sub,
+        .shtf-hf-stack-h,
+        .shtf-hf-line,
+        .shtf-hf-total,
+        .shtf-hf-cta-row { opacity: 1 !important; transform: none !important; }
+        .shtf-hf-scene { position: relative; opacity: 1 !important; transform: none !important; }
+        .shtf-hf-scene + .shtf-hf-scene { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
+        .shtf-hf-media img { opacity: 1 !important; transform: none !important; position: relative; }
+        .shtf-hf-media { aspect-ratio: auto; height: auto; }
+        .shtf-hf-scrollcue { display: none; }
+        .shtf-hf-fixedcta { transition: none !important; }
+    }
+
+    /* No-GSAP fallback (CDN blocked / offline / preview sandbox): identical to reduced-motion */
+    .shtf-hf-section.shtf-hf-no-gsap .shtf-hf-eyebrow,
+    .shtf-hf-section.shtf-hf-no-gsap .shtf-hf-title,
+    .shtf-hf-section.shtf-hf-no-gsap .shtf-hf-sub,
+    .shtf-hf-section.shtf-hf-no-gsap .shtf-hf-stack-h,
+    .shtf-hf-section.shtf-hf-no-gsap .shtf-hf-line,
+    .shtf-hf-section.shtf-hf-no-gsap .shtf-hf-total,
+    .shtf-hf-section.shtf-hf-no-gsap .shtf-hf-cta-row { opacity: 1 !important; transform: none !important; }
+    .shtf-hf-section.shtf-hf-no-gsap .shtf-hf-scene { position: relative; opacity: 1 !important; transform: none !important; }
+    .shtf-hf-section.shtf-hf-no-gsap .shtf-hf-scene + .shtf-hf-scene { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
+    .shtf-hf-section.shtf-hf-no-gsap .shtf-hf-media img { opacity: 1 !important; transform: none !important; position: relative; }
+    .shtf-hf-section.shtf-hf-no-gsap .shtf-hf-media { aspect-ratio: auto; height: auto; }
+    .shtf-hf-section.shtf-hf-no-gsap .shtf-hf-progress { display: none; }
+    .shtf-hf-section.shtf-hf-no-gsap .shtf-hf-counter { display: none; }
+    .shtf-hf-section.shtf-hf-no-gsap .shtf-hf-stage { min-height: 0; }
+    .shtf-hf-section.shtf-hf-no-gsap .shtf-hf-scrollcue { display: none; }
+    /* In no-GSAP mode, statically reveal the fixed CTA so it's still useful */
+    .shtf-hf-section.shtf-hf-no-gsap ~ .shtf-hf-fixedcta { opacity: 1; transform: none; pointer-events: auto; }
+</style>
+
+<!-- Act 1: Header -->
+<header class="shtf-hf-head">
+    <div class="shtf-hf-eyebrow">The Complete Kit</div>
+    <h2 class="shtf-hf-title">Three Pieces. <span class="hl">One Mission.</span></h2>
+    <p class="shtf-hf-sub">When the unexpected hits, you don't want to be chasing accessories at three different stores. Here's everything that ships in the box.</p>
+</header>
+
+<!-- Act 2: Pinned 3-scene product showcase -->
+<div class="shtf-hf-stage">
+    <div class="shtf-hf-stage-inner">
+        <div class="shtf-hf-media">
+            <img data-scene="0" src="https://mtp-images.com/pr-photo-1426.webp" alt="The SHTF Survival Kit Bundle">
+            <img data-scene="1" src="https://mtp-images.com/pr-photo-1398.webp" alt="USB Tactical Flashlight" loading="lazy">
+            <img data-scene="2" src="https://mtp-images.com/pr-photo-067.png" alt="Tiger Blade Folding Knife" loading="lazy">
+            <img data-scene="3" src="https://mtp-images.com/pr-photo-664.webp" alt="Tactical Shoulder Bag" loading="lazy">
+        </div>
+
+        <div class="shtf-hf-info">
+            <div class="shtf-hf-counter"><span class="shtf-hf-counter-num">01</span> / 04</div>
+
+            <div class="shtf-hf-scene" data-scene="0">
+                <h3 class="shtf-hf-scene-name">The Complete Bundle</h3>
+                <div class="shtf-hf-scene-price">Total retail <span class="num">$179</span></div>
+                <div class="shtf-hf-scene-tag">Three Tools. One Kit.</div>
+            </div>
+
+            <div class="shtf-hf-scene" data-scene="1">
+                <h3 class="shtf-hf-scene-name">USB Tactical Flashlight</h3>
+                <div class="shtf-hf-scene-price">Retail value <span class="num">$40</span></div>
+                <div class="shtf-hf-scene-tag">Always Charged</div>
+            </div>
+
+            <div class="shtf-hf-scene" data-scene="2">
+                <h3 class="shtf-hf-scene-name">Tiger Blade<sup>&trade;</sup> Folding Knife</h3>
+                <div class="shtf-hf-scene-price">Retail value <span class="num">$39</span></div>
+                <div class="shtf-hf-scene-tag">Instant Deploy</div>
+            </div>
+
+            <div class="shtf-hf-scene" data-scene="3">
+                <h3 class="shtf-hf-scene-name">Tactical Shoulder Bag</h3>
+                <div class="shtf-hf-scene-price">Retail value <span class="num">$100</span></div>
+                <div class="shtf-hf-scene-tag">Built To Haul</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="shtf-hf-scrollcue" aria-hidden="true">
+        <span class="shtf-hf-scrollcue-text">Keep Scrolling</span>
+        <svg class="shtf-hf-scrollcue-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+    </div>
+
+    <div class="shtf-hf-progress" aria-hidden="true">
+        <div class="shtf-hf-progress-fill"></div>
+    </div>
+</div>
+
+<!-- Floating fixed CTA — appears when section is in view, hides when Act 3 is reached -->
+<a href="#" class="shtf-hf-fixedcta" onclick="scrollToForm(event)" aria-label="Claim My SHTF Kit Now">
+    <span class="shtf-hf-fixedcta-text">Claim My SHTF Kit</span>
+    <svg class="shtf-hf-fixedcta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+    </svg>
+</a>
+
+<!-- Act 3: Stack + CTA -->
+<footer class="shtf-hf-foot">
+    <div class="shtf-hf-stack">
+        <h3 class="shtf-hf-stack-h">What's In The Box</h3>
+        <div class="shtf-hf-line"><span class="item">USB Tactical Flashlight</span><span class="val">$40</span></div>
+        <div class="shtf-hf-line"><span class="item">Tiger Blade<sup>&trade;</sup> Folding Knife</span><span class="val">$39</span></div>
+        <div class="shtf-hf-line"><span class="item">Tactical Shoulder Bag</span><span class="val">$100</span></div>
+        <div class="shtf-hf-total">
+            <span class="label">Total Retail Value</span>
+            <span class="value"><span class="strike">$179</span></span>
+        </div>
+    </div>
+    <div class="shtf-hf-cta-row">
+        <a href="#" class="shtf-hf-cta" onclick="scrollToForm(event)">Claim My SHTF Kit Now</a>
+        <div class="shtf-hf-trust"><span>FREE</span> SHIPPING &nbsp;&middot;&nbsp; <span>SAME-DAY</span> SHIPPING &nbsp;&middot;&nbsp; SHIPS FROM USA</div>
+    </div>
+</footer>
+
+</section>
+
+<!-- GSAP + ScrollTrigger loaded inline-injected
+     (CF Custom HTML strips external <script src> tags, so we inject them from JS) -->
+<script>
+(function() {
+    // scrollToForm — register globally if not already present (matches workspace convention)
+    if (typeof window.scrollToForm !== 'function') {
+        window.scrollToForm = function(event) {
+            if (event) event.preventDefault();
+            var t = document.getElementById('form-target')
+                 || document.querySelector('[data-title="_ORDERFORM"]')
+                 || document.querySelector('.orderformtarget');
+            if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        };
+    }
+
+    // jsdelivr is on CF's CSP allowlist (workspace already uses it for bump selectors).
+    // cdnjs.cloudflare.com is NOT — switched on May 12, 2026 after CSP block confirmed.
+    var GSAP_URL = 'https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js';
+    var ST_URL   = 'https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/ScrollTrigger.min.js';
+
+    function markNoGsap() {
+        document.querySelectorAll('.shtf-hf-section').forEach(function(s) {
+            s.classList.add('shtf-hf-no-gsap');
+        });
+    }
+
+    function loadScript(src, cb, errCb) {
+        // Skip if already present (multi-instance safe)
+        var existing = document.querySelector('script[src="' + src + '"]');
+        if (existing) {
+            if (existing.getAttribute('data-loaded') === '1') { cb(); return; }
+            existing.addEventListener('load', cb);
+            existing.addEventListener('error', errCb);
+            return;
+        }
+        var s = document.createElement('script');
+        s.src = src;
+        s.async = false; // preserve execution order
+        s.onload  = function() { s.setAttribute('data-loaded', '1'); cb(); };
+        s.onerror = function() { errCb(new Error('Failed to load ' + src)); };
+        document.head.appendChild(s);
+    }
+
+    function loadGsapThen(done) {
+        loadScript(GSAP_URL, function() {
+            loadScript(ST_URL, done, function(e) {
+                console.warn('[SHTF-HF] ScrollTrigger load failed:', e);
+                markNoGsap();
+            });
+        }, function(e) {
+            console.warn('[SHTF-HF] GSAP load failed:', e);
+            markNoGsap();
+        });
+    }
+
+    function init() {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+            markNoGsap();
+            return;
+        }
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // Multi-instance safe: scope every selector to each section instance
+        document.querySelectorAll('.shtf-hf-section').forEach(function(section, idx) {
+            var head     = section.querySelector('.shtf-hf-head');
+            var eyebrow  = section.querySelector('.shtf-hf-eyebrow');
+            var title    = section.querySelector('.shtf-hf-title');
+            var sub      = section.querySelector('.shtf-hf-sub');
+            var stage    = section.querySelector('.shtf-hf-stage');
+            var images   = section.querySelectorAll('.shtf-hf-media img');
+            var scenes   = section.querySelectorAll('.shtf-hf-scene');
+            var counter  = section.querySelector('.shtf-hf-counter-num');
+            var progress = section.querySelector('.shtf-hf-progress-fill');
+            var scrollcue= section.querySelector('.shtf-hf-scrollcue');
+            var foot     = section.querySelector('.shtf-hf-foot');
+            var stackH   = section.querySelector('.shtf-hf-stack-h');
+            var lines    = section.querySelectorAll('.shtf-hf-line');
+            var total    = section.querySelector('.shtf-hf-total');
+            var ctaRow   = section.querySelector('.shtf-hf-cta-row');
+            // Fixed CTA lives outside the section in the DOM (sibling) — find it relative to section
+            var fixedCta = (section.parentNode || document).querySelector('.shtf-hf-fixedcta');
+
+            if (reduced) {
+                // In reduced-motion mode, just show the fixed CTA statically (still useful, no animation)
+                if (fixedCta) fixedCta.classList.add('is-active');
+                return;
+            }
+
+            // --- Act 1: Header reveal ---
+            gsap.timeline({
+                scrollTrigger: { trigger: head, start: 'top 80%', once: true }
+            })
+            .to(eyebrow, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' })
+            .from(title, { y: 30, duration: 0.7, ease: 'power3.out' }, '-=0.3')
+            .to(title, { opacity: 1, duration: 0.7, ease: 'power2.out' }, '<')
+            .to(sub, { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.4');
+
+            // --- Act 2: Pinned 3-scene scrub ---
+            var sceneCount = scenes.length;
+            var SCROLLCUE_FADE_END = 0.25; // chevron fully faded by 25% of scrub progress
+            var sceneTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: stage,
+                    start: 'top top',
+                    end: '+=270%', // ~67% of viewport per scene; bump if scenes added/removed
+                    pin: true,
+                    scrub: 0.6,
+                    anticipatePin: 1,
+                    invalidateOnRefresh: true,
+                    onUpdate: function(self) {
+                        if (progress) progress.style.right = (100 - self.progress * 100) + '%';
+                        var n = Math.min(sceneCount, Math.floor(self.progress * sceneCount) + 1);
+                        if (counter) counter.textContent = String(n).padStart(2, '0');
+                        if (scrollcue) {
+                            var op = self.progress < SCROLLCUE_FADE_END
+                                ? Math.max(0, 1 - (self.progress / SCROLLCUE_FADE_END))
+                                : 0;
+                            scrollcue.style.opacity = op;
+                        }
+                    }
+                }
+            });
+
+            // Scroll cue: fade in when stage enters viewport, then bounce continuously.
+            // Opacity gets driven down by the scrub onUpdate above as user advances.
+            if (scrollcue) {
+                gsap.to(scrollcue, {
+                    opacity: 1,
+                    duration: 0.5,
+                    ease: 'power2.out',
+                    scrollTrigger: { trigger: stage, start: 'top 85%', once: true }
+                });
+                var arrow = scrollcue.querySelector('.shtf-hf-scrollcue-arrow');
+                if (arrow) {
+                    gsap.to(arrow, {
+                        y: 8,
+                        duration: 0.7,
+                        ease: 'sine.inOut',
+                        repeat: -1,
+                        yoyo: true
+                    });
+                }
+            }
+
+            // Build cross-fade beats: scene 0 → 1 → 2 each take ~1/3 of scrub
+            for (var i = 1; i < sceneCount; i++) {
+                sceneTl.to(images[i - 1], { opacity: 0, scale: 1.08, duration: 0.4, ease: 'power1.inOut' }, i - 1);
+                sceneTl.to(images[i],     { opacity: 1, scale: 1.00, duration: 0.4, ease: 'power1.inOut' }, i - 1);
+                sceneTl.to(scenes[i - 1], { opacity: 0, y: -20, duration: 0.3, ease: 'power2.in' }, i - 1);
+                sceneTl.to(scenes[i],     { opacity: 1, y: 0,   duration: 0.4, ease: 'power2.out' }, i - 0.7);
+            }
+            // Hold final scene for the last beat
+            sceneTl.to({}, { duration: 0.5 });
+
+            // --- Act 3: Stack + CTA reveal ---
+            gsap.timeline({
+                scrollTrigger: { trigger: section.querySelector('.shtf-hf-foot'), start: 'top 75%', once: true }
+            })
+            .to(stackH, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' })
+            .from(lines, { y: 18, duration: 0.45, ease: 'power2.out' }, '-=0.2')
+            .to(lines,   { opacity: 1, duration: 0.45, ease: 'power2.out', stagger: 0.12 }, '<')
+            .to(total,   { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(1.6)' }, '-=0.1')
+            .to(ctaRow,  { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '-=0.2')
+            // Subtle persistent CTA pulse (boxShadow yoyo)
+            .to(section.querySelector('.shtf-hf-cta'), {
+                boxShadow: '0 8px 36px rgba(227, 28, 35, 0.95)',
+                duration: 1.4,
+                repeat: -1,
+                yoyo: true,
+                ease: 'sine.inOut'
+            }, '+=0.4');
+
+            // --- Floating fixed CTA: show while in/around section, hide once Act 3 (in-page CTA) is in view ---
+            if (fixedCta) {
+                var showCta = function() { fixedCta.classList.add('is-active'); };
+                var hideCta = function() { fixedCta.classList.remove('is-active'); };
+
+                // Show when section enters viewport
+                ScrollTrigger.create({
+                    trigger: section,
+                    start: 'top 85%',
+                    end: 'bottom top',
+                    onEnter: showCta,
+                    onEnterBack: showCta,
+                    onLeave: hideCta,
+                    onLeaveBack: hideCta
+                });
+
+                // Hide once Act 3 (with its own visible CTA) is comfortably in view
+                ScrollTrigger.create({
+                    trigger: foot,
+                    start: 'top 70%',
+                    end: 'bottom bottom',
+                    onEnter: hideCta,
+                    onLeaveBack: showCta
+                });
+            }
+        });
+    }
+
+    function start() { loadGsapThen(init); }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', start);
+    } else {
+        start();
+    }
+})();
+</script>

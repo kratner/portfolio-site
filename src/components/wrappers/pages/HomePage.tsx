@@ -15,6 +15,7 @@ import ContactInformation from "../sections/ContactInformation";
 import { contactMethods } from "../../../data/contactData";
 // import YouTubePlaylist from "../../YouTubePlaylist";
 import Slider from "../../Slider";
+import { ReelsGallery } from "../ReelsGallery";
 
 const HomePage: React.FC = () => {
   const siteUrl = "https://kratner.github.io/portfolio-site/";
@@ -43,6 +44,9 @@ const HomePage: React.FC = () => {
       </Section>
       <Section className="portfolio-list">
         <ColumnarList data={portfolioListData} />
+      </Section>
+      <Section className="reels-gallery">
+        <ReelsGallery />
       </Section>
       <Section className="artwork-slider">
         <Slider
@@ -94,6 +98,12 @@ const HomePage: React.FC = () => {
       <IntersectionObserverComponent
         className="visible"
         targetSelector="section.portfolio-list .main-header, section.portfolio-list .panel"
+        threshold={0.1}
+        onIntersection={handleIntersection}
+      />
+      <IntersectionObserverComponent
+        className="visible"
+        targetSelector="section.reels-gallery .reel-header, section.reels-gallery .motion-component"
         threshold={0.1}
         onIntersection={handleIntersection}
       />
