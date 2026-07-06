@@ -15,21 +15,6 @@ const baseUrl = import.meta.env.BASE_URL;
 
 const REELS_DATA: ReelComponent[] = [
   {
-    id: 'scroll-narrative',
-    title: 'Scroll-Triggered Bundle Showcase',
-    description:
-      'A 3-act scroll-driven narrative with pinned sequencing, animated transitions, and dynamic progress tracking. Guides users through product features with smooth scroll-linked reveals.',
-    demoUrl: `${baseUrl}reels/scroll-triggered-narrative/demo.html`,
-    iframeHeight: 600,
-    techStack: [
-      'GSAP 3.14.2',
-      'ScrollTrigger',
-      'HTML5',
-      'CSS3 Transforms',
-      'Vanilla JavaScript',
-    ],
-  },
-  {
     id: 'image-carousel',
     title: 'Image Carousel',
     description:
@@ -38,6 +23,31 @@ const REELS_DATA: ReelComponent[] = [
     iframeHeight: 320,
     techStack: ['Vanilla JavaScript', 'CSS Transforms', 'HTML5', 'Responsive Design'],
   },
+
+  // DEFERRED: Scroll-Triggered Bundle Showcase (GSAP + ScrollTrigger)
+  // Location: public/reels/scroll-triggered-narrative/demo.html
+  // Status: Deferred - Fully functional but removed to streamline gallery
+  // Reason: Portfolio focused on Image Carousel as primary interactive demo
+  // To re-enable:
+  //   1. Uncomment block below
+  //   2. Move above Image Carousel if desired as primary
+  //   3. Rebuild with: npm run build
+  //   4. Deploy with: npm run deploy
+  // {
+  //   id: 'scroll-narrative',
+  //   title: 'Scroll-Triggered Bundle Showcase',
+  //   description:
+  //     'A 3-act scroll-driven narrative with pinned sequencing, animated transitions, and dynamic progress tracking. Guides users through product features with smooth scroll-linked reveals.',
+  //   demoUrl: `${baseUrl}reels/scroll-triggered-narrative/demo.html`,
+  //   iframeHeight: 600,
+  //   techStack: [
+  //     'GSAP 3.14.2',
+  //     'ScrollTrigger',
+  //     'HTML5',
+  //     'CSS3 Transforms',
+  //     'Vanilla JavaScript',
+  //   ],
+  // },
 
   // SCAFFOLD: Scroll-Triggered Toolkit (Intersection Observer + Radial Tool Fan)
   // Location: public/reels/scroll-triggered-toolkit/demo.html
