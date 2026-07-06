@@ -38,6 +38,37 @@ const REELS_DATA: ReelComponent[] = [
     iframeHeight: 320,
     techStack: ['Vanilla JavaScript', 'CSS Transforms', 'HTML5', 'Responsive Design'],
   },
+
+  // SCAFFOLD: Scroll-Triggered Toolkit (Intersection Observer + Radial Tool Fan)
+  // Location: public/reels/scroll-triggered-toolkit/demo.html
+  // Status: Deferred - Fully functional but removed for MVP scope
+  // Architecture: Intersection Observer triggers animation when entering viewport
+  // Animation: Tools fan out radially from center case, counter 0→6, color transition
+  // To re-enable:
+  //   1. Uncomment block below
+  //   2. Rebuild with: npm run build
+  //   3. Deploy with: npm run deploy
+  // Design notes:
+  //   - Uses Intersection Observer (works in iframe context)
+  //   - Staggered tool expansion (60ms between each)
+  //   - 600ms total animation duration
+  //   - Resets when scrolled out of view
+  //   - Fully responsive (700px stage height)
+  // Debug doc: See TOOLKIT_DEMO_DEBUG.md for implementation notes
+  // {
+  //   id: 'scroll-toolkit',
+  //   title: 'Scroll-Triggered Toolkit',
+  //   description:
+  //     'Interactive toolkit that opens and closes as you scroll. Floating capability cards fan out from a central case. Demonstrates scroll-driven animation with Intersection Observer API.',
+  //   demoUrl: `${baseUrl}reels/scroll-triggered-toolkit/demo.html`,
+  //   iframeHeight: 850,
+  //   techStack: [
+  //     'Vanilla JavaScript',
+  //     'CSS3 Transforms',
+  //     'Intersection Observer',
+  //     'Responsive Design',
+  //   ],
+  // },
 ];
 
 const ReelsGallery: React.FC = () => {

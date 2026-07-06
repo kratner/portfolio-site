@@ -1,0 +1,242 @@
+<!--
+  Creative Toolkit — Scroll-Triggered Narrative
+  Responsive scroll animation with vanilla JavaScript
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creative Toolkit — Scroll Animation</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0a0a0a;
+      color: #f0f0f0;
+      line-height: 1.6;
+    }
+
+    .header { padding: 60px 20px; text-align: center; background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%); border-bottom: 1px solid #333; }
+    h1 { font-size: 2.5rem; color: #fff; margin-bottom: 12px; font-weight: 700; }
+    .subtitle { font-size: 1rem; color: #a0a0a0; max-width: 600px; margin: 0 auto; }
+
+    .stage {
+      min-height: 700px;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center;
+      background: radial-gradient(120% 100% at 50% 40%, #1a2a3a 0%, #0a0a0a 75%);
+      position: relative;
+      padding: 40px 20px;
+    }
+
+    .stage-caption { font-size: 1.8rem; color: #fff; max-width: 700px; margin: 0 0 40px; font-weight: 700; }
+    .hl { color: #60a5fa; }
+
+    .toolbox {
+      position: relative;
+      width: min(80vw, 350px);
+      height: 280px;
+      margin: 0 0 30px;
+    }
+
+    .case-shell {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #2a3a4a 0%, #1a2a3a 100%);
+      border: 2px solid #555;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .case-shell.open {
+      background: linear-gradient(135deg, #1a3a2a 0%, #0f2a1a 100%);
+      border-color: #10b981;
+      box-shadow: 0 20px 60px rgba(16, 185, 129, 0.2);
+    }
+
+    .tools-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+
+    .tool {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border-radius: 10px;
+      background: #1a1a1a;
+      border: 2px solid #555;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.2rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      transition: border-color 0.3s ease;
+      opacity: 0;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.7);
+    }
+
+    .tool.visible { opacity: 1; }
+
+    .capability-counter { margin-top: 20px; text-align: center; }
+    .counter-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: #a0a0a0; margin-bottom: 8px; font-weight: 600; }
+    .counter-value { font-size: 3rem; color: #60a5fa; line-height: 1; font-weight: 700; }
+
+    .scroll-indicator { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); text-align: center; color: #a0a0a0; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; }
+    .scroll-indicator .arrow { display: block; font-size: 18px; margin-top: 8px; animation: bounce 2s ease-in-out infinite; }
+    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+    .info-section { padding: 50px 20px; background: #0a0a0a; text-align: center; border-top: 1px solid #333; }
+    .info-section h2 { font-size: 1.8rem; color: #fff; margin-bottom: 16px; }
+    .info-text { max-width: 600px; margin: 0 auto; color: #a0a0a0; }
+    .tech-stack { margin-top: 20px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+    .tech-badge { background: #1a1a1a; border: 1px solid #444; padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; color: #a0a0a0; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-indicator .arrow { animation: none; }
+      .case-shell, .tool { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Creative Toolkit</h1>
+    <p class="subtitle">Scroll to reveal capabilities that fan out from the toolkit.</p>
+  </div>
+
+  <div class="stage">
+    <div class="stage-caption">Scroll to reveal <span class="hl">6 Capabilities</span></div>
+
+    <div class="toolbox">
+      <div class="case-shell" id="caseShell">
+        <div class="tools-container" id="toolsContainer">
+          <div class="tool">🤖</div>
+          <div class="tool">✨</div>
+          <div class="tool">⚙️</div>
+          <div class="tool">🎯</div>
+          <div class="tool">👥</div>
+          <div class="tool">📊</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="capability-counter">
+      <div class="counter-label">Capabilities</div>
+      <div class="counter-value" id="capCount">0</div>
+    </div>
+
+    <div class="scroll-indicator">Scroll to explore<span class="arrow">↓</span></div>
+  </div>
+
+  <div class="info-section">
+    <h2>How It Works</h2>
+    <p class="info-text">
+      Scroll past the toolkit section to see tools fan out from the central case. The animation is synchronized with your scroll position — scroll back to see them return.
+    </p>
+    <div class="tech-stack">
+      <span class="tech-badge">Vanilla JavaScript</span>
+      <span class="tech-badge">CSS3 Transforms</span>
+      <span class="tech-badge">RequestAnimationFrame</span>
+    </div>
+  </div>
+
+  <script>
+    const stage = document.getElementById('stage');
+    const caseShell = document.getElementById('caseShell');
+    const toolsContainer = document.getElementById('toolsContainer');
+    const tools = toolsContainer.querySelectorAll('.tool');
+    const capCount = document.getElementById('capCount');
+
+    let isVisible = false;
+    let animationPhase = 0; // 0 = start, 1 = tools expanding, 2 = full
+
+    function animateTools() {
+      if (!isVisible) return;
+
+      // Phase 1: Fade in and expand tools (0.6s)
+      const duration1 = 600;
+      const startTime = Date.now();
+
+      function expandFrame() {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(1, elapsed / duration1);
+
+        // Update case color
+        caseShell.classList.toggle('open', progress > 0.3);
+
+        // Animate tools expansion
+        tools.forEach((tool, index) => {
+          const stagger = index * 60; // 60ms between each tool
+          const toolElapsed = Math.max(0, elapsed - stagger);
+          const toolProgress = Math.min(1, toolElapsed / 300); // Each tool takes 300ms
+
+          if (toolProgress > 0) {
+            tool.classList.add('visible');
+            const angle = (index / tools.length) * 360 * (Math.PI / 180);
+            const radius = 130 * toolProgress;
+            const x = Math.cos(angle) * radius;
+            const y = Math.sin(angle) * radius;
+            const scale = 0.7 + toolProgress * 0.3;
+
+            tool.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(${scale})`;
+          }
+        });
+
+        // Update counter
+        const count = Math.floor(progress * tools.length);
+        capCount.textContent = count;
+
+        if (progress < 1) {
+          requestAnimationFrame(expandFrame);
+        } else {
+          animationPhase = 2;
+          capCount.textContent = tools.length;
+        }
+      }
+
+      if (animationPhase === 0) {
+        animationPhase = 1;
+        expandFrame();
+      }
+    }
+
+    function resetAnimation() {
+      if (isVisible) return;
+
+      animationPhase = 0;
+      caseShell.classList.remove('open');
+      tools.forEach((tool) => {
+        tool.classList.remove('visible');
+        tool.style.transform = 'translate(-50%, -50%) scale(0.7)';
+      });
+      capCount.textContent = '0';
+    }
+
+    // Use Intersection Observer to detect when stage enters viewport
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            isVisible = true;
+            animateTools();
+          } else {
+            isVisible = false;
+            resetAnimation();
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(stage);
+  </script>
+</body>
+</html>
